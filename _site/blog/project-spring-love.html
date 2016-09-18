@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+
+
+<meta name="keywords" content="project, spring, oracle">
+
+
+<!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>감성천국 - Takoobi’s Space</title>
+<meta property="og:title" content="감성천국" />
+<meta name="description" content="spring framework를 활용한 팀 프로젝트" />
+<meta property="og:description" content="spring framework를 활용한 팀 프로젝트" />
+<link rel="canonical" href="http://localhost:4000/blog/project-spring-love" />
+<meta property="og:url" content="http://localhost:4000/blog/project-spring-love" />
+<meta property="og:site_name" content="Takoobi’s Space" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-08-23T00:00:00+09:00" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "감성천국",
+    "datePublished": "2015-08-23T00:00:00+09:00",
+    "description": "spring framework를 활용한 팀 프로젝트",
+    "logo": "http://localhost:4000infinite.png",
+    "url": "http://localhost:4000/blog/project-spring-love"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Takoobi's Space" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/syntax.css" />
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/favicons/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/favicons/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/favicons/apple-touch-icon-144x144-precomposed.png">
+</head>
+
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
+
+    
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" id="search-input" class="search-field" placeholder="Search...">
+        <i id="search-close" class="fa fa-times-circle"></i>
+        <h4>Search results</h4>
+        <ul id="results-container" class="search-results post-list">
+        </ul>
+        <!-- /.search-results -->
+    </div>
+    <!-- /.search-form -->
+</div>
+<!-- ./search-wrapper -->
+
+
+<div id="fade"></div>
+<a id="slide" class="animated fade"></a>
+<aside id="sidebar">
+    <nav id="navigation">
+        <h2>MENU</h2>
+        <hr>
+        <ul> 
+            <li>
+                <a href="http://localhost:4000/">Home</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/categories">Programing</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/tags">Tags</a>  </li>
+            
+            <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(http://localhost:4000/images/universe.jpeg)"
+    itemscope itemtype="http://schema.org/Organization">
+
+
+
+    <button class="menu-button animated fade dosearch">
+        <i class="fa fa-search"></i>
+    </button> 
+ 
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="http://localhost:4000/" itemprop="url">
+                <img itemprop="logo" src="http://localhost:4000/images/infinite.png" alt="Takoobi's Space Logo" />
+                <h1 class="blog-title light" itemprop="name">
+                    Takoobi's Space
+                </h1>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
+
+</header>
+
+    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+        <div class="container">
+            <div class="row">
+                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                
+                
+                
+                
+
+                    <header class="post-header entry-header">
+
+                    
+
+                    
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
+                        
+                            
+                        
+                        
+                        
+
+                        
+                            감성천국
+                        </h1>
+                    
+
+                        <div class="cursive" style="color: #000; font-style:italic;">spring framework를 활용한 팀 프로젝트</div>
+
+                            <div class="post-info text-center small">
+                            
+                                <span class="entry-date date published updated">
+                            
+                            
+                                    <time datetime="2015-08-23T00:00:00+09:00" class="post-time" itemprop="datePublished">23 Aug 2015</time>
+                                </span>
+                            
+
+                                in <span class="post-tags">
+
+                            
+                                    <a href="http://localhost:4000/categories/index.html#Project" data-toggle="tooltip" title="Other posts from the Project category" rel="tag">Project</a>
+                                
+                            
+                                </span>
+                            
+                            &nbsp;
+                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+
+                            
+
+                            
+                                    <span class="time">3.9555555555555557</span> minutes read
+                            
+                                
+                            
+
+                                </span>
+                            
+                            </div>
+
+                    </header>
+
+                    <div class="post-body bordered-bottom" itemprop="description">
+                    
+
+                        <h2 id="section">개요</h2>
+
+<hr />
+
+<ul>
+  <li>기간 : 2015년 7월 ~ 8월</li>
+  <li>인원 : 4명</li>
+  <li>사용 기술 : spring framework, jsp, oracle, mybatis, bootstrap</li>
+  <li>사용 도구 : Git, Trello, eclipse, SourceTree</li>
+  <li>주요 기능 : 중복 태그 입력과 출력, 트위터 멘션</li>
+</ul>
+
+<hr />
+
+<p>자바 학원을 다니면서 팀원들과 한달여 기단 동안 만든 프로젝트로 나는 핵심 기술 개발과 전반적인 사항들을 다루었다.</p>
+
+<h2 id="section-1">기획 의도</h2>
+
+<p>카테고리가 무분별하게 많은 사이트와는 달리 사람들에게 힐링이 되는 커뮤니티 사이트를 만들고자 하였고, 이를 통해 힘든 삶 속에서 힘을 얻고 에너지를 얻기를 희망하였다. 우리는 기존의 카테고리를 나누는 방식과는 달리 장소의 개념을 도입해서 어떠한 장소에서 이야기를 나누는 느낌을 주기를 원했고, 사람들이 많이 있는 장소를 몇가지 선정하였다. 그리고 그 속에서 태그를 통해 글을 분류하여 쓰고, 읽을 수 있도록 구성하였다.</p>
+
+<h2 id="section-2">진행 과정</h2>
+
+<p>각자 맡은 부분을 개발하고 git을 통해 소스 코드를 관리 하였다. 커맨드 사용법을 어려워 하는 팀원도 있어서 SourceTree를 이용하였으며, 일정 관리나 기타 자료 관리등 협업 관리 도구로 Trello를 이용하였다. 총 4주 동안 기획 1주, 개발 2주 ~ 4주로 진행 하였으며 개발 과정 동안에도 회의를 많이 하였다.</p>
+
+<h2 id="section-3">사이트 로드맵</h2>
+
+<h3 id="section-4">메인</h3>
+
+<p><img src="/assets/img/project/love_main.png" alt="메인화면" />
+<em>메인화면</em></p>
+
+<ul>
+  <li>다른 커뮤니티 사이트처럼 글 목록을 바로 보여주기보다 감성적인 느낌을 전달하기 위해 메인 화면을 구성했다.</li>
+  <li>메인 화면에는 메인 페이지와 장소별 사진이 있어 클릭시 장소로 이동되며, 메인화면에서 로그인 시 광장으로 이동된다.</li>
+</ul>
+
+<h3 id="section-5">회원가입</h3>
+
+<p><img src="/assets/img/project/love_signup.png" alt="회원가입" />
+<em>회원가입</em></p>
+
+<ul>
+  <li>회원 가입 화면은 모니터 전체를 차지하는 페이지로 만들었으며 좀 더 감성적이고 명확한 정보입력의 느낌을 주었다.</li>
+  <li>엔터 혹은 continue 클릭시 입력받을 다음 양식으로 화면이 슬라이드 되며 최종적으로 전체 양식을 보여주며 확인하고 가입이 마무리된다.</li>
+  <li>가입 완료 후에는 광장 화면으로 이동된다.</li>
+</ul>
+
+<h3 id="section-6">광장</h3>
+
+<p><img src="/assets/img/project/love_square.png" alt="광장" />
+<em>광장</em></p>
+
+<p><img src="/assets/img/project/love_category.png" alt="카테고리" />
+<em>카테고리</em></p>
+
+<ul>
+  <li>광장은 각 장소에 해당하는 최신 글들이 10개씩 모여 있는 공간이다.</li>
+  <li>장소를 클릭 시 해당 장소로 이동되며 글을 클릭 시 해당 글의 디테일 페이지로 이동된다.</li>
+  <li>로그인 후 부터는 상단의 헤더가 생성된다.
+    <ol>
+      <li>자동차 버튼을 클릭하면 장소 목록을 보여주는 카테고리 화면이 띄워진다.</li>
+      <li>제목과 내용에 해당하는 글을 검색할 수 있다.</li>
+      <li>맨 우측 : 사용자 정보를 보며 로그아웃을 할 수 있다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="section-7">학교</h3>
+
+<p><img src="/assets/img/project/love_school.png" alt="힉교" />
+<em>학교</em></p>
+
+<ul>
+  <li>여러가지 장소 중 학교이다.</li>
+  <li>학교에 해당하는 글들이 보여지며, 기본적으로 최신글이 나타난다.</li>
+  <li>상단의 태그 클릭시 태그에 해당하는 글들이 보여지며 중복 클릭이 가능하다.</li>
+</ul>
+
+<h3 id="section-8">글쓰기</h3>
+
+<p><img src="/assets/img/project/love_write.png" alt="글쓰기" />
+<em>글쓰기</em></p>
+
+<ul>
+  <li>글쓰기 화면으로 제목과 내용만 텍스트로 입력받고 이미지는 입력받지 않는다.</li>
+  <li>감성 중심의 순수 텍스트로 공감대를 형성하기 위함이다.</li>
+  <li>위 화면은 태그마스터의 계급으로 로그인시 글쓰기 화면으로 태그를 생성할 수 있다.</li>
+  <li>태그마스터가 아니면 기본적으로 제공이 되는 태그로만 중복선택하여 글을 작성할 수 있다.</li>
+</ul>
+
+<h3 id="section-9">글 내용</h3>
+
+<p><img src="/assets/img/project/love_detail.png" alt="상세화면" />
+<em>내용화면</em></p>
+
+<ul>
+  <li>게시글 클릭시 나타나는 글에 대한 상세 화면이다.</li>
+  <li>제목과 태그, 내용, 댓글로 구성된다.</li>
+  <li>태그는 작성자가 선택한 여러개의 태그들이 나타난다.</li>
+  <li>사용자는 해당글에 대한 공감, 비공감 버튼을 한번만 누를 수 있으며 비공감이 일정비율 이상인 글은 유배지로 자동 이동된다.</li>
+</ul>
+
+<h2 id="section-10">기능</h2>
+
+<h3 id="section-11">회원제</h3>
+
+<p>기본적으로 회원제로 운영이 되며 댓글을 달거나 공감버튼을 누를 경우 포인트가 쌓이며, 글을 작성하는데는 포인트가 소모된다.
+글 작성에 포인트가 소모되게 하는 이유는 무분별한 글을 작성하는걸 방지하고, 글을 작성하는데 있어서 좀 더 고민하고 신중히 작성하길 바라는 마음이다.</p>
+
+<h3 id="section-12">장소</h3>
+
+<p>장소에 따른 커뮤니티 공간을 제공하는 것이 핵심이며 그 장소에 맞는 기본 태그를 제공한다.</p>
+
+<ul>
+  <li>광장 - 다른 장소에 해당하는 글들을 최신순으로 10개씩 보여주는 공간</li>
+  <li>카페 - 남녀노소 누구나 가벼운 대화를 나누는 공간</li>
+  <li>선술집 - 술집에서 무거운 이야기나 고민을 이야기 할 수도 있다.</li>
+  <li>학교 - 학생들의 공간</li>
+  <li>옥탑방 - 자취하는 사람들의 공간</li>
+  <li>군대 - 군인들이 머무는 공간</li>
+  <li>방송국 - 유용한 정보들을 올릴 수 있는 공간</li>
+  <li>노래방 - 노래를 공유할 수 있는 공간</li>
+  <li>유배지 - 악성 글이나 신고가 많은 글이 있는 공간</li>
+</ul>
+
+<h3 id="section-13">태그</h3>
+
+<p>기본적인 태그는 우리가 지정한 장소에 맞는 태그가 제공이 되고, 회원 등급이 올라갈 경우 태그를 생성할 수 있는 권한이 주어진다.
+태그는 여러 가지를 중복으로 선택하여 글을 작성할 수 있고, 장소에 따른 글을 볼 때에도 태그를 중복 클릭하여 태그에 맞는 글의 리스트를 불러올 수 있다.</p>
+
+<h3 id="section-14">공감, 비공감</h3>
+
+<p>공감, 비공감 버튼은 게시글 하나당 한 아이디로 한번만 누를 수 있으며, 비공감 횟수가 일정 비율 이상 많은 경우 자동으로 유배지로 글이 옮겨진다.</p>
+
+<h3 id="section-15">멘션</h3>
+
+<p>트위터의 멘션이나 페이스북 댓글과 비슷한 기능으로 글에 댓글을 달 때 <em>@아이디</em> 를 입력하여 해당 사용자에게 알림을 보낼 수 있다.</p>
+
+<h2 id="section-16">내가 구현한 기능</h2>
+
+<p>멘션, 공감, 태그등 핵심 기능과 전반적인 UI를 구현하였으며 프로젝트의 진행 사항을 총괄하였다.
+사용자 관리는 팀원이 구현하고 전반적인 개발 과정은 모두 이해할 수 있게 회의를 하며 진행하였다.</p>
+
+<h2 id="section-17">마무리</h2>
+
+<p>장소에 따른 공간을 제공해 주는것이 핵심인데 디자인이 상당히 중요하지만 디자인 실력이 없어 전반적으로 미려한 사이트가 탄생할 수 없었다. 또한 사이트 운영에 대한 시스템 구축에 있어서 완성도가 떨어져서 아쉬움이 남는다.
+팀 프로젝트를 하면서 팀원들과 맞추어 개발을 해 나아간다는게 쉽지 않은 일임을 경험했고, 효율적인 일의 분담이 중요하다는 걸 느꼈다.
+git 으로 merge 하는 과정에서 충돌이 많이 발생하고 사용 경험이 많지 않아 고생을 했었고, trello를 이용해보니 협업 관리 도구의 편리성을 몸소 체험할 수 있었다.
+처음으로 여러 명과 같이 개발을 했는데 좌절도 하고 돌파구도 찾으며 팀원들과 친밀해질 수 있었던 <strong>즐거운 프로젝트였다 !!</strong></p>
+
+
+                        <br>
+
+                    
+                    
+                        <div class="entry-tags text-center">
+                            <i class="fa fa-tags"></i>&nbsp;
+                                Tagged with 
+                            
+                                <a href="http://localhost:4000/tags/index.html#project" data-toggle="tooltip" title="Posts tagged with project" rel="tag">project</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#spring" data-toggle="tooltip" title="Posts tagged with spring" rel="tag">spring</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#oracle" data-toggle="tooltip" title="Posts tagged with oracle" rel="tag">oracle</a>
+
+                                
+                            
+                        </div>
+                    
+                    </div>
+
+                    <footer class="post-footer entry-meta">
+                    
+                        <div class="post-share text-center">
+    <p class="light small">
+        Share this post
+    </p>
+    <ul class="social-mini">
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=%EA%B0%90%EC%84%B1%EC%B2%9C%EA%B5%AD%20http://localhost:4000/blog/project-spring-love%20via%20&#64;"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
+                title="Share on Twitter" itemprop="Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/project-spring-love" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/blog/project-spring-love" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+                    
+
+                        <div class="post-author text-center">
+	<img src="http://localhost:4000/images/me.jpg" alt="Lee Jung Min's photo" itemprop="image" class="post-avatar img-circle img-responsive" />
+	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+		By <span itemprop="name" class="fn"><a href="http://localhost:4000/about" title="About Lee Jung Min" itemprop="url">Lee Jung Min</a></span>
+	</h4>
+	<p>The two most powerful warriors are Patience and Time.</p>
+</div> 
+                        
+                    
+                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+                    
+                    </footer>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+<footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(http://localhost:4000/images/universe.jpeg)">
+
+
+    <div class="inner">
+        <div class="container">
+            <ul class="social-icons">
+                       
+            </ul>
+            <div>
+                <a href="http://localhost:4000/about/">Lee Jung Min</a> &copy; 2016 &bull;
+                All rights reserved.
+            </div>
+            <ul class="menu-items">
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/"><i class="fa fa-home"></i></a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/categories">Programing</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/tags">Tags</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
+        </svg>
+    </div>
+    
+    
+</footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jekyll-search.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/main.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/script.js"></script>
+<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+
+<script type="text/javascript">
+
+/*      Slides       */
+
+$("a#slide").click(function(){
+    $("#sidebar,body,a#slide,#fade").addClass("slide")
+});
+
+$("#fade,#header,#posts-container").click(function(){
+    $("#sidebar,body,a#slide,#fade").removeClass("slide")
+});
+
+$("a#click-filter").click(function(){
+    $("#slide-filter").slideToggle("medium");
+    $("#slide-pages").slideOut("medium");
+});
+
+$("a#click-pages").click(function(){
+    $("#slide-pages").slideToggle("medium");
+    $("#slide-filter").slideOut("medium");
+});
+
+/*      End-Slides      */
+
+</script>
+
+
+<!-- Jekyll Simple Search option -->
+<script>
+
+   SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'http://localhost:4000/assets/json/search.json',
+        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+        noResultsText: '<p>Nothing found.</p>',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      });
+
+  (function( $, window, undefined ) {
+
+     var bs = {
+          close: $("#search-close"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'takoobi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        
+</body>
+</html>

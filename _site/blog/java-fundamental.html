@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+
+
+<meta name="keywords" content="java, language">
+
+
+<!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>자바 강좌 - JAVA Fundamental #1  - Takoobi’s Space</title>
+<meta property="og:title" content="자바 강좌 - JAVA Fundamental #1 " />
+<meta name="description" content="자바의 기본 문법과 개념을 학습한다." />
+<meta property="og:description" content="자바의 기본 문법과 개념을 학습한다." />
+<link rel="canonical" href="http://localhost:4000/blog/java-fundamental" />
+<meta property="og:url" content="http://localhost:4000/blog/java-fundamental" />
+<meta property="og:site_name" content="Takoobi’s Space" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-04-20T00:00:00+09:00" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "자바 강좌 - JAVA Fundamental #1 ",
+    "datePublished": "2015-04-20T00:00:00+09:00",
+    "description": "자바의 기본 문법과 개념을 학습한다.",
+    "logo": "http://localhost:4000infinite.png",
+    "url": "http://localhost:4000/blog/java-fundamental"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Takoobi's Space" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/syntax.css" />
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/favicons/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/favicons/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/favicons/apple-touch-icon-144x144-precomposed.png">
+</head>
+
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
+
+    
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" id="search-input" class="search-field" placeholder="Search...">
+        <i id="search-close" class="fa fa-times-circle"></i>
+        <h4>Search results</h4>
+        <ul id="results-container" class="search-results post-list">
+        </ul>
+        <!-- /.search-results -->
+    </div>
+    <!-- /.search-form -->
+</div>
+<!-- ./search-wrapper -->
+
+
+<div id="fade"></div>
+<a id="slide" class="animated fade"></a>
+<aside id="sidebar">
+    <nav id="navigation">
+        <h2>MENU</h2>
+        <hr>
+        <ul> 
+            <li>
+                <a href="http://localhost:4000/">Home</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/categories">Programing</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/tags">Tags</a>  </li>
+            
+            <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(http://localhost:4000/images/universe.jpeg)"
+    itemscope itemtype="http://schema.org/Organization">
+
+
+
+    <button class="menu-button animated fade dosearch">
+        <i class="fa fa-search"></i>
+    </button> 
+ 
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="http://localhost:4000/" itemprop="url">
+                <img itemprop="logo" src="http://localhost:4000/images/infinite.png" alt="Takoobi's Space Logo" />
+                <h1 class="blog-title light" itemprop="name">
+                    Takoobi's Space
+                </h1>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
+
+</header>
+
+    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+        <div class="container">
+            <div class="row">
+                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                
+                
+                
+                
+
+                    <header class="post-header entry-header">
+
+                    
+
+                    
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
+                        
+                            
+                        
+                        
+                        
+
+                        
+                            자바 강좌 - JAVA Fundamental #1 
+                        </h1>
+                    
+
+                        <div class="cursive" style="color: #000; font-style:italic;">자바의 기본 문법과 개념을 학습한다.</div>
+
+                            <div class="post-info text-center small">
+                            
+                                <span class="entry-date date published updated">
+                            
+                            
+                                    <time datetime="2015-04-20T00:00:00+09:00" class="post-time" itemprop="datePublished">20 Apr 2015</time>
+                                </span>
+                            
+
+                                in <span class="post-tags">
+
+                            
+                                    <a href="http://localhost:4000/categories/index.html#Study" data-toggle="tooltip" title="Other posts from the Study category" rel="tag">Study</a>
+                                
+                            
+                                </span>
+                            
+                            &nbsp;
+                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+
+                            
+
+                            
+                                    <span class="time">17.17222222222222</span> minutes read
+                            
+                                
+                            
+
+                                </span>
+                            
+                            </div>
+
+                    </header>
+
+                    <div class="post-body bordered-bottom" itemprop="description">
+                    
+
+                        <p>##Data Type</p>
+
+<p>###변수(variable)</p>
+
+<ul>
+  <li>데이터의 저장과 참조를 위해 할당된 메모리 공간</li>
+  <li>단 하나의 값을 저장할 수 있는 공간</li>
+</ul>
+
+<p>모든 변수에는 타입(Type 또는 형形)이 있으며, 변수의 타입 따라 변수에 저장할 수 있는 값의 종류와 범위가 달라진다.
+변수를 선언할 때 저장하고자 하는 값을 고려하여 가장 알맞은 타입을 선택하면 된다. 변수의 타입은 크게 기본형(Primitive Type)과 참조형(Reference Type), 2가지로 나눌 수 있는데, <strong>기본형 변수는 실제 값(Data)을 저장하는 반면에, 참조형 변수는 어떤 값이 저장되어 있는 주소를 값으로 갖는다.</strong>
+자바는 C언어와는 달리 String을 제외한 참조형 변수간의 연산을 할 수 없으므로 실제 연산에 사용되는 것은 모두 기본형 변수이다.</p>
+
+<p>####기본자료형</p>
+
+<p><img src="/assets/img/posts/java_dataType.PNG" alt="datatype" /></p>
+
+<ol>
+  <li>문자 자료형
+    <ul>
+      <li>문자 하나를 2byte로 하는 <strong>유니코드</strong> 기반 표현</li>
+      <li>유니코드는 전 세계의 문자를 표현 가능</li>
+    </ul>
+  </li>
+  <li>정수 자료형
+    <ul>
+      <li>정수를 표현하는데 사용하며 byte 크기에 따라 분류됨</li>
+      <li>CPU는 int형 데이터의 크기만 연산 가능</li>
+      <li>byte / short 의 필요성 : 연산보다 데이터의 양이 중요시되는 상황(mp3, 동영상 등등)</li>
+    </ul>
+  </li>
+  <li>실수 자료형
+    <ul>
+      <li>float는 소수점 이하 6자리, double는 15자리 정밀도</li>
+      <li>필요한 정밀도를 바탕으로 자료형을 결정하는데 일반적으로 double을 선호함</li>
+    </ul>
+  </li>
+  <li>논리 자료형
+    <ul>
+      <li>true, false중 하나만 저장할 수 있으며 기본값은 false이다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>###상수(Literal)</p>
+
+<p>자바 언어가 처리하는 실제 데이터를 리터럴이라고 한다.</p>
+
+<ul>
+  <li>자료형을 기반으로 메모리 공간에 저장되며 이름이 없음</li>
+  <li>기본적으로 모든 정수형 상수는 int 형으로, 실수형 상수는 double형으로 표현 및 저장됨</li>
+</ul>
+
+<p><code class="highlighter-rouge">long num = 1111111111111</code> 정수형 상수는 기본적으로 int로 저장되기 때문에 위와 같은 코드는 오류를 뿜어낸다. 그렇기 때문에 <code class="highlighter-rouge">long num = 1111111111111L</code> 이처럼 뒤에 <strong>L</strong> 을 붙여서 long형 리터럴임을 선언해줘야한다.
+변수에 명시적인 데이터 타입을 선언해 주었어도 연산시에는 자동적으로 기본 형변환이 되기 때문에 주의해야 한다. 때문에 변수와 리터럴의 데이터 타입을 맞추어서 <strong>형변환(Type Casting)</strong> 을 해주어야한다.</p>
+
+<p>###자동 형 변환 규칙(Implicit Conversion)</p>
+
+<p><img src="/assets/img/posts/java_implicit_conversion.PNG" alt="implicit_conversion" /></p>
+
+<p>##연산자(Operator)</p>
+
+<p>####산술, 대입 연산자</p>
+
+<p><img src="/assets/img/posts/java_op1.PNG" alt="Operator" /></p>
+
+<p>####복합대입연산자</p>
+
+<p><img src="/assets/img/posts/java_op2.PNG" alt="Operator" /></p>
+
+<p>####비교(관계)연산자</p>
+
+<p><img src="/assets/img/posts/java_op3.PNG" alt="Operator" /></p>
+
+<p>####논리연산자</p>
+
+<p><img src="/assets/img/posts/java_op4.PNG" alt="Operator" /></p>
+
+<p>####증감연산자</p>
+
+<p><img src="/assets/img/posts/java_op5.PNG" alt="Operator" /></p>
+
+<p>####비트연산자</p>
+
+<p><img src="/assets/img/posts/java_op6.PNG" alt="Operator" /></p>
+
+<p>####비트시프트연산자</p>
+
+<p><img src="/assets/img/posts/java_op7.PNG" alt="Operator" /></p>
+
+<p>##문(Statement)</p>
+
+<p>###조건문</p>
+
+<p>####if 문</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if ( 조건식 ) {
+	실행문장;
+} else if ( 조건식 ) {
+	실행문장;
+} else {
+	실행문장;
+}
+</code></pre>
+</div>
+
+<p>####switch 문</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>switch ( 수식(값) ) {   //수식 값은 반드시 정수 혹은 문자
+    case 값1:
+        실행문장;
+        break;
+    case 값2:
+        실행문장;
+        break;
+    default:
+        실행문장;
+        break;
+}
+</code></pre>
+</div>
+
+<p>###반복문</p>
+
+<p>####for 문</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for ( 초기식; 조건식; 증감식 ) {
+	실행문장;
+}
+</code></pre>
+</div>
+
+<p><em>example</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Loop"</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">7</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="o">;</span> <span class="n">i</span><span class="o">++,</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Loop"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>####for-each 문</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for ( Object : Objects ) {
+	실행문장;
+};
+</code></pre>
+</div>
+
+<p><em>example</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="o">{</span> <span class="s">"apple"</span><span class="o">,</span> <span class="s">"pie"</span><span class="o">,</span> <span class="s">"banana"</span> <span class="o">};</span>
+<span class="k">for</span><span class="o">(</span> <span class="n">String</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">arr</span> <span class="o">)</span> <span class="o">{</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>####while 문</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>while ( 조건식 ) {
+	실행문장;
+}
+</code></pre>
+</div>
+
+<p>####do-while 문</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>do {
+	실행문장;
+} while ( 조건식 );
+</code></pre>
+</div>
+
+<p>##Object Oriented Programming(OOP)</p>
+
+<p>Object의 사전적 의미는 사물, 물체, 대상을 뜻하는데 OOP에서는 표현하려는 모든 것들을 Object라 할 수 있다.  <strong>객체 지향 프로그래밍(OOP)</strong> 이란 객체 중심의 프로그래밍을 말한다.
+<em>“나는 과일장수에게 사과를 구매한다.”</em>
+OOP에서는 나, 과일장수, 사과라는 객체를 등장시켜서 사과구매라는 행위를 실체화 한다.
+Java에서는 객체를 <code class="highlighter-rouge">class</code> 라는 키워드로 표현하며 이러한 객체는 <strong>변수(데이터)</strong> 와 <strong>Method(기능/행위)</strong> 로 이루어진다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">//사과 구매자가 사과장수에게서 사과를 구매했다.</span>
+<span class="kd">class</span> <span class="nc">FruitBuyer</span><span class="o">{</span>
+	<span class="kt">int</span> <span class="n">myMoney</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">;</span> <span class="c1">//돈(data)</span>
+	<span class="kt">int</span> <span class="n">numOfApple</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">//사과갯수(data)</span>
+
+    <span class="c1">//사과를 산다(행위)</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buyApple</span><span class="o">(</span><span class="n">FruitSeller</span> <span class="n">seller</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">){</span>
+		<span class="n">numOfApple</span> <span class="o">+=</span> <span class="n">seller</span><span class="o">.</span><span class="na">saleApple</span><span class="o">(</span><span class="n">money</span><span class="o">);</span>
+		<span class="n">myMoney</span> <span class="o">-=</span> <span class="n">money</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="c1">//가계부를 쓴다.</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">resultBuyer</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"남은 돈: "</span> <span class="o">+</span> <span class="n">myMoney</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"내가 산 사과 갯수: "</span> <span class="o">+</span> <span class="n">numOfApple</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">FruitSeller</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">numOfApple</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>	<span class="c1">//사과(data)</span>
+	<span class="kt">int</span> <span class="n">myMoney</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  <span class="c1">//이윤(data)</span>
+	<span class="kd">final</span> <span class="kt">int</span> <span class="n">APPLE_PRICE</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>  <span class="c1">//변수형 상수</span>
+
+    <span class="c1">//사과를 판다(행위)</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">saleApple</span><span class="o">(</span><span class="kt">int</span> <span class="n">money</span><span class="o">){</span>
+		<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">money</span> <span class="o">/</span> <span class="n">APPLE_PRICE</span><span class="o">;</span>
+		<span class="n">numOfApple</span> <span class="o">-=</span> <span class="n">num</span><span class="o">;</span>
+		<span class="n">myMoney</span> <span class="o">+=</span> <span class="n">money</span><span class="o">;</span>
+		<span class="k">return</span> <span class="n">num</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="c1">//정산의 기능</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">resultSeller</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이득: "</span> <span class="o">+</span> <span class="n">myMoney</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"남은 사과 갯수: "</span> <span class="o">+</span> <span class="n">numOfApple</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FruitMain</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">FruitBuyer</span> <span class="n">buyer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FruitBuyer</span><span class="o">();</span>
+		<span class="n">FruitSeller</span> <span class="n">seller</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FruitSeller</span><span class="o">();</span>
+
+		<span class="n">buyer</span><span class="o">.</span><span class="na">buyApple</span><span class="o">(</span><span class="n">seller</span><span class="o">,</span> <span class="mi">2000</span><span class="o">);</span>
+		<span class="n">buyer</span><span class="o">.</span><span class="na">resultBuyer</span><span class="o">();</span>
+		<span class="n">seller</span><span class="o">.</span><span class="na">resultSeller</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>남은 돈: 8000
+내가 산 사과 갯수: 2
+이득: 2000
+남은 사과 갯수: 98
+</code></pre>
+</div>
+
+<p>FruitBuyer 라는 객체를 <code class="highlighter-rouge">class</code> 라는 키워드로 만들어서 그 안에 데이터와 행위에 해당하는 변수(myMoney, numOfApple), 메소드(buyApple)를 지정해주었으며 이처럼 객체안의 변수와 메소드를 멤버변수, 멤버메소드라고 부른다. 이렇게 만들어진 객체를 사용하려면 메모리 공간을 할당해 주어야 되는데 <em>FruitBuyer buyer = new FruitBuyer()</em> 이렇게 선언해주며 인스턴스를 생성 한다고 한다.
+이 의미는 FruitBuyer라는 타입을 가진 buyer의 이름으로 참조 변수를 선언해주고, <code class="highlighter-rouge">new</code> 라는 키워드로 FruitBuyer라는 객체의 메모리 공간을 할당해준다는 것이다. 이것은 <code class="highlighter-rouge">int num = 10</code> 과 같은 원리로 int라는 기본형과 FruitBuyer라는 사용자 정의형이라는 차이점이 있을뿐이고, 그러므로 객체도 java에서 제공하는 8가지 기본형(Primitive Type)처럼 이름이 int, char가 아닐뿐, 사용자가 정의해주는 이름을 가지는 타입이다.
+그리고 이러한 사용자 정의형을 <strong>참조 타입(Reference Type)</strong> 이라고 한다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">buyApple</span><span class="o">(</span><span class="n">FruitSeller</span> <span class="n">seller</span><span class="o">,</span> <span class="kt">int</span> <span class="n">money</span><span class="o">){</span>
+  <span class="n">numOfApple</span> <span class="o">+=</span> <span class="n">seller</span><span class="o">.</span><span class="na">saleApple</span><span class="o">(</span><span class="n">money</span><span class="o">);</span>
+  <span class="n">myMoney</span> <span class="o">-=</span> <span class="n">money</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>그러므로 위 처럼 메소드의 참조 변수로 참조 타입을 넣어주는 것도 가능하다.</p>
+
+<p><a href="http://www.slideshare.net/plusjune/ss-46109239">객체지향 개념 잡기</a></p>
+
+<p>###Method</p>
+
+<p>자바 프로그램의 시작은 <code class="highlighter-rouge">main</code> 이라는 이름의 Method를 실행하는 데서 부터 시작한다.  Method의 중괄호 내에 존재하는 문장들이 위에서 아래로 순차적으로 실행된다. <code class="highlighter-rouge">return</code>은 <strong>값의 반환</strong> 과 <strong>Method의 종료</strong> 라는 의미를 가진다.</p>
+
+<p><img src="/assets/img/posts/java_method.PNG" alt="method" /></p>
+
+<p>###변수형 상수</p>
+
+<p><code class="highlighter-rouge">final int APPLE_PRICE = 1000</code> 이 처럼 초기화 값만 선언하고, 값을 변경할 수 없는 변수를 <strong>변수형 상수</strong> 라고 하며 <code class="highlighter-rouge">final</code>이라는 키워드를 붙여서 사용하고 변수명은 전부 대문자를 사용한다.</p>
+
+<p>###생성자(Constructor)</p>
+
+<p><em>생성자란 클래스의 이름과 동일한 이름의 메소드</em> 로 인스턴스 생성시 딱 한번 JVM에 의해 자동으로 호출된다. 인스턴스 변수의 초기화를 목적으로 정의하며 반환형이 선언되어 있지 않으면서, 반환하지 않는 메소드이다. FruitBuyer buyer = new FruitBuyer() 이 코드는 <code class="highlighter-rouge">new</code>로 FruitBuyer 객체를 생성하고 객체와 같은 이름인 <code class="highlighter-rouge">FruitBuyer()</code> 메소드를 호출하고 있다. 즉 <strong>자바의 인스턴스 생성시에는 반드시 생성자가 호출</strong> 되며 생성자를 정의하지 않으면 자동으로 빈 생성자 <code class="highlighter-rouge">public FruitSeller() {}</code> 가 삽입된다. 멤버변수의 초기화는 생성자 안에서 하는걸 권고한다.</p>
+
+<p>###정보 은닉 &amp; 캡슐화</p>
+
+<p><strong>캡슐화(Encapsulation)</strong> 는 관련있는 모든 메소드와 변수를 하나의 클래스로 묶는 것이다.
+<code class="highlighter-rouge">private</code> 라는 키워드를 사용하여 <strong>정보를 은닉(Information Hiding)</strong> 한다. 외부 객체가 특정 객체의 데이터와 함수를 직접 접근하여 사용하거나 변경하지 못하므로 유지보수와 소프트 웨어 확장 시 오류를 최소화할 수 있다.</p>
+
+<p>###접근 제어 지시자</p>
+
+<p><strong>접근 제어 지시자(Access Control Specifiers)</strong> 는 접근의 허용 범위를 제한하는 용도로 사용되며, <code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">protected</code>, <code class="highlighter-rouge">private</code> 와 같은 키워드가 있다.</p>
+
+<ul>
+  <li>private - 클래스 내부(메소드)에서만 접근 가능</li>
+  <li>public - 어디서든 접근 가능</li>
+  <li>protected - 상속 관계에서도 접근 가능</li>
+  <li>default - 선언하지 않은 경우로 동일 패키지 내에서의 접근 허용</li>
+</ul>
+
+<p><img src="/assets/img/posts/java_access.PNG" alt="access control specifiers" /></p>
+
+<ul>
+  <li>default 클래스 - 동일한 패키지 내에 정의된 클래스에 의해서만 인스턴스 생성이 가능하다.</li>
+  <li>public 클래스 - 하나의 소스 파일에 하나의 class만 public으로 선언이 가능하며 이때 public 클래스 이름과 소스파일 이름이 일치해야된다.</li>
+  <li>default 생성자 - 디폴트 생성자의 접근 제어 지시자는 클래스의 선언 형태에 따라 결정된다.</li>
+</ul>
+
+<p>###static</p>
+
+<p><strong>static</strong> 변수란 인스턴스의 생성과 상관없이 초기화되는 변수로, <strong>JVM이 클래스 정보를 로딩하는 시점에서 static 변수가 초기화 되기 때문에 인스턴스 생성 없이도 사용이 가능하다.</strong> 인스턴스의 이름과, 클래스의 이름으로 접근이 가능한데 클래스 이름으로 접근하는걸 권고한다. 동일한 클래스의 인스턴스들 사이에서 데이터 공유가 필요할 떄 static 변수를 유용하게 사용할 수 있다.
+static 메소드도 변수와 동일하며 static 메소드는 인스턴스에 속하지 않기 때문에 인스턴스 멤버 혹은 인스턴스 메소드에 접근이 불가능하다.</p>
+
+<p>##클래스들의 관계</p>
+
+<p>###Package</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">test</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestPkg</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="nf">TestPkg</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"D"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>패키지는 폴더와 비슷한 개념으로 같은 이름의 파일이라도 다른 폴더내에서는 존재할 수 있듯이 변수나 클래스의 이름 중복을 피하기위해 사용된다.
+패키지 명은 보통 그 회사의 도메인 명을 사용하며 <code class="highlighter-rouge">com.test</code> 이렇게 만든다면 “ . “을 기준으로 폴더가 만들어지고 이 경우에 소스파일은 <em>project_name/src/com/test/</em> 밑에 생성이 된다.
+다른 소스에서 접근 할 경우에는 <code class="highlighter-rouge">import</code> 키워드를 이용하여 <code class="highlighter-rouge">import com.test.TestPkg</code> 를 입력해준다.</p>
+
+<p>###Method Overloading</p>
+
+<p>메소드 오버로딩이란(Overloading) 동일한 이름의 메소드를 둘 이상 동시에 정의하는 것을 말한다. 메소드의 매개변수 선언(개수 또는 자료형)이 다르면 오버로딩이 성립되며 반환형이 다른 것은 성립이 안된다.</p>
+
+<p><em>주의사항</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MethodOverload</span> <span class="o">{</span>
+    <span class="kt">void</span>  <span class="nf">isYourFunc</span><span class="o">(</span> <span class="kt">int</span> <span class="n">n</span> <span class="o">)</span> <span class="o">{</span> <span class="err">…</span> <span class="o">}</span>
+    <span class="kt">void</span>  <span class="nf">isYourFunc</span><span class="o">(</span> <span class="kt">int</span>  <span class="n">n1</span><span class="o">,</span> <span class="kt">int</span>  <span class="n">n2</span> <span class="o">)</span> <span class="o">{</span><span class="err">…</span><span class="o">}</span>
+    <span class="kt">void</span>  <span class="nf">isYourFunc</span><span class="o">(</span> <span class="kt">int</span>  <span class="n">n1</span><span class="o">,</span> <span class="kt">double</span>  <span class="n">n2</span> <span class="o">)</span> <span class="o">{</span><span class="err">…</span><span class="o">}</span>
+<span class="o">}</span>
+
+    <span class="n">MethodOverload</span> <span class="n">inst</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MethodOverload</span><span class="o">();</span>
+    <span class="n">inst</span><span class="o">.</span><span class="na">isYourFunc</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span>  <span class="err">‘</span><span class="n">a</span><span class="err">’</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>위의 코드는 에러를 발생 시키지 않는다. <code class="highlighter-rouge">inst.isYourFunc(10,  ‘a’)</code> 이 코드는 자동형변환이 되어 문자 ‘a’는 int형으로도, double형으로도 변환이 가능하기 때문에 애매한 상황이 발생하게 된다.
+결론적으로 형변환 규칙을 적용하되 가장 가까운 위치의 자료형으로 변환이 이루어져서 isYourFunc(int n1, int n2)가 호출된다.
+그러므로 형변환의 규칙까지 적용해야만 메소드가 구분되는 애매한 상황은 만들지 말자!
+생성자도 오버로딩의 대상이며 <code class="highlighter-rouge">this</code> 키워드를 이용하여 <code class="highlighter-rouge">this.var</code> 멤버 변수를 호출하거나 <code class="highlighter-rouge">this(var1, var2)</code> 생성자 내의 다른 생성자를 호출할 수 있다.</p>
+
+<p>###String</p>
+
+<p>Java는 큰 따옴표로 묶여서 표현되는 문자열을 모두 인스턴스화 하며 문자열은 String 이라는 이름의 클래스로 표현된다.
+<strong>String 인스턴스는 상수 형태의 인스턴스이기 때문에 저장된 문자열의 내용은 변경이 불가능하다.</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">a.length()</code> - 문자열 길이 반환</li>
+  <li><code class="highlighter-rouge">a.compareTo(b)</code> - 문자열 비교(같으면 0 반환)</li>
+  <li><code class="highlighter-rouge">a.concat(b)</code> - a, b 문자열 연결된 문자열 반환</li>
+  <li><code class="highlighter-rouge">StringBuilder</code> - 문자열의 저장 및 변경을 위한 메모리 공간을 지니는 클래스로 문자열 데이터의 추가를 위한 append와 삽입을 위한 insert 메소드를 제공한다. 문자열의 연결이 많은 경우 <code class="highlighter-rouge">concat()</code> 보다 <code class="highlighter-rouge">StringBuilder</code> 메소드의 사용이 높은 퍼포먼스를 낸다.</li>
+  <li><code class="highlighter-rouge">StringTokenizer</code> - 구분자를 통해 문자열을 나눌 때 사용한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.StringTokenizer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StrInstance</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"acx:ddd:xxx"</span><span class="o">;</span>
+		<span class="n">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringTokenizer</span><span class="o">(</span><span class="n">str</span><span class="o">,</span> <span class="s">":"</span><span class="o">);</span>
+
+		<span class="k">while</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">hasMoreTokens</span><span class="o">())</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//결과
+acx
+ddd
+xxx
+</code></pre>
+</div>
+
+<p>###콘솔 입력과 출력</p>
+
+<p>####출력</p>
+
+<ul>
+  <li><code class="highlighter-rouge">println</code> - 출력 후에 개행한다.</li>
+  <li><code class="highlighter-rouge">print</code> - 출력 후에 개행을 하지 않는다.</li>
+  <li><code class="highlighter-rouge">printf</code> - 서식문자로 문자열을 조합해서 출력한다.</li>
+  <li>println, print 메소드의 인자로 인스턴스의 참조값이 전달될 수 있으며 인스턴스의 toString 메소드가 반환하는 문자열이 출력된다.</li>
+</ul>
+
+<p><em>printf example</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"정수는 %d, 실수는 %f, 문자는 %c"</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mf">2.3</span><span class="o">,</span> <span class="sc">'A'</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>정수는 10, 실수는 2.3, 문자는 A  //결과
+</code></pre>
+</div>
+
+<p><img src="/assets/img/posts/java_printf.PNG" alt="format" /></p>
+
+<p>####입력</p>
+
+<p><strong>Scanner</strong> 클래스는 단순히 키보드의 입력만을 목적으로 디자인된 클래스가 아니라 다양한 리소스를 대상으로 입력을 받을 수 있도록 정의된 클래스이다.
+<code class="highlighter-rouge">Scanner(File source)</code>, <code class="highlighter-rouge">Scanner(InputStream source)</code>, <code class="highlighter-rouge">Scanner(Readable source)</code>, <code class="highlighter-rouge">Scanner(String source)</code></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</code></pre>
+</div>
+
+<p>###배열(Array)</p>
+
+<p><img src="/assets/img/posts/java_array.PNG" alt="array" /></p>
+
+<p><em>int[] arr = new int[]{1, 2, 3}</em> , <em>int[] arr = {1, 2, 3}</em> 이 두 개의 코드는 선언과 동시에 초기화한다.</p>
+
+<p><em>SuperMagic[] sm = new SuperMagic[5]</em> 이렇게 클래스 기반의 배열도 선언 가능하며, 이처럼 <strong>인스턴스 배열에는 인스턴스가 생성되어 저장되는 것이 아니라 인스턴스의 참조값이 저장된다.</strong>
+그러므로 인스턴스의 생성은 따로 해줘서 인스턴스 배열에 그 인스턴스의 참조값을 할당해주어야한다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Friend</span><span class="o">[]</span> <span class="n">fr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Friend</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">fr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+	<span class="n">fr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Friend</span><span class="o">(</span><span class="s">"friend"</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">//Friend 클래스의 배열 fr을 생성하고 반복문을 통해 인스턴스를 생성해주고있다.</span>
+<span class="c1">//결과는 friend0, friend1, friend2 가 찍힐 것이다.</span>
+</code></pre>
+</div>
+
+<p>###상속(Inheritance)</p>
+
+<p>상속이란 부모 클래스가 가지고있는 모든것을(생성자 제외) 자식클래스가 물려받아 같이 공유하며 나아가 확장(extends)하는 개념이다. 부모 클래스를 상위 클래스(superclass)로 부르며 상속받는 자식 클래스를 하위클래스(subclass)라고 부른다.
+확장(extends)한다는 말은 부모클래스에서 가지고있는 추상적인 메소드를 자식클래스에서 구체적인 메소드로 오버라이드 할수 있기 때문에 자바에서는 상속을 정의할때 확장(extends)한다 라고 정의한다.</p>
+
+<p><img src="/assets/img/posts/java_inheritance.PNG" alt="inheritance" />
+<img src="/assets/img/posts/java_inheritance2.PNG" alt="inheritance" /></p>
+
+<p><em>결론:</em></p>
+<ul>
+  <li>하위 클래스의 생성자는 상위 클래스의 인스턴스 변수를 초기화 할 데이터까지 인자로 전달 받아야한다.</li>
+  <li>하위 클래스의 생성자는 상위 클래스의 생성자 호출을 통해서 상위 클래스의 인스턴스 변수를 초기화한다.</li>
+  <li>키워드 super는 상위 클래스의 생성자 호출에 사용되며, super와 함께 표시된 전달되는 인자의 수와 자료형을 참조하여 호출 할 생성자가 결정된다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AAA</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">num1</span><span class="o">;</span>   <span class="c1">// AAA(){}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">BBB</span> <span class="kd">extends</span> <span class="n">AAA</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">num2</span><span class="o">;</span>   <span class="c1">// BBB(){ super(); }  자동으로 삽입되는 디폴트 생성자의 형태</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>결과적으로 <strong>상위 클래스의 생성자는 반드시 호출이 이루어지며 super()</strong> 코드의 가독성을 위해서 항상 생성자를 만들어 주는걸 권고한다.
+private 멤버도 상속은 되지만 접근이 불가능하며, <code class="highlighter-rouge">getter()</code> <code class="highlighter-rouge">setter()</code> 같은 메소드를 통해 접근해야한다. 이러한 메소드를 통해 값에 대한 유효성 검사를 처리하여 적합한 변수만 업데이트한다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Man</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+	<span class="n">Man</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">changeName</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">a</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+		<span class="k">if</span><span class="o">(!</span><span class="n">a</span><span class="o">)</span>    <span class="c1">//유효성 검사</span>
+			<span class="k">return</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><em>상위 클래스의 static 변수를 하위 클래스도 그냥 이름만으로 접근이 가능하다.</em></p>
+
+<p>####상속을 위한 조건</p>
+
+<ul>
+  <li>상속 관계에 있는 두 클래스 사이에는 IS-A 관계가 성립해야 한다.</li>
+  <li>IS-A 관계가 성립하지 않는 경우에는 상속의 타당성을 면밀히 검토해야 한다.</li>
+  <li>IS-A 이외에 HAS-A 관계도 상속으로 표현 가능하다. 그러나 HAS-A를 대신해서 Composition 관계를 유지하는 것이 보다 적절한 경우가 많다.</li>
+</ul>
+
+<p>IS-A, HAS-A : A is a B 즉 <em>A는 B다</em> 라는 관계가 성립되야 한다. HAS-A는 <em>A는 B를 가지고 있다.</em> 이 경우 A는 B를 가질 수도 있고 가지지 않을 수도 있기 때문에 이러한 경우 강한 연결고리를 갖는 상속을 하지 않고 복합관계로 표현한다.</p>
+
+<p><em>복합관계 example</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Gun</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">bullet</span><span class="o">;</span>    	<span class="c1">// 장전된 총알의 수</span>
+
+	<span class="kd">public</span> <span class="nf">Gun</span><span class="o">(</span><span class="kt">int</span> <span class="n">bnum</span><span class="o">){</span><span class="n">bullet</span><span class="o">=</span><span class="n">bnum</span><span class="o">;}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">shut</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"BBANG!"</span><span class="o">);</span>
+		<span class="n">bullet</span><span class="o">--;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Police</span>  <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">handcuffs</span><span class="o">;</span>	     <span class="c1">// 소유한 수갑의 수</span>
+	<span class="n">Gun</span> <span class="n">gun</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Police</span><span class="o">(</span><span class="kt">int</span> <span class="n">bnum</span><span class="o">,</span> <span class="kt">int</span> <span class="n">bcuff</span><span class="o">)</span> <span class="o">{</span>
+
+		<span class="k">if</span><span class="o">(</span><span class="n">bnum</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">){</span>
+			<span class="n">gun</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gun</span><span class="o">(</span><span class="n">bnum</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="n">gun</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="o">}</span>
+
+		<span class="n">handcuffs</span><span class="o">=</span><span class="n">bcuff</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">putHandcuff</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"SNAP!"</span><span class="o">);</span>
+		<span class="n">handcuffs</span><span class="o">--;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">shut</span><span class="o">(){</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">gun</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"KKKKK"</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="n">gun</span><span class="o">.</span><span class="na">shut</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>모든 클래스는 Object 클래스를 상속한다.</li>
+  <li><code class="highlighter-rouge">final</code> 이 사용된 클래스는 상속되는 것을 허용하지 않는다.</li>
+  <li><code class="highlighter-rouge">final</code> 이 사용된 메소드는 상속은 허용하되 오버라이딩은 허용하지 않는다.</li>
+</ul>
+
+<p>####상속을 설계할 때 고려할 사항</p>
+
+<ol>
+  <li>모든 상속은 is-a 관계이어야 한다. 자식은 부모보다 더 구체적인 버전이어야 한다.</li>
+  <li>재사용과 미래의 재사용이 가능하도록 클래스 계층구조를 설계한다.</li>
+  <li>고려중인 도메인에서 클래스와 객체가 판별됨에 따라 그들의 공통점을 찾는다. 공통적인 기능들을 클래스 계층구조에서 일관성과 유지 용이성이 적절한 만큼 가능한 높이 위치시킨다.</li>
+  <li>메소드를 자식의 기능에 맞도록 적절하게 오버라이딩한다.</li>
+  <li>필요한 만큼 자식 클래스에 새로운 변수를 추가한다. 그러나 상속된 변수를 재정의 하지 않는다.</li>
+  <li>각 클래스가 자신의 데이터를 관리하도록 한다. 따라서 필요하다면 부모의 구성자를 호출하거나 오버라이딩 된 메소드를 호출하는 데 super를 사용한다.</li>
+  <li>여러 역할을 하는 클래스를 생성하는데(다중 상속이 필요할 때) 인터페이스들을 사용한다.</li>
+  <li>미래에도 유용할 수 있도록 응용의 요구에 부합하는 클래스 계층구조를 설계한다.</li>
+  <li>현재 사용하지 않더라도 toString 이나 equals 같은 일반적인 메소드들은 상속된 버전이 나중에 의도하지 않은 문제를 야기하지 않도록 자식 클래스에서 적절하게 재정의한다.</li>
+  <li>계층구조에서 하위에 있는 구체적 클래스들을 위하여 공통적인 클래스 인터페이스를 명시하는 데 추상 클래스를 사용한다</li>
+  <li>캡슐화를 위반하지 않고 파생 클래스에서 필요한 접근을 하도록 final 상수를 주의 깊게 사용한다.</li>
+</ol>
+
+<p>###Method Overriding</p>
+
+<p><strong>메소드 오버라이딩(Method Overriding)</strong> 이란 <em>상속의 관계에서</em> 상위 클래스에 정의된 메소드의 이름, 반환형, 매개 변수 선언까지 완전히 동일한  메소드를 하위 클래스에서 다시 정의하는 것을 말한다.
+이 때 <strong>하위 클래스에 정의된 메소드에 의해 상위 클래스의 메소드는 가려진다.</strong></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Speaker</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">volumeRate</span><span class="o">;</span>
+
+	<span class="n">Speaker</span><span class="o">(</span><span class="kt">int</span> <span class="n">volumeRate</span><span class="o">){</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">volumeRate</span> <span class="o">=</span> <span class="n">volumeRate</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setVolume</span><span class="o">(</span><span class="kt">int</span> <span class="n">vol</span><span class="o">){</span>
+		<span class="n">volumeRate</span> <span class="o">=</span> <span class="n">vol</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showVolume</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"볼륨 값: "</span> <span class="o">+</span> <span class="n">volumeRate</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">BaseSpeaker</span> <span class="kd">extends</span> <span class="n">Speaker</span><span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">baseRate</span><span class="o">;</span>
+
+	<span class="n">BaseSpeaker</span><span class="o">(</span><span class="kt">int</span> <span class="n">vol</span><span class="o">,</span> <span class="kt">int</span> <span class="n">baseRate</span><span class="o">){</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">vol</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">baseRate</span> <span class="o">=</span> <span class="n">baseRate</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBaseRate</span><span class="o">(</span><span class="kt">int</span> <span class="n">base</span><span class="o">){</span>
+		<span class="n">baseRate</span> <span class="o">=</span> <span class="n">base</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showVolume</span><span class="o">(){</span> 	<span class="c1">// 오버라이딩</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"중저음 볼륨 값: "</span> <span class="o">+</span> <span class="n">baseRate</span><span class="o">);</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">showVolume</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Overriding</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">BaseSpeaker</span> <span class="n">bs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BaseSpeaker</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span><span class="mi">10</span><span class="o">);</span>
+		<span class="n">bs</span><span class="o">.</span><span class="na">showVolume</span><span class="o">();</span>
+
+		<span class="n">Speaker</span> <span class="n">sp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BaseSpeaker</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>   <span class="c1">// 다형성</span>
+		<span class="n">sp</span><span class="o">.</span><span class="na">setBaseRate</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>		<span class="c1">// 에러  </span>
+
+    <span class="c1">// sp가 참조하는 것은 Speaker의 인스턴스로 인식하기 때문에</span>
+    <span class="c1">// BaseSpeaker의 멤버에 접근이 불가능하다.</span>
+
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Speaker 의 <code class="highlighter-rouge">showVolume()</code> 메소드를 BaseSpeaker에서 오버라이딩하고 있으며 오버라이딩된 메소드를 호출하기 위해서는 <code class="highlighter-rouge">super</code> 키워드를 사용한다.
+<strong>Speaker sp = new BaseSpeaker(5, 3)</strong> 이 코드는 자바의 중요한 특성인 다형성을 의미하는데, 베이스 스피커를 스피커라고 부를 수 있지만 스피커로 베이스스피커가 갖는 기능을 조작못하는 것과 같은 의미다.
+그러므로 <code class="highlighter-rouge">sp.setBaseRate(3)</code> 은 에러가 발생한다.</p>
+
+<p>####instanceof 연산자</p>
+
+<p>참조변수가 참조하고 있는 인스턴스의 실제 타입을 알아보기 위해 <code class="highlighter-rouge">instanceof</code> 연산자를 사용한다.
+주로 조건문에 사용되며, instanceof의 왼쪽에는 참조변수를 오른쪽에는 타입(클래스명)이 피연산자로 위치한다. 그리고 연산의 결과로 boolean값인 true, false 중의 하나를 반환한다.
+instanceof를 이용한 연산결과로 true값을 얻었다는 것은 참조변수가 검사한 타입으로 형변환이 가능하다는 것을 뜻한다.</p>
+
+<p>###친구 관리 예제</p>
+
+<p>MVC패턴으로 친구 관리 프로그램을 만들어본다.</p>
+
+<p><em>main (view)</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">model</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFriendBook</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">Controller</span> <span class="n">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Controller</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+
+		<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"*** 메뉴 선택 ***"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"1. 고교 친구 정보 저장"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"2. 대학교 친구 정보 저장"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3. 친구 전체 정보 출력"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"4. 친구 기본 정보 출력"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"5. 프로그램 종료"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"번호를 선택하세요 &gt;&gt; "</span><span class="o">);</span>
+
+			<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+			<span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+			<span class="k">switch</span><span class="o">(</span><span class="n">choice</span><span class="o">){</span>
+				<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+					<span class="c1">//System.out.println("고교 친구 정보 입력");</span>
+					<span class="n">controller</span><span class="o">.</span><span class="na">addFriendInfo</span><span class="o">(</span><span class="n">choice</span><span class="o">);</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+					<span class="c1">//System.out.println("대학교 친구 정보 입력");</span>
+					<span class="n">controller</span><span class="o">.</span><span class="na">addFriendInfo</span><span class="o">(</span><span class="n">choice</span><span class="o">);</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+					<span class="c1">//System.out.println("친구 전체 정보 출력");</span>
+					<span class="n">controller</span><span class="o">.</span><span class="na">showAllData</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+					<span class="c1">//System.out.println("친구 전체 정보 출력");</span>
+					<span class="n">controller</span><span class="o">.</span><span class="na">showBasicData</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램 종료"</span><span class="o">);</span>
+					<span class="k">return</span><span class="o">;</span>
+				<span class="k">default</span><span class="o">:</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잘못 입력하셨습니다."</span><span class="o">);</span>
+					<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre>
+</div>
+
+<p><em>Friend model</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">model</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Friend</span> <span class="o">{</span>
+	<span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="n">String</span> <span class="n">phoneNum</span><span class="o">;</span>
+	<span class="n">String</span> <span class="n">addr</span><span class="o">;</span>
+
+	<span class="n">Friend</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">String</span> <span class="n">addr</span><span class="o">){</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">phoneNum</span> <span class="o">=</span> <span class="n">phoneNum</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">addr</span> <span class="o">=</span> <span class="n">addr</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showData</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이름: "</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"핸드폰 번호: "</span><span class="o">+</span><span class="n">phoneNum</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"주소: "</span><span class="o">+</span><span class="n">addr</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showBasicData</span><span class="o">(){}</span>		<span class="c1">//오버라이딩</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><em>고등학교 친구 model</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">model</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HighFriend</span> <span class="kd">extends</span> <span class="n">Friend</span><span class="o">{</span>
+	<span class="n">String</span> <span class="n">work</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">HighFriend</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">String</span> <span class="n">addr</span><span class="o">,</span> <span class="n">String</span> <span class="n">work</span><span class="o">){</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">addr</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">work</span> <span class="o">=</span> <span class="n">work</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showData</span><span class="o">(){</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">showData</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"직업: "</span><span class="o">+</span><span class="n">work</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showBasicData</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이름: "</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"핸드폰 번호: "</span><span class="o">+</span><span class="n">phoneNum</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><em>대학교 친구 model</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">model</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnivFriend</span> <span class="kd">extends</span> <span class="n">Friend</span><span class="o">{</span>
+	<span class="n">String</span> <span class="n">major</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">UnivFriend</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">String</span> <span class="n">addr</span><span class="o">,</span> <span class="n">String</span> <span class="n">major</span><span class="o">){</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">addr</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">major</span> <span class="o">=</span> <span class="n">major</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showData</span><span class="o">(){</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">showData</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"전공: "</span><span class="o">+</span><span class="n">major</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showBasicData</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이름: "</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"핸드폰 번호: "</span><span class="o">+</span><span class="n">phoneNum</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"전공: "</span><span class="o">+</span><span class="n">major</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><em>Controller</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">model</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Controller</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">Friend</span><span class="o">[]</span> <span class="n">myFriend</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">cnt</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Controller</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">){</span>
+		<span class="n">myFriend</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Friend</span><span class="o">[</span><span class="n">num</span><span class="o">];</span>
+		<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">addFriendSave</span><span class="o">(</span><span class="n">Friend</span> <span class="n">friend</span><span class="o">){</span>
+		<span class="n">myFriend</span><span class="o">[</span><span class="n">cnt</span><span class="o">]</span> <span class="o">=</span> <span class="n">friend</span><span class="o">;</span>
+		<span class="n">cnt</span><span class="o">++;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">addFriendInfo</span><span class="o">(</span><span class="kt">int</span> <span class="n">choice</span><span class="o">){</span>
+		<span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">addr</span><span class="o">,</span> <span class="n">work</span><span class="o">,</span> <span class="n">major</span><span class="o">;</span>
+
+		<span class="n">Scanner</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"이름: "</span><span class="o">);</span>
+		<span class="n">name</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"전화번호: "</span><span class="o">);</span>
+		<span class="n">phoneNum</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"주소: "</span><span class="o">);</span>
+		<span class="n">addr</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+		<span class="k">if</span><span class="o">(</span><span class="n">choice</span> <span class="o">==</span> <span class="mi">1</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"직업: "</span><span class="o">);</span>
+			<span class="n">work</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+			<span class="n">HighFriend</span> <span class="n">friend</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HighFriend</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">addr</span><span class="o">,</span> <span class="n">work</span><span class="o">);</span>
+
+			<span class="n">addFriendSave</span><span class="o">(</span><span class="n">friend</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"전공: "</span><span class="o">);</span>
+			<span class="n">major</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+			<span class="n">UnivFriend</span> <span class="n">friend</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UnivFriend</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">phoneNum</span><span class="o">,</span> <span class="n">addr</span><span class="o">,</span> <span class="n">major</span><span class="o">);</span>
+
+			<span class="n">addFriendSave</span><span class="o">(</span><span class="n">friend</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"친구 정보 저장 완료\n"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showAllData</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--------친구 데이터---------"</span><span class="o">);</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cnt</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+			<span class="n">myFriend</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showData</span><span class="o">();</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"-----------------------"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"친구 출력 완료\n"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showBasicData</span><span class="o">(){</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cnt</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+			<span class="n">myFriend</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">showBasicData</span><span class="o">();</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"-----------------------"</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>###abstract</p>
+
+<p><strong>추상 클래스는 추상적인 내용만 정의하고 있는 클래스로 구체적인 내용은 하위 클래스에서 구현되도록 해놓은 클래스다.</strong>
+추상 클래스가 반드시 추상 메소드를 가지고 있어야 된다는 제약이 있는 것은 아니지만 일반적으로 하나 이상의 추상 메소드를 가지고 있다. 추상 클래스의 자식 클래스는 부모로부터 상속받은 모든 추상 메소드들을 정의해야 한다. 그렇지 않으면 자식 역시 추상 클래스가 된다.
+하나 이상 abstract 메소드를 포함하는 클래스는 abstract로 선언되어야 하며 인스턴스 생성은 불가능하다.</p>
+
+<p>###interface</p>
+
+<p>상속의 개념은 클래스뿐만 아니라, 인터페이스에도 적용될 수 있다. 즉 하나의 인터페이스는 다른 인터페이스로부터 파생될 수 있다는 것이다. 이러한 관계는 클래스 계층구조와 비슷하게 인터페이스 계층구조를 형성한다.
+인터페이스는 다중상속을 지원하지 않는 자바에서 다중상속과 유사한 기능을 구현할 수 있게 한다.
+<strong>인터페이스는 멤버변수와 메소드로 구성되는데 멤버변수는 모두 상수형으로 선언되고 메소드는 모두 추상 메소드로 선언된다.</strong>
+인터페이스를 구현하고자 하는 클래스는 선언할 때 <code class="highlighter-rouge">implements</code>를 이용해서 인터페이스를 지정하고, 지정된 인터페이스가 가지고 있는 추상 메소드를 오버라이딩해야 한다.
+클래스는 인터페이스 유형으로 변환될 수 있는데, 클래스가 구현하고 있는 인터페이스 유형으로만 변환할 수 있다.
+클래스가 상속 관계에 따라 계층 구조를 가지듯이, 인터페이스도 인터페이스 사이의 상속 관계에 따라 계층 구조를 가질 수 있는데, 인터페이스의 경우는 클래스와는 다르게 여러 개의 인터페이스로부터 상속 받을 수 있다.</p>
+
+<ul>
+  <li>인터페이스는 두 결과물의 연결고리가 되는 일종의 약속 역할을 한다.</li>
+  <li>인터페이스는 둘 이상을 동시에 구현 가능.</li>
+  <li>인터페이스의 구현은 extends가 아닌 implements를 사용한다.</li>
+  <li>인터페이스 간 상속이 가능하며 이때는 extends를 사용한다.</li>
+</ul>
+
+<p>###Inner, Nested, Local, Anonymous 클래스</p>
+
+<p>클래스의 정의가 다른 클래스의 내부에 삽입될 수 있다. 이 때 외부의 클래스를 가리켜 <em>Outer 클래스</em> 라고 하고, 내부의 클래스를 가리켜 <em>Inner 클래스</em> 라고 한다.
+Inner 클래스의 형태에 <code class="highlighter-rouge">static</code> 선언이 삽입되면 이를 가리켜 <em>Nested 클래스</em> 라고 한다.
+중요한건 <strong>Anonymous 클래스</strong> 로 이벤트 처리에 많이 사용되니 (특히 안드로이드) 기억해 두어야 한다.</p>
+
+<ul>
+  <li>Outer 클래스의 인스턴스를 생성한 후에야 Outer 클래스의 참조변수로 Inner 클래스의 인스턴스 생성이 가능하다.</li>
+  <li>Inner 클래스 내에서는 Outer 클래스의 멤버에 직접 접근이 가능하다.</li>
+  <li>Local 클래스는 메소드 내에 정의가 되어서, 메소드 내에서만 인스턴스의 생성 및 참조 변수의 선언이 가능하다는 특징이 있다.</li>
+</ul>
+
+<p>####Anonymous 익명 클래스</p>
+
+<p>익명 클래스는 특이하게도 다른 내부 클래스들과 달리 이름이 없다. <strong>클래스의 선언과 객체의 생성을 동시에 하기 때문에 단 한번만 사용될 수 있고 오직 하나의 객체만을 생성할 수 있는 일회용 클래스이다.</strong> 이름이 없기 때문에 생성자도 가질수 없으며, 조상클래스의 이름이나 구현하고자 하는 인터페이스의 이름을 사용해서 정의하기 때문에 하나의 클래스로 상속받는 동시에 인터페이스를 구현하거나 둘 이상의 인터페이스를 구현할 수 없다. 오로지 단 하나의 클래스를 상속받거나 단 하나의 인터페이스만을 구현할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">InnerEx6</span> <span class="o">{</span>
+	<span class="n">Object</span> <span class="n">iv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">(){</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){}</span> <span class="o">};</span>		<span class="c1">// 익명클래스</span>
+	<span class="kd">static</span> <span class="n">Object</span> <span class="n">cv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">(){</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){}</span> <span class="o">};</span>	<span class="c1">// 익명클래스</span>
+
+
+	<span class="kt">void</span> <span class="nf">myMethod</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">Object</span> <span class="n">lv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">(){</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){}</span> <span class="o">};</span>	<span class="c1">// 익명클래스</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+
+                        <br>
+
+                    
+                    
+                        <div class="entry-tags text-center">
+                            <i class="fa fa-tags"></i>&nbsp;
+                                Tagged with 
+                            
+                                <a href="http://localhost:4000/tags/index.html#java" data-toggle="tooltip" title="Posts tagged with java" rel="tag">java</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#language" data-toggle="tooltip" title="Posts tagged with language" rel="tag">language</a>
+
+                                
+                            
+                        </div>
+                    
+                    </div>
+
+                    <footer class="post-footer entry-meta">
+                    
+                        <div class="post-share text-center">
+    <p class="light small">
+        Share this post
+    </p>
+    <ul class="social-mini">
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=%EC%9E%90%EB%B0%94+%EA%B0%95%EC%A2%8C+-+JAVA+Fundamental+%231+%20http://localhost:4000/blog/java-fundamental%20via%20&#64;"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
+                title="Share on Twitter" itemprop="Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/java-fundamental" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/blog/java-fundamental" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+                    
+
+                        <div class="post-author text-center">
+	<img src="http://localhost:4000/images/me.jpg" alt="Lee Jung Min's photo" itemprop="image" class="post-avatar img-circle img-responsive" />
+	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+		By <span itemprop="name" class="fn"><a href="http://localhost:4000/about" title="About Lee Jung Min" itemprop="url">Lee Jung Min</a></span>
+	</h4>
+	<p>The two most powerful warriors are Patience and Time.</p>
+</div> 
+                        
+                    
+                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+                    
+                    </footer>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+<footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(http://localhost:4000/images/universe.jpeg)">
+
+
+    <div class="inner">
+        <div class="container">
+            <ul class="social-icons">
+                       
+            </ul>
+            <div>
+                <a href="http://localhost:4000/about/">Lee Jung Min</a> &copy; 2016 &bull;
+                All rights reserved.
+            </div>
+            <ul class="menu-items">
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/"><i class="fa fa-home"></i></a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/categories">Programing</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/tags">Tags</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
+        </svg>
+    </div>
+    
+    
+</footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jekyll-search.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/main.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/script.js"></script>
+<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+
+<script type="text/javascript">
+
+/*      Slides       */
+
+$("a#slide").click(function(){
+    $("#sidebar,body,a#slide,#fade").addClass("slide")
+});
+
+$("#fade,#header,#posts-container").click(function(){
+    $("#sidebar,body,a#slide,#fade").removeClass("slide")
+});
+
+$("a#click-filter").click(function(){
+    $("#slide-filter").slideToggle("medium");
+    $("#slide-pages").slideOut("medium");
+});
+
+$("a#click-pages").click(function(){
+    $("#slide-pages").slideToggle("medium");
+    $("#slide-filter").slideOut("medium");
+});
+
+/*      End-Slides      */
+
+</script>
+
+
+<!-- Jekyll Simple Search option -->
+<script>
+
+   SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'http://localhost:4000/assets/json/search.json',
+        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+        noResultsText: '<p>Nothing found.</p>',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      });
+
+  (function( $, window, undefined ) {
+
+     var bs = {
+          close: $("#search-close"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'takoobi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        
+</body>
+</html>

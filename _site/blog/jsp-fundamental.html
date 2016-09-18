@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+
+
+<meta name="keywords" content="java, jsp">
+
+
+<!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>JSP 강좌 - JSP Fundamental#1 - Takoobi’s Space</title>
+<meta property="og:title" content="JSP 강좌 - JSP Fundamental#1" />
+<meta name="description" content="JSP 웹 프로그래밍 기본과 필수 이해 요소" />
+<meta property="og:description" content="JSP 웹 프로그래밍 기본과 필수 이해 요소" />
+<link rel="canonical" href="http://localhost:4000/blog/jsp-fundamental" />
+<meta property="og:url" content="http://localhost:4000/blog/jsp-fundamental" />
+<meta property="og:site_name" content="Takoobi’s Space" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-06-23T00:00:00+09:00" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "JSP 강좌 - JSP Fundamental#1",
+    "datePublished": "2015-06-23T00:00:00+09:00",
+    "description": "JSP 웹 프로그래밍 기본과 필수 이해 요소",
+    "logo": "http://localhost:4000infinite.png",
+    "url": "http://localhost:4000/blog/jsp-fundamental"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Takoobi's Space" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/syntax.css" />
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/favicons/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/favicons/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/favicons/apple-touch-icon-144x144-precomposed.png">
+</head>
+
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
+
+    
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" id="search-input" class="search-field" placeholder="Search...">
+        <i id="search-close" class="fa fa-times-circle"></i>
+        <h4>Search results</h4>
+        <ul id="results-container" class="search-results post-list">
+        </ul>
+        <!-- /.search-results -->
+    </div>
+    <!-- /.search-form -->
+</div>
+<!-- ./search-wrapper -->
+
+
+<div id="fade"></div>
+<a id="slide" class="animated fade"></a>
+<aside id="sidebar">
+    <nav id="navigation">
+        <h2>MENU</h2>
+        <hr>
+        <ul> 
+            <li>
+                <a href="http://localhost:4000/">Home</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/categories">Programing</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/tags">Tags</a>  </li>
+            
+            <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(http://localhost:4000/images/universe.jpeg)"
+    itemscope itemtype="http://schema.org/Organization">
+
+
+
+    <button class="menu-button animated fade dosearch">
+        <i class="fa fa-search"></i>
+    </button> 
+ 
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="http://localhost:4000/" itemprop="url">
+                <img itemprop="logo" src="http://localhost:4000/images/infinite.png" alt="Takoobi's Space Logo" />
+                <h1 class="blog-title light" itemprop="name">
+                    Takoobi's Space
+                </h1>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
+
+</header>
+
+    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+        <div class="container">
+            <div class="row">
+                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                
+                
+                
+                
+
+                    <header class="post-header entry-header">
+
+                    
+
+                    
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
+                        
+                            
+                        
+                        
+                        
+
+                        
+                            JSP 강좌 - JSP Fundamental#1
+                        </h1>
+                    
+
+                        <div class="cursive" style="color: #000; font-style:italic;">JSP 웹 프로그래밍 기본과 필수 이해 요소</div>
+
+                            <div class="post-info text-center small">
+                            
+                                <span class="entry-date date published updated">
+                            
+                            
+                                    <time datetime="2015-06-23T00:00:00+09:00" class="post-time" itemprop="datePublished">23 Jun 2015</time>
+                                </span>
+                            
+
+                                in <span class="post-tags">
+
+                            
+                                    <a href="http://localhost:4000/categories/index.html#Study" data-toggle="tooltip" title="Other posts from the Study category" rel="tag">Study</a>
+                                
+                            
+                                </span>
+                            
+                            &nbsp;
+                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+
+                            
+
+                            
+                                    <span class="time">3.811111111111111</span> minutes read
+                            
+                                
+                            
+
+                                </span>
+                            
+                            </div>
+
+                    </header>
+
+                    <div class="post-body bordered-bottom" itemprop="description">
+                    
+
+                        <h2 id="section">웹 프로그래밍이란</h2>
+
+<h3 id="section-1">개요</h3>
+
+<ul>
+  <li>HTML만으로 데이터가 실시간으로 변화하는 것을 처리하거나 저장하기에는 불가능</li>
+  <li>동적으로 변화하는 데이터를 처리하고 표시하기 위해서 개발된 것이 CGI, ASP, PHP, JSP</li>
+  <li>웹 프로그램은 기본적으로 클라이언트(Client) / 서버(Server) 방식</li>
+</ul>
+
+<h3 id="section-2">웹 어플리케이션</h3>
+
+<ul>
+  <li>웹을 기반으로 실행되는 어플리케이션</li>
+  <li>웹 브라우저의 요청을 알맞게 처리하고 그에 대한 결과를 웹 브라우저에 전달</li>
+</ul>
+
+<p><img src="/assets/img/posts/jsp1.PNG" alt="웹 어플리케이션 구성요소" /></p>
+
+<h4 id="url">URL</h4>
+
+<ul>
+  <li>Uniform Resource Locator</li>
+  <li></li>
+  <li>예: http://www.google.com/search?hl=en&amp;q=jsp&amp;aq=f&amp;oq=
+    <ul>
+      <li>프로토콜: http</li>
+      <li>호스트: www.google.com</li>
+      <li>포트: 80 (http 프로토콜의 기본 포트)﻿</li>
+      <li>경로: /search</li>
+      <li>쿼리문자열: hl=en&amp;q=jsp&amp;aq=f&amp;oq=</li>
+    </ul>
+  </li>
+  <li>URL은 웹 어플리케이션에 요청을 구분하기 위한 용도로 사용됨</li>
+</ul>
+
+<h3 id="jsp">서블릿과 JSP</h3>
+
+<p>자바를 만든 Sun에서 정한 웹 개발 표준</p>
+<ul>
+  <li>서블릿(Servlet) : 실행 코드 방식의 특징</li>
+  <li>JSP(JavaServer Pages) : 스크립트 코드 방식의 특징</li>
+</ul>
+
+<h4 id="section-3">실행코드 방식과 스크립트 방식</h4>
+
+<p><img src="/assets/img/posts/jsp2.PNG" alt="실행코드방식과 스크립트방식" /></p>
+
+<h4 id="jsp-1">JSP의 특징</h4>
+
+<ul>
+  <li>자바 기반 스크립트 언어 - 자바의 기능을 그대로 사용 가능</li>
+  <li>HTTP에 대한 클라이언트의 요청 처리/응답</li>
+  <li>웹 어플리케이션에서 결과 화면을 생성할 때 주로 사용</li>
+  <li>웹 컨테이너란 웹 어플리케이션을 실행할 수 있는 컨테이너로 JSP와 서블릿을 실행해 줌(Tomcat)</li>
+</ul>
+
+<h4 id="jsp--">JSP를 사용하는 이유</h4>
+
+<ul>
+  <li>자바 언어에 기반하기 때문에 플랫폼에 독립적 - 리눅스, 윈도우 등 운영체제에 상관없이 동작</li>
+  <li>자바 언어에 대한 깊은 이해 없이도 초기 학습 가능 - 스크립트 언어는 상대적으로 자바 언어보다 단순</li>
+  <li>스프링(Spring)이나 스트러츠(Struts)와 같은 프레임워크와 완벽하게 연동</li>
+</ul>
+
+<h2 id="jsp-">JSP 기본</h2>
+
+<h3 id="jsp---1">JSP 페이지 구성요소</h3>
+
+<p>JSP 페이지를 작성할 때는 다양한 요소들이 필요하며 다음과 같은 구성 요소를 익히는 과정이 JSP를 공부하는 과정이라 할 수 있다.</p>
+
+<ul>
+  <li>디렉티브(Directive)</li>
+  <li>스크립트 요소 - 스크립트릿(Scriptlet), 표현식(Expression), 선언부(Declaration)</li>
+  <li>기본 객체(Implicit Object)</li>
+  <li>표현 언어(Expression Language)</li>
+  <li>표준 액션 태그(Action Tag) </li>
+  <li>커스텀 태그(Custom Tag)와 태그 라이브러리(JSTL)</li>
+</ul>
+
+<h3 id="section-4">디렉티브</h3>
+
+<ul>
+  <li>JSP 페이지에 대한 설정 정보를 지정</li>
+  <li>디렉티브 구문
+    <ul>
+      <li>&lt;%@ 디렉티브이름 속성1=”값1” 속성2=”값2” … %&gt;</li>
+      <li>예) &lt;%@ page contentType = “text/html; charset=utf-8” %&gt;</li>
+    </ul>
+  </li>
+  <li>제공 디렉티브
+    <ul>
+      <li>page : JSP 페이지에 대한 정보를 지정
+        <ul>
+          <li>문서의 타입, 출력 버퍼의 크기, 에러 페이지 등 정보 지정</li>
+        </ul>
+      </li>
+      <li>taglib : JSP 페이지에서 사용할 태그 라이브러리를 지정</li>
+      <li>include : JSP 페이지의 특정 영역에 다른 문서를 포함</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="page-">Page 디렉티브</h4>
+
+<p>page 디렉티브는 <em>JSP가 생성할 문서의 타입, 사용할 클래스, 버퍼 여부, 세션 여부</em> 와 같이 JSP 페이지에 대한 정보를 입력하기 위해서 사용된다.</p>
+
+<h4 id="page---">Page 디렉티브의 주요 속성</h4>
+
+<p><img src="/assets/img/posts/jsp_paged.PNG" alt="page디렉티브 속성" /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span><span class="err"> </span><span class="n">contentType</span><span class="o">=</span><span class="s">"text/html; charset=utf-8"</span><span class="err"> </span><span class="o">%&gt;</span>
+<span class="c1">//웹컨테이너가 현재 파일을 읽어올 때 캐릭터 셋 설정(설정값 없으면 charset 값으로 셋팅)</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span><span class="err"> </span><span class="n">pageEncoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="err"> </span><span class="o">%&gt;</span>
+<span class="c1">//사용할 자바 클래스 import</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="kn">import</span><span class="err">="</span><span class="nn">java.util.Date</span><span class="s">"%&gt;
+//공백문자제거
+&lt;%@ page trimDirectiveWhitespaces="</span><span class="kc">true</span><span class="err">" </span><span class="o">%&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="section-5">스크립트 요소</h3>
+
+<p>스크립트 요소는 JSP 프로그래밍에서 로직을 수행하는데 필요한 부분으로서, 스크립트 코드를 사용해서 프로그램이 수행해야 하는 기능을 구현할 수 있다.</p>
+
+<ul>
+  <li>요청을 처리하는 데 필요한 코드를 실행
+    <ul>
+      <li>실시간으로 문서의 내용을 생성하기 위해 사용되는 것</li>
+    </ul>
+  </li>
+  <li>동적으로 응답 결과를 생성하기 위해 사용
+    <ul>
+      <li>사용자가 폼에 입력한 정보를 데이터베이스에 저장할 수 있음</li>
+      <li>데이터베이스로부터 게시글 목록을 읽어와 출력할 수도 있음</li>
+      <li>자바가 제공하는 다양한 기능들도 사용할 수 있음</li>
+    </ul>
+  </li>
+  <li>스크립트 요소 세 가지
+    <ul>
+      <li>스크립트릿(Scriptlet) : 자바 코드 실행 <em>&lt;% 자바코드 %&gt;</em></li>
+      <li>표현식(Expression) : 값을 출력 <em>&lt;%= 값 %&gt;</em></li>
+      <li>선언부(Declaration) : 자바 메서드(함수)를 정의 <em>&lt;%! 메서드 %&gt;</em></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span><span class="err"> </span><span class="n">contentType</span><span class="err"> </span><span class="o">=</span> <span class="s">"text/html; charset=utf-8"</span><span class="err"> </span><span class="o">%&gt;</span>
+<span class="c1">//스크립틀릿</span>
+<span class="o">&lt;%</span><span class="err"> </span> <span class="err">  </span>
+  <span class="kt">int</span><span class="err"> </span><span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span><span class="err"> </span> <span class="err"> </span>
+  <span class="k">for</span> <span class="o">(</span><span class="kt">int</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="o">=</span> <span class="mi">1</span> <span class="o">;</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="o">&lt;=</span> <span class="mi">10</span> <span class="o">;</span><span class="err"> </span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+    <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span><span class="err"> </span><span class="n">i</span><span class="o">;</span><span class="err"> </span> <span class="err"> </span>
+  <span class="o">}</span>
+<span class="o">%&gt;</span>
+<span class="mi">1</span><span class="err"> 부터 </span><span class="mi">10</span><span class="err">까지의 합은 </span><span class="o">&lt;%=</span> <span class="n">sum</span> <span class="o">%&gt;</span><span class="err"> 입니다</span><span class="o">.</span> <span class="c1">//표현식</span>
+
+<span class="c1">//선언부</span>
+<span class="o">&lt;%!</span><span class="err"> </span> <span class="err"> </span>
+  <span class="kd">public</span><span class="err"> </span><span class="kt">int</span><span class="err"> </span><span class="n">multiply</span><span class="o">(</span><span class="kt">int</span><span class="err"> </span><span class="n">a</span> <span class="o">,</span><span class="err"> </span><span class="kt">int</span><span class="err"> </span><span class="n">b</span><span class="o">)</span> <span class="o">{</span><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err">  </span>
+  <span class="kt">int</span><span class="err"> </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="o">;</span><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+  <span class="k">return</span> <span class="n">c</span><span class="o">;</span><span class="err"> </span> <span class="err"> </span>
+  <span class="o">}</span>
+<span class="o">%&gt;</span>
+</code></pre>
+</div>
+
+<p>JSP를 사용하여 웹 어플리케이션을 해발할 때에는 선언부를 거의 사용하지 않는다. 그 이유는 선언부에서 정의한 메서드롸 같은 기능을 제공하는 클래스를 작성해서 그 클래스를 스크립트릿이나 표현식에 사용하는 것이 일반적이기 때문이다.</p>
+
+<h3 id="request--">request 기본 객체</h3>
+
+<p>기본 객체는 웹 프로그래밍에 필요한 기능을 제공하며 JSP에서 별도 선언 없이 사용이 가능하다.</p>
+
+<p><em>주요 기본 객체</em></p>
+
+<ul>
+  <li>request : 요청 정보를 구할 때 사용</li>
+  <li>response : 응답과 관련된 설정(헤더, 쿠키 등)시 사용</li>
+  <li>out : 직접 응답을 출력할 때 사용</li>
+  <li>session : 세션 관리에 사용</li>
+</ul>
+
+<p>request 기본 객체는 JSP 페이지에서 가장 많이 사용되는 기본 객체로서 웹 브라우저의 요청과 관련이 있다.</p>
+
+<p><em>주요 기능</em></p>
+
+<ul>
+  <li>클라이언트(웹 브라우저)와 관련된 정보 읽기 기능</li>
+  <li>서버와 관련된 정보 읽기 기능</li>
+  <li>클라이언트가 전송한 요청 파라미터 읽기 기능</li>
+  <li>클라이언트가 전송한 요청 헤더 읽기 기능</li>
+  <li>클라이언트가 전송한 쿠키 읽기 기능</li>
+  <li>속성 처리 기능</li>
+</ul>
+
+<h4 id="request-----">request 객체의 주요 정보 제공 메서드</h4>
+
+<p><img src="/assets/img/posts/jsp_request.PNG" alt="request 정보 제공 메서드" /></p>
+
+<h4 id="section-6">요청 파라미터 처리</h4>
+
+<p>JSP에서 가장 많이 사용하는 기능 중의 하나는 웹 브라우저 폼에 입력한 값을 처리하는 것이다.</p>
+
+<p><img src="/assets/img/posts/jsp_request2.PNG" alt="request 파라미터 읽는 메서드" /></p>
+
+<p>JSP에서 파라미터 로딩 시 인코딩 지정 필요(POST 방식)</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err"> </span> <span class="err">  </span>
+<span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"euc-kr"</span><span class="o">);</span><span class="err"> </span> <span class="err"> </span>
+<span class="n">String</span> <span class="n">name</span> <span class="o">=</span><span class="err"> </span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+<span class="o">%&gt;</span>
+</code></pre>
+</div>
+
+<p><em>톰캣에서 GET 방식 파라미터를 위한 인코딩</em></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>//[톰캣설치디렉토리]/conf/server.xml
+
+<span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">“8090” protocol=“HTTP/1.1” </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="na">connectionTimeout=</span><span class="s">“20000”  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err">  </span>
+<span class="na">redirectPort=</span><span class="s">“8443”  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err">  </span>
+<span class="na">useBodyEncodingForURI=</span><span class="s">“true” /</span><span class="nt">&gt;</span>//request.setCharacterEncoding(“utf-8”); 이 적용됨
+
+<span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">“8090” protocol=“HTTP/1.1” </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span>
+<span class="na">connectionTimeout=</span><span class="s">“20000”  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err">  </span>
+<span class="na">redirectPort=</span><span class="s">“8443”  </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err">  </span>
+<span class="na">URIEncoding=</span><span class="s">“utf-8” /</span><span class="nt">&gt;</span> //request.setCharacterEncoding(“utf-8”); 은 적용되지 않음
+</code></pre>
+</div>
+
+<h3 id="response--">response 기본 객체</h3>
+
+<p>response 기본 객체는 request 기본 객체와는 정반대의 기능을 수행한다. request 기본 객체가 웹 브라우저가 전송한 요청 정보를 담고 있는 반면에 response 기본 객체는 웹 브라우저에 보내는 응답 정보를 담는다.</p>
+
+<p>주요 기능</p>
+
+<ul>
+  <li>헤더 정보 입력</li>
+  <li>리다이렉트 처리</li>
+</ul>
+
+<h3 id="section-7">헤더 정보</h3>
+
+<p>response 기본 객체 헤더 설정 메서드</p>
+
+<p><img src="/assets/img/posts/jsp_response.PNG" alt="response 메서드" /></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err">  </span> <span class="err"> </span>
+  <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="err">“</span><span class="n">Pragma</span><span class="err">”</span><span class="o">,</span><span class="err"> “</span><span class="n">No</span><span class="o">-</span><span class="n">cache</span><span class="err">”</span><span class="o">);</span><span class="err">  </span> <span class="err"> </span>
+  <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="err">“</span><span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="err">”</span><span class="o">,</span><span class="err"> “</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="err">”</span><span class="o">);</span><span class="err">  </span> <span class="err"> </span>
+  <span class="n">response</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="err">“</span><span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="err">”</span><span class="o">,</span><span class="err"> “</span><span class="n">no</span><span class="o">-</span><span class="n">store</span><span class="err">”</span><span class="o">);</span>
+<span class="err"> </span> <span class="n">response</span><span class="o">.</span><span class="na">setDateHeader</span><span class="o">(</span><span class="err">“</span><span class="n">Expires</span><span class="err">”</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);%&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="section-8">리다이렉트 처리</h3>
+
+<p>리다이렉트 기능이란 웹 서버가 웹 브라우저에게 다른 페이지로 이동하라고 지시하는 것을 의미한다. 웹 브라우저는 실질적으로 요청을 두번 하게된다.</p>
+
+<p><img src="/assets/img/posts/jsp_redirect.PNG" alt="리다이렉트 흐름" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;%@ page import="java.sql.*" %&gt;
+&lt;%
+  //JSP 페이지에 필요한 코드 실행
+  ...
+  ...
+  response.sendRedirect("이동할페이지");
+%&gt;
+</code></pre>
+</div>
+
+<h2 id="section-9">필수 이해 요소</h2>
+
+<h3 id="jsp--1">JSP의 처리과정</h3>
+
+<p><img src="/assets/img/posts/jsp_logic.PNG" alt="jsp 처리과정" /></p>
+
+<p>JSP 페이지를 요청할 때에는 JSP를 직접 실행하는 것이 아니라, JSP를 자바 소스 코드로 변환을 한 뒤 컴파일 해서 생성된 서블릿을 실행하는 것이다.
+여기서 JSP 페이지를 자바 코드로 변경하는 단계를 <em>변환(translation) 단계</em> 라고 하며, 자바 코드를 서블릿 클래스로 변경하는 단계를 <em>컴파일 단계</em> 라고 한다.
+<strong>즉, JSP를 실행한다는 말은 곧 JSP 페이지를 컴파일 한 결과인 서블릿 클래스를 실행한다는 의미가 된다.</strong></p>
+
+<h3 id="section-10">출력 버퍼와 응답</h3>
+
+<p>JSP 페이지는 생성된 결과를 곧바로 웹 브라우저에 전송하지 않고, <strong>출력 버퍼</strong> 라고 불리는 곳에 임시로 출력 결과를 저장했다가 한번에 웹 브라우저에 전송한다.</p>
+
+<p>출력 버퍼의 장점</p>
+
+<ul>
+  <li>데이터 전송 성능 향상</li>
+  <li>버퍼가 다 차기 전까지 헤더 변경 가능</li>
+  <li>JSP 실행 도중 버퍼를 비우고 새 내용 전송 가능</li>
+</ul>
+
+<h4 id="page--buffer-">page 디렉티브의 buffer 속성</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">buffer</span><span class="o">=</span><span class="s">"8kb"</span> <span class="n">autoFlush</span><span class="o">=</span><span class="s">"true"</span> <span class="o">%&gt;</span> <span class="o">:</span> <span class="err">버퍼</span> <span class="err">크기를</span> <span class="mi">8</span><span class="n">Kbyte</span><span class="err">로</span> <span class="err">지정</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">buffer</span><span class="o">=</span><span class="s">"none"</span> <span class="o">%&gt;</span> <span class="o">:</span> <span class="err">버퍼</span> <span class="err">사용</span> <span class="err">안</span> <span class="err">함</span>
+<span class="c1">//none일 경우에는 &lt;jsp:forward&gt; 사용 못하고, 출력 내용 취소 불가</span>
+</code></pre>
+</div>
+<p><code class="highlighter-rouge">autoFlush</code> - 버퍼가 다 찼을 때 처리 방식 지정</p>
+<ul>
+  <li>true - 버퍼가 다 찼을 경우 버퍼를 플러시하고 계속해서 작업을 진행한다.</li>
+  <li>false - 버퍼가 다 찼을 경우 예외를 발생시키고 작업을 중지한다</li>
+  <li>작성 안하면 default 로 true 이다.</li>
+</ul>
+
+
+                        <br>
+
+                    
+                    
+                        <div class="entry-tags text-center">
+                            <i class="fa fa-tags"></i>&nbsp;
+                                Tagged with 
+                            
+                                <a href="http://localhost:4000/tags/index.html#java" data-toggle="tooltip" title="Posts tagged with java" rel="tag">java</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#jsp" data-toggle="tooltip" title="Posts tagged with jsp" rel="tag">jsp</a>
+
+                                
+                            
+                        </div>
+                    
+                    </div>
+
+                    <footer class="post-footer entry-meta">
+                    
+                        <div class="post-share text-center">
+    <p class="light small">
+        Share this post
+    </p>
+    <ul class="social-mini">
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=JSP+%EA%B0%95%EC%A2%8C+-+JSP+Fundamental%231%20http://localhost:4000/blog/jsp-fundamental%20via%20&#64;"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
+                title="Share on Twitter" itemprop="Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/jsp-fundamental" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/blog/jsp-fundamental" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+                    
+
+                        <div class="post-author text-center">
+	<img src="http://localhost:4000/images/me.jpg" alt="Lee Jung Min's photo" itemprop="image" class="post-avatar img-circle img-responsive" />
+	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+		By <span itemprop="name" class="fn"><a href="http://localhost:4000/about" title="About Lee Jung Min" itemprop="url">Lee Jung Min</a></span>
+	</h4>
+	<p>The two most powerful warriors are Patience and Time.</p>
+</div> 
+                        
+                    
+                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+                    
+                    </footer>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+<footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(http://localhost:4000/images/universe.jpeg)">
+
+
+    <div class="inner">
+        <div class="container">
+            <ul class="social-icons">
+                       
+            </ul>
+            <div>
+                <a href="http://localhost:4000/about/">Lee Jung Min</a> &copy; 2016 &bull;
+                All rights reserved.
+            </div>
+            <ul class="menu-items">
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/"><i class="fa fa-home"></i></a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/categories">Programing</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/tags">Tags</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
+        </svg>
+    </div>
+    
+    
+</footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jekyll-search.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/main.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/script.js"></script>
+<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+
+<script type="text/javascript">
+
+/*      Slides       */
+
+$("a#slide").click(function(){
+    $("#sidebar,body,a#slide,#fade").addClass("slide")
+});
+
+$("#fade,#header,#posts-container").click(function(){
+    $("#sidebar,body,a#slide,#fade").removeClass("slide")
+});
+
+$("a#click-filter").click(function(){
+    $("#slide-filter").slideToggle("medium");
+    $("#slide-pages").slideOut("medium");
+});
+
+$("a#click-pages").click(function(){
+    $("#slide-pages").slideToggle("medium");
+    $("#slide-filter").slideOut("medium");
+});
+
+/*      End-Slides      */
+
+</script>
+
+
+<!-- Jekyll Simple Search option -->
+<script>
+
+   SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'http://localhost:4000/assets/json/search.json',
+        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+        noResultsText: '<p>Nothing found.</p>',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      });
+
+  (function( $, window, undefined ) {
+
+     var bs = {
+          close: $("#search-close"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'takoobi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        
+</body>
+</html>

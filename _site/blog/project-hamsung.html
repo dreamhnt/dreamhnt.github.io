@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+
+
+<meta name="keywords" content="project, django, mysql">
+
+
+<!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>HMS - Takoobi’s Space</title>
+<meta property="og:title" content="HMS" />
+<meta name="description" content="동아리 홈페이지" />
+<meta property="og:description" content="동아리 홈페이지" />
+<link rel="canonical" href="http://localhost:4000/blog/project-hamsung" />
+<meta property="og:url" content="http://localhost:4000/blog/project-hamsung" />
+<meta property="og:site_name" content="Takoobi’s Space" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-10-18T00:00:00+09:00" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "HMS",
+    "datePublished": "2013-10-18T00:00:00+09:00",
+    "description": "동아리 홈페이지",
+    "logo": "http://localhost:4000infinite.png",
+    "url": "http://localhost:4000/blog/project-hamsung"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Takoobi's Space" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/syntax.css" />
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/favicons/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/favicons/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/favicons/apple-touch-icon-144x144-precomposed.png">
+</head>
+
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
+
+    
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" id="search-input" class="search-field" placeholder="Search...">
+        <i id="search-close" class="fa fa-times-circle"></i>
+        <h4>Search results</h4>
+        <ul id="results-container" class="search-results post-list">
+        </ul>
+        <!-- /.search-results -->
+    </div>
+    <!-- /.search-form -->
+</div>
+<!-- ./search-wrapper -->
+
+
+<div id="fade"></div>
+<a id="slide" class="animated fade"></a>
+<aside id="sidebar">
+    <nav id="navigation">
+        <h2>MENU</h2>
+        <hr>
+        <ul> 
+            <li>
+                <a href="http://localhost:4000/">Home</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/categories">Programing</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/tags">Tags</a>  </li>
+            
+            <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(http://localhost:4000/images/universe.jpeg)"
+    itemscope itemtype="http://schema.org/Organization">
+
+
+
+    <button class="menu-button animated fade dosearch">
+        <i class="fa fa-search"></i>
+    </button> 
+ 
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="http://localhost:4000/" itemprop="url">
+                <img itemprop="logo" src="http://localhost:4000/images/infinite.png" alt="Takoobi's Space Logo" />
+                <h1 class="blog-title light" itemprop="name">
+                    Takoobi's Space
+                </h1>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
+
+</header>
+
+    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+        <div class="container">
+            <div class="row">
+                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                
+                
+                
+                
+
+                    <header class="post-header entry-header">
+
+                    
+
+                    
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
+                        
+                            
+                        
+                        
+                        
+
+                        
+                            HMS
+                        </h1>
+                    
+
+                        <div class="cursive" style="color: #000; font-style:italic;">동아리 홈페이지</div>
+
+                            <div class="post-info text-center small">
+                            
+                                <span class="entry-date date published updated">
+                            
+                            
+                                    <time datetime="2013-10-18T00:00:00+09:00" class="post-time" itemprop="datePublished">18 Oct 2013</time>
+                                </span>
+                            
+
+                                in <span class="post-tags">
+
+                            
+                                    <a href="http://localhost:4000/categories/index.html#Project" data-toggle="tooltip" title="Other posts from the Project category" rel="tag">Project</a>
+                                
+                            
+                                </span>
+                            
+                            &nbsp;
+                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+
+                            
+
+                            
+                                    <span class="time">3.3722222222222222</span> minutes read
+                            
+                                
+                            
+
+                                </span>
+                            
+                            </div>
+
+                    </header>
+
+                    <div class="post-body bordered-bottom" itemprop="description">
+                    
+
+                        <h2 id="section">개요</h2>
+
+<hr />
+
+<ul>
+  <li>기간 : 2013년 10월 ~ 3주</li>
+  <li>인원 : 1명</li>
+  <li>사용기술 : Django, Bootstrap, jQuery, MySQL</li>
+</ul>
+
+<hr />
+
+<p>2013년도 하반기 학교 데이터베이스 수업 중에 만든 최초의 프로젝트로 동아리 활동에 필요한 정보를 공유하는 동아리 사이트로, 주 사용 대상자는 동아리 회원이며 일반 사람들도 이용할 수는 있으나 컨텐츠에 제한이 있다. 홈페이지에는 동아리 회원들의 사진, 공연 영상, 게시판, 음악파일, 캘린더 등의 기능이 있으며 회원들간에 컨텐츠를 자유롭게 공유하며 이용하는데 목적이 있다.
+프로젝트 명은 <em>HMS(Hamsung Management Service)</em> 로 함성은 동아리 이름이다.</p>
+
+<h2 id="section-1">기획 의도</h2>
+
+<p>대학교 밴드 동아리 활동(베이스 담당)을 하고 있었는데 수업과 관련하며 프로젝트 기획 중 마땅히 생각나는 아이디어가 없었고, 우리 동아리 관련해서 음원과 사진, 게시물 등을 공유할 수 있는 우리 동아리만의 사이트를 만들고 싶어서 개발하게 되었다.</p>
+
+<h2 id="section-2">시스템 구성도</h2>
+
+<p><img src="/assets/img/project/hamsung_system.png" alt="시스템" /></p>
+
+<ol>
+  <li>사용자는 자신이 이용하고 있는 웹 브라우저를 이용하여 원하는 동아리 홈페이지에 접속 후 원하는 컨텐츠를 클릭한다.</li>
+  <li>웹브라우저는 서버로 해당 데이터를 요청한다.</li>
+  <li>서버에서는 데이터베이스에 원하는 데이터를 요청한다.</li>
+  <li>데이터베이스는 요청받은 데이터를 검색 후 서버에 전달한다.</li>
+  <li>서버는 웹브라우저에 데이터를 전달한다.</li>
+  <li>사용자는 요청했던 컨텐츠를 이용할 수 있게 된다.</li>
+</ol>
+
+<h2 id="section-3">데이터 모델링</h2>
+
+<p>###회원 관리</p>
+
+<ul>
+  <li>홈페이지는 가입한 회원만 이용이 가능하다.</li>
+  <li>회원가입 정보로는 아이디, 닉네임, 이메일, 악기, 지역, 핸드폰, 학과가 있다.</li>
+  <li>기본적인 사용자 정보와 프로필 정보로 나누어져 있다.</li>
+</ul>
+
+<p>###컨텐츠 관리</p>
+
+<ul>
+  <li>제공 되는 컨텐츠로는 음악 파일, 공연 영상, 사진이 있으며 회원이라면 모두 제약 없이 이용할 수 있으며 업로드 및 다운로드 할 수 있다.</li>
+  <li>컨텐츠들은 다양하게 분류가 되며 관리 되어야한다.</li>
+</ul>
+
+<p>###테이블</p>
+<ul>
+  <li>회원 – 아이디, 이메일, 비밀번호</li>
+  <li>프로필 – 전화번호, 주소, 닉네임, 악기, 전공, 자기소개</li>
+  <li>음악 – 제목, 보컬, 파일정보</li>
+  <li>사진 – 사용자, 제목, 내용, 카테고리, 파일정보, 생성된시간</li>
+  <li>공지사항 – 제목, 내용, 사용자, 글쓴시간</li>
+  <li>메시지 – 내용, 사용자, 글쓴시간</li>
+  <li>라이크 – 사용자, 사진정보</li>
+</ul>
+
+<p><img src="/assets/img/project/hamsung_model.png" alt="모델링" />
+<em>논리적 모델링</em></p>
+
+<h2 id="section-4">프로세스 기능 설계</h2>
+
+<h3 id="section-5">기능 구성 요소</h3>
+
+<p><img src="/assets/img/project/hamsung_proc.png" alt="전체기능" />
+<em>전제 기능 구성 요소</em></p>
+
+<ol>
+  <li>처음 화면은 로그인 화면으로 로그인을 해야 홈페이지 이용이 가능하다.</li>
+  <li>로그인하여 들어 갈 경우 공지사항, 공연영상, 사진, 음악, 연락처, 게시판, 타임라인을 이용할 수 있다.</li>
+  <li>음악은 듣거나 음원파일을 다운로드 할 수 있다.</li>
+  <li>사진은 공연사진, 축제, 엠티, etc로 구분이 된다.</li>
+  <li>연락처에는 가입한 사람들의 이름과 전화번호를 알 수 있다.</li>
+  <li>타임라인에서 익명으로 간단한 한 줄 글을 작성할 수 있다.</li>
+</ol>
+
+<h3 id="section-6">각 기능별 상세 설계</h3>
+
+<h4 id="section-7">로그인 기능</h4>
+
+<p><img src="/assets/img/project/hamsung_login.png" alt="로그인" />
+<em>로그인 기능</em></p>
+
+<ol>
+  <li>로그인을 했을 시 아이디와 패스워드를 입력한다.</li>
+  <li>데이터베이스에서 확인을 한 후 일치하면 성공하여 홈페이지로 들어가지고 불일치하면 로그인을 다시 시도하게 된다.</li>
+</ol>
+
+<h4 id="section-8">갤러리 기능</h4>
+
+<p><img src="/assets/img/project/hamsung_gallery.png" alt="갤러리" />
+<em>갤러리 기능</em></p>
+
+<ol>
+  <li>사진을 등록할 수 있다.</li>
+  <li>카테고리 별로 등록을 할 수 있다.</li>
+  <li>제목과 사진에 대한 자세한 내용이 들어간다.</li>
+</ol>
+
+<h4 id="section-9">음원 공유 기능</h4>
+
+<p><img src="/assets/img/project/hamsung_music.png" alt="음원" />
+<em>음원 공유 기능</em></p>
+
+<ol>
+  <li>음악 관리도 영상, 사진과 유사하나 검색 기능이 추가된다.</li>
+  <li>음악 제목 및 장르 등 검색 조건에 따라 데이터베이스를 조회하여 검색을 하게된다.</li>
+  <li>조회한 음악을 듣거나 다운로드가 가능하다.</li>
+  <li>조회한 음악의 정보를 수정할 수 있다.</li>
+  <li>음악 등록과 삭제는 관리자만 가능하다.</li>
+</ol>
+
+<h2 id="ui-">UI 설계</h2>
+
+<h3 id="section-10">로그인</h3>
+
+<p><img src="/assets/img/project/hamsung1.png" alt="로그인" />
+<em>로그인화면</em></p>
+
+<ol>
+  <li>사이트 주소 입력 시 처음에 나타나는 화면이다.</li>
+  <li>동아리 홈페이지라는걸 알 수 있게 로고만 띄우는 심플한 화면을 구성한다.</li>
+  <li>로그인 없이는 홈페이지에 접속을 할 수가 없다.</li>
+</ol>
+
+<h3 id="section-11">메인</h3>
+
+<p><img src="/assets/img/project/hamsung0.png" alt="메인" />
+<em>메인화면</em></p>
+
+<ol>
+  <li>회원 로그인 했을 시 메인 화면이다.</li>
+  <li>메인비주얼을 크게 잡고, 공지사항, 기타 다른 정보 하나만 띄워서 심플하게 구성한다.</li>
+  <li>메뉴에는 공지사항, 갤러리, 공연영상, 음악파일,  게시판, 연락처, 타임라인으로 구성된다.</li>
+  <li>메인화면에 동아리 회원의 단체사진을 썸네일로 여러장 넣어서 동아리에 대한 친숙한 느낌을 갖을 수 있게 한다.</li>
+</ol>
+
+<h3 id="section-12">갤러리</h3>
+
+<p><img src="/assets/img/project/hamsung2.png" alt="갤러리" />
+<em>갤러리화면</em></p>
+
+<ol>
+  <li>기본적인 갤러리 및 공연 영상 화면의 UI이다.</li>
+  <li>가로 슬라이드 형식이며 카테고리 별로 분류가 되어있다.</li>
+  <li>정렬이 될 때 애니메이션이 된다.</li>
+  <li>좋아요를 누르면 하트가 카운트가 되며 하트가 많은 순으로 나타나는게 기본이다.</li>
+  <li>Isotopejs 플러그인 사용</li>
+</ol>
+
+<h3 id="section-13">음원 공유</h3>
+
+<p><img src="/assets/img/project/hamsung3.png" alt="음원" />
+<em>음원공유화면</em></p>
+
+<ol>
+  <li>음악 메뉴 탭의 화면이다.</li>
+  <li>검색을 클릭하여 원하는 노래를 찾을 수 있다.</li>
+  <li>검색시 노래가 나타나며 클릭 시 다운로드가 진행된다.</li>
+  <li>음원을 Dropbox에 올려 링크를 건다.</li>
+</ol>
+
+<h3 id="section-14">타임라인</h3>
+
+<p><img src="/assets/img/project/hamsung4.png" alt="타임라인" />
+<em>타임라인화면</em></p>
+
+<ol>
+  <li>익명으로 간단한 한 줄 글을 남길 수 있는 공간이다.</li>
+  <li>작성자만 글을 지울 수 있으며 20글 이상시 페이징이 된다.</li>
+</ol>
+
+<h2 id="section-15">마무리</h2>
+
+<p>프로젝트를 개발하면서 모든 기술들이 처음 접해본 기술들이어서 배우고 익히는데 시간이 많이 소요됬으며 삽질을 많이 했다.
+백엔드쪽 기능이 원활히 돌아가는 것이 목표였고 프론트쪽은 부트스트랩 테마를 가져와서 약간의 수정만 했는데 더 이쁘게 꾸미고 싶었지만 기술력이 없었고 Django의 기능들을 코딩하기에 급급했다. 관리자 페이지의 부재와 디자인의 미흡함 캘린더 기능을 구현 못한점은 아쉬움으로 남는다.</p>
+
+
+                        <br>
+
+                    
+                    
+                        <div class="entry-tags text-center">
+                            <i class="fa fa-tags"></i>&nbsp;
+                                Tagged with 
+                            
+                                <a href="http://localhost:4000/tags/index.html#project" data-toggle="tooltip" title="Posts tagged with project" rel="tag">project</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#django" data-toggle="tooltip" title="Posts tagged with django" rel="tag">django</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#mysql" data-toggle="tooltip" title="Posts tagged with mysql" rel="tag">mysql</a>
+
+                                
+                            
+                        </div>
+                    
+                    </div>
+
+                    <footer class="post-footer entry-meta">
+                    
+                        <div class="post-share text-center">
+    <p class="light small">
+        Share this post
+    </p>
+    <ul class="social-mini">
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=HMS%20http://localhost:4000/blog/project-hamsung%20via%20&#64;"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
+                title="Share on Twitter" itemprop="Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/project-hamsung" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/blog/project-hamsung" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+                    
+
+                        <div class="post-author text-center">
+	<img src="http://localhost:4000/images/me.jpg" alt="Lee Jung Min's photo" itemprop="image" class="post-avatar img-circle img-responsive" />
+	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+		By <span itemprop="name" class="fn"><a href="http://localhost:4000/about" title="About Lee Jung Min" itemprop="url">Lee Jung Min</a></span>
+	</h4>
+	<p>The two most powerful warriors are Patience and Time.</p>
+</div> 
+                        
+                    
+                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+                    
+                    </footer>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+<footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(http://localhost:4000/images/universe.jpeg)">
+
+
+    <div class="inner">
+        <div class="container">
+            <ul class="social-icons">
+                       
+            </ul>
+            <div>
+                <a href="http://localhost:4000/about/">Lee Jung Min</a> &copy; 2016 &bull;
+                All rights reserved.
+            </div>
+            <ul class="menu-items">
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/"><i class="fa fa-home"></i></a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/categories">Programing</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/tags">Tags</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
+        </svg>
+    </div>
+    
+    
+</footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jekyll-search.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/main.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/script.js"></script>
+<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+
+<script type="text/javascript">
+
+/*      Slides       */
+
+$("a#slide").click(function(){
+    $("#sidebar,body,a#slide,#fade").addClass("slide")
+});
+
+$("#fade,#header,#posts-container").click(function(){
+    $("#sidebar,body,a#slide,#fade").removeClass("slide")
+});
+
+$("a#click-filter").click(function(){
+    $("#slide-filter").slideToggle("medium");
+    $("#slide-pages").slideOut("medium");
+});
+
+$("a#click-pages").click(function(){
+    $("#slide-pages").slideToggle("medium");
+    $("#slide-filter").slideOut("medium");
+});
+
+/*      End-Slides      */
+
+</script>
+
+
+<!-- Jekyll Simple Search option -->
+<script>
+
+   SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'http://localhost:4000/assets/json/search.json',
+        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+        noResultsText: '<p>Nothing found.</p>',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      });
+
+  (function( $, window, undefined ) {
+
+     var bs = {
+          close: $("#search-close"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'takoobi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        
+</body>
+</html>

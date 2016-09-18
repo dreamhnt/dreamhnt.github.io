@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+
+
+<meta name="keywords" content="java, oracle">
+
+
+<!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>JDBC 강좌 - Takoobi’s Space</title>
+<meta property="og:title" content="JDBC 강좌" />
+<meta name="description" content="oracle 연동을 통한 JDBC 코딩 실습" />
+<meta property="og:description" content="oracle 연동을 통한 JDBC 코딩 실습" />
+<link rel="canonical" href="http://localhost:4000/blog/jdbc" />
+<meta property="og:url" content="http://localhost:4000/blog/jdbc" />
+<meta property="og:site_name" content="Takoobi’s Space" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-05-29T00:00:00+09:00" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "JDBC 강좌",
+    "datePublished": "2015-05-29T00:00:00+09:00",
+    "description": "oracle 연동을 통한 JDBC 코딩 실습",
+    "logo": "http://localhost:4000infinite.png",
+    "url": "http://localhost:4000/blog/jdbc"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Takoobi's Space" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/syntax.css" />
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/favicons/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/favicons/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/favicons/apple-touch-icon-144x144-precomposed.png">
+</head>
+
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
+
+    
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" id="search-input" class="search-field" placeholder="Search...">
+        <i id="search-close" class="fa fa-times-circle"></i>
+        <h4>Search results</h4>
+        <ul id="results-container" class="search-results post-list">
+        </ul>
+        <!-- /.search-results -->
+    </div>
+    <!-- /.search-form -->
+</div>
+<!-- ./search-wrapper -->
+
+
+<div id="fade"></div>
+<a id="slide" class="animated fade"></a>
+<aside id="sidebar">
+    <nav id="navigation">
+        <h2>MENU</h2>
+        <hr>
+        <ul> 
+            <li>
+                <a href="http://localhost:4000/">Home</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/categories">Programing</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/tags">Tags</a>  </li>
+            
+            <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(http://localhost:4000/images/universe.jpeg)"
+    itemscope itemtype="http://schema.org/Organization">
+
+
+
+    <button class="menu-button animated fade dosearch">
+        <i class="fa fa-search"></i>
+    </button> 
+ 
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="http://localhost:4000/" itemprop="url">
+                <img itemprop="logo" src="http://localhost:4000/images/infinite.png" alt="Takoobi's Space Logo" />
+                <h1 class="blog-title light" itemprop="name">
+                    Takoobi's Space
+                </h1>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
+
+</header>
+
+    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+        <div class="container">
+            <div class="row">
+                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                
+                
+                
+                
+
+                    <header class="post-header entry-header">
+
+                    
+
+                    
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
+                        
+                            
+                        
+                        
+                        
+
+                        
+                            JDBC 강좌
+                        </h1>
+                    
+
+                        <div class="cursive" style="color: #000; font-style:italic;">oracle 연동을 통한 JDBC 코딩 실습</div>
+
+                            <div class="post-info text-center small">
+                            
+                                <span class="entry-date date published updated">
+                            
+                            
+                                    <time datetime="2015-05-29T00:00:00+09:00" class="post-time" itemprop="datePublished">29 May 2015</time>
+                                </span>
+                            
+
+                                in <span class="post-tags">
+
+                            
+                                    <a href="http://localhost:4000/categories/index.html#Study" data-toggle="tooltip" title="Other posts from the Study category" rel="tag">Study</a>
+                                
+                            
+                                </span>
+                            
+                            &nbsp;
+                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+
+                            
+
+                            
+                                    <span class="time">8.3</span> minutes read
+                            
+                                
+                            
+
+                                </span>
+                            
+                            </div>
+
+                    </header>
+
+                    <div class="post-body bordered-bottom" itemprop="description">
+                    
+
+                        <p>##DAO DTO 패턴과 Connection Pool을 이용</p>
+
+<p><strong>DTO(Database Transfer Object) - Model</strong></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">exam05</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PoolDTO</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">deptno</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">dname</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">loc</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDeptno</span><span class="o">(</span><span class="kt">int</span> <span class="n">deptno</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">deptno</span> <span class="o">=</span> <span class="n">deptno</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDname</span><span class="o">(</span><span class="n">String</span> <span class="n">dname</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">dname</span> <span class="o">=</span> <span class="n">dname</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setLoc</span><span class="o">(</span><span class="n">String</span> <span class="n">loc</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">loc</span> <span class="o">=</span> <span class="n">loc</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getDeptno</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">deptno</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getDname</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">dname</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getLoc</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">loc</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>main - View</strong></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">exam05</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PoolTest</span><span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span> <span class="o">[]</span> <span class="n">args</span> <span class="o">)</span> <span class="o">{</span>
+      <span class="n">PoolDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PoolDAO</span><span class="o">();</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">PoolDTO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">select</span><span class="o">();</span>
+
+        <span class="k">for</span><span class="o">(</span> <span class="n">PoolDTO</span> <span class="n">dto</span> <span class="o">:</span> <span class="n">list</span> <span class="o">){</span>
+         <span class="kt">int</span> <span class="n">deptno</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getDeptno</span><span class="o">();</span>
+         <span class="n">String</span> <span class="n">dname</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getDname</span><span class="o">();</span>
+         <span class="n">String</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">dto</span><span class="o">.</span><span class="na">getLoc</span><span class="o">();</span>
+         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">deptno</span> <span class="o">+</span><span class="s">" "</span> <span class="o">+</span><span class="n">dname</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>DAO(Database Access Object) - Controller</strong></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">exam05</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.commons.dbcp2.BasicDataSource</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PoolDAO</span><span class="o">{</span>
+	<span class="n">BasicDataSource</span> <span class="n">ds</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">PoolDAO</span><span class="o">(){</span>
+		<span class="n">ds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicDataSource</span><span class="o">();</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setDriverClassName</span><span class="o">(</span><span class="s">"oracle.jdbc.driver.OracleDriver"</span><span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setUrl</span><span class="o">(</span> <span class="s">"jdbc:oracle:thin:@localhost:1521:orcl"</span> <span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span> <span class="s">"scott"</span><span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span> <span class="s">"tiger"</span><span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setInitialSize</span><span class="o">(</span> <span class="mi">4</span> <span class="o">);</span>	 	<span class="c1">//미리 4개의 객체를 만들겠다.</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">PoolDTO</span><span class="o">&gt;</span> <span class="nf">select</span><span class="o">(){</span>
+		<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">PoolDTO</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">PoolDTO</span><span class="o">&gt;();</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">String</span> <span class="n">query</span> <span class="o">=</span> <span class="s">"SELECT deptno,dname,loc FROM  dept"</span><span class="o">;</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">query</span><span class="o">);</span>
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+				<span class="n">PoolDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PoolDTO</span><span class="o">();</span>
+				<span class="n">dto</span><span class="o">.</span><span class="na">setDeptno</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"deptno"</span><span class="o">));</span>
+				<span class="n">dto</span><span class="o">.</span><span class="na">setDname</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"dname"</span><span class="o">));</span>
+				<span class="n">dto</span><span class="o">.</span><span class="na">setLoc</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"loc"</span><span class="o">));</span>
+				<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span><span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>
+		<span class="o">}</span>
+
+		<span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="section">캐쉬 다이어리</h2>
+
+<p><em>Main</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">twotwo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CashMain</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">CashView</span> <span class="n">ui</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CashView</span><span class="o">();</span>
+		<span class="n">ui</span><span class="o">.</span><span class="na">intro</span><span class="o">();</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><em>View</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">twotwo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CashView</span> <span class="o">{</span>
+	<span class="n">CashController</span> <span class="n">ctl</span><span class="o">;</span>
+
+	<span class="n">CashView</span><span class="o">(){</span>
+		<span class="n">ctl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CashController</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">intro</span><span class="o">(){</span>
+		<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t┌─────────────────────────────────────────┐"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│               CashDiary!!!              │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                1. Login                 │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                2. Signup                │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                3. Exit                  │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t└─────────────────────────────────────────┘"</span><span class="o">);</span>
+
+			<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+			<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+			<span class="k">switch</span><span class="o">(</span><span class="n">num</span><span class="o">){</span>
+				<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+					<span class="k">this</span><span class="o">.</span><span class="na">login</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+					<span class="k">this</span><span class="o">.</span><span class="na">register</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램 종료"</span><span class="o">);</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	            <span class="k">default</span><span class="o">:</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잘못 입력하셨습니다."</span><span class="o">);</span>
+	                <span class="k">continue</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="k">break</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">login</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t┌─────────────────────────────────────────┐"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│               CashDiary!!!              │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│               Login please              │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              ex) id/password            │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t└─────────────────────────────────────────┘"</span><span class="o">);</span>
+
+
+
+		<span class="k">if</span><span class="o">(</span><span class="n">ctl</span><span class="o">.</span><span class="na">signin</span><span class="o">()){</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">mainMenu</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">login</span><span class="o">();</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">register</span><span class="o">(){</span>
+		<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"아이디를 입력해주세요 &gt; "</span><span class="o">);</span>
+		<span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"비밀번호를 입력해주세요 &gt; "</span><span class="o">);</span>
+		<span class="n">String</span> <span class="n">pw</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+		<span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ctl</span><span class="o">.</span><span class="na">insertResister</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">pw</span><span class="o">);</span>
+
+		<span class="k">if</span><span class="o">(</span><span class="n">result</span><span class="o">){</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">mainMenu</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">register</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">mainMenu</span><span class="o">(){</span>
+		<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t┌─────────────────────────────────────────┐"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│               CashDiary!!!              │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t│    Welcome %7s !!  Money: %6s    │\n"</span><span class="o">,</span><span class="n">ctl</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span><span class="n">ctl</span><span class="o">.</span><span class="na">getMoney</span><span class="o">());</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              1. Input Data              │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              2. Search                  │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              3. Modify                  │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              4. Delete                  │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              5. Exit                    │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t└─────────────────────────────────────────┘"</span><span class="o">);</span>
+
+			<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+			<span class="k">switch</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">()){</span>
+				<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+					<span class="k">this</span><span class="o">.</span><span class="na">mainInsert</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+					<span class="k">this</span><span class="o">.</span><span class="na">mainSearch</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+					<span class="n">ctl</span><span class="o">.</span><span class="na">dataUpdate</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+					<span class="n">ctl</span><span class="o">.</span><span class="na">dataDelete</span><span class="o">();</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램 종료"</span><span class="o">);</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	            <span class="k">default</span><span class="o">:</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잘못 입력하셨습니다."</span><span class="o">);</span>
+	                <span class="k">continue</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">mainInsert</span><span class="o">(){</span>
+
+		<span class="nl">loop:</span>
+		<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t┌─────────────────────────────────────────┐"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│               CashDiary!!!              │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t│    Welcome %7s !!  Money: %6s    │\n"</span><span class="o">,</span><span class="n">ctl</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span><span class="n">ctl</span><span class="o">.</span><span class="na">getMoney</span><span class="o">());</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              1. Save Money              │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              2. Spend Money             │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              3. Before                  │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              4. Exit                    │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t└─────────────────────────────────────────┘"</span><span class="o">);</span>
+
+			<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+			<span class="k">switch</span><span class="o">(</span><span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">()){</span>
+				<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"수입 내용을 입력하세요"</span><span class="o">);</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"날짜/내용/금액"</span><span class="o">);</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ex) 20150504/월급/10000"</span><span class="o">);</span>
+
+					<span class="n">ctl</span><span class="o">.</span><span class="na">dataInput</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"지출 내용을 입력하세요"</span><span class="o">);</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"날짜/분류/내용/금액"</span><span class="o">);</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"분류&gt; 식비, 교통비, 기타"</span><span class="o">);</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ex) 20150504/식비/죠스바/900"</span><span class="o">);</span>
+
+					<span class="n">ctl</span><span class="o">.</span><span class="na">dataInput</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="k">break</span> <span class="n">loop</span><span class="o">;</span>
+				<span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램 종료"</span><span class="o">);</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+	            <span class="k">default</span><span class="o">:</span>
+	                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잘못 입력하셨습니다."</span><span class="o">);</span>
+	                <span class="k">continue</span><span class="o">;</span>
+
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">mainSearch</span><span class="o">(){</span>
+		<span class="nl">loop:</span>
+			<span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t┌─────────────────────────────────────────┐"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│               CashDiary!!!              │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t│    Welcome %7s !!  Money: %6s    │\n"</span><span class="o">,</span><span class="n">ctl</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span><span class="n">ctl</span><span class="o">.</span><span class="na">getMoney</span><span class="o">());</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t├─────────────────────────────────────────┤"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              1. Input Period            │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              2. Day Data                │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              3. Week Data               │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              4. Month Data              │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              5. Before                  │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│              6. Exit                    │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t│                                         │"</span><span class="o">);</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\t└─────────────────────────────────────────┘"</span><span class="o">);</span>
+
+				<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+				<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+				<span class="k">switch</span><span class="o">(</span><span class="n">num</span><span class="o">){</span>
+					<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+						<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"기간을 입력해주세요"</span><span class="o">);</span>
+						<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ex) 20150502/20150602"</span><span class="o">);</span>
+						<span class="n">ctl</span><span class="o">.</span><span class="na">dataSearch</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+						<span class="k">break</span><span class="o">;</span>
+					<span class="k">case</span> <span class="mi">2</span><span class="o">:</span><span class="k">case</span> <span class="mi">3</span><span class="o">:</span><span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+						<span class="n">ctl</span><span class="o">.</span><span class="na">dataSearch</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+						<span class="k">break</span><span class="o">;</span>
+					<span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="k">break</span> <span class="n">loop</span><span class="o">;</span>
+					<span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+		                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램 종료"</span><span class="o">);</span>
+		                <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		            <span class="k">default</span><span class="o">:</span>
+		                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잘못 입력하셨습니다."</span><span class="o">);</span>
+		                <span class="k">continue</span><span class="o">;</span>
+				<span class="o">}</span>
+
+			<span class="o">}</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><em>Controller</em></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">twotwo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.commons.dbcp2.BasicDataSource</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CashController</span> <span class="o">{</span>
+	<span class="n">BasicDataSource</span> <span class="n">ds</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">money</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMoney</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">money</span><span class="o">;</span>
+	<span class="o">}</span>
+
+
+	<span class="kd">public</span> <span class="nf">CashController</span><span class="o">(){</span>
+		<span class="n">ds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicDataSource</span><span class="o">();</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setDriverClassName</span><span class="o">(</span><span class="s">"oracle.jdbc.driver.OracleDriver"</span><span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setUrl</span><span class="o">(</span> <span class="s">"jdbc:oracle:thin:@localhost:1521:orcl"</span> <span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span> <span class="s">"scott"</span><span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span> <span class="s">"tiger"</span><span class="o">);</span>
+		<span class="n">ds</span><span class="o">.</span><span class="na">setInitialSize</span><span class="o">(</span> <span class="mi">50</span> <span class="o">);</span>	 	<span class="c1">//미리 4개의 객체를 만들겠다.</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">money</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">insertResister</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">pw</span><span class="o">){</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"insert into user_info values(user_seq.nextval,?,?)"</span><span class="o">;</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">pw</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+			<span class="n">String</span> <span class="n">sql2</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"create table cashdiary_%s ("</span>
+					<span class="o">+</span> <span class="s">"num number(10) primary key,"</span>
+					<span class="o">+</span> <span class="s">"day date,"</span>
+					<span class="o">+</span> <span class="s">"category varchar2(10),"</span>
+					<span class="o">+</span> <span class="s">"memo varchar2(20),"</span>
+					<span class="o">+</span> <span class="s">"money number(10)	"</span>
+					<span class="o">+</span> <span class="s">")"</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+
+
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql2</span><span class="o">);</span>
+			<span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">(</span><span class="n">sql2</span><span class="o">)</span> <span class="o">;</span>
+
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원가입 성공"</span><span class="o">);</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">id</span><span class="o">=</span><span class="n">id</span><span class="o">;</span>
+			<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+
+		<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"회원가입 실패"</span><span class="o">);</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">signin</span><span class="o">(){</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from user_info"</span><span class="o">;</span>
+			<span class="n">String</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">scanData</span><span class="o">();</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+				<span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+				<span class="n">String</span> <span class="n">pw</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"pw"</span><span class="o">);</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">id</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">])</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">pw</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">result</span><span class="o">[</span><span class="mi">1</span><span class="o">])</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+						<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"로그인 성공!!"</span><span class="o">);</span>
+						<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+						<span class="k">this</span><span class="o">.</span><span class="na">setMoney</span><span class="o">();</span>
+						<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+					<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+						<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"비밀번호가 맞지 않습니다."</span><span class="o">);</span>
+						<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"아이디가 존재하지 않습니다."</span><span class="o">);</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+		<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+			<span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+		<span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span><span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>  
+
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dataInput</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">String</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">scanData</span><span class="o">();</span>
+			<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"insert into cashdiary_%s "</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+			<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+
+			<span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">==</span><span class="mi">1</span><span class="o">){</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">len</span> <span class="o">!=</span> <span class="mi">3</span><span class="o">){</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"양식에 맞춰 입력해주세요."</span><span class="o">);</span>
+					<span class="k">return</span><span class="o">;</span>
+				<span class="o">}</span>
+				<span class="n">sql</span> <span class="o">+=</span> <span class="s">"values(cash_seq.nextval,?,'입금',?,?)"</span><span class="o">;</span>
+			<span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">num</span><span class="o">==</span><span class="mi">2</span><span class="o">){</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">len</span> <span class="o">!=</span> <span class="mi">4</span><span class="o">){</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"양식에 맞춰 입력해주세요."</span><span class="o">);</span>
+					<span class="k">return</span><span class="o">;</span>
+				<span class="o">}</span>
+				<span class="n">sql</span> <span class="o">+=</span> <span class="s">"values(cash_seq.nextval,?,?,?,?)"</span><span class="o">;</span>
+				<span class="n">result</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="s">"-"</span><span class="o">+</span><span class="n">result</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+			<span class="o">}</span>
+
+			<span class="kt">int</span> <span class="n">money</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">result</span><span class="o">[</span><span class="n">len</span><span class="o">-</span><span class="mi">1</span><span class="o">]);</span> <span class="c1">//금액 문자열을 정수형으로 변환</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">money</span> <span class="o">+=</span> <span class="n">money</span><span class="o">;</span>
+
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">len</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">len</span><span class="o">-</span><span class="mi">1</span><span class="o">){</span>
+					<span class="n">pstmt</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">money</span><span class="o">);</span>
+				<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+					<span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">result</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+
+
+			<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">()</span> <span class="o">==</span><span class="mi">1</span><span class="o">){</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"입력 성공"</span><span class="o">);</span>
+			<span class="o">}</span><span class="k">else</span><span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"입력 실패"</span><span class="o">);</span>
+			<span class="o">};</span>
+
+		<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMoney</span><span class="o">(){</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"select sum(money) sum from cashdiary_"</span><span class="o">+</span><span class="n">id</span><span class="o">;</span>
+
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+
+			<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+				<span class="k">this</span><span class="o">.</span><span class="na">money</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"sum"</span><span class="o">);</span>
+			<span class="o">}</span>
+
+		<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span><span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dataSearch</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">){</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">ResultSet</span> <span class="n">rs</span>  <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"select * from cashdiary_"</span><span class="o">+</span><span class="n">id</span><span class="o">+</span><span class="s">" where day"</span><span class="o">;</span>
+
+			<span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">5</span><span class="o">){</span>
+				<span class="n">String</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">scanData</span><span class="o">();</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">1</span><span class="o">){</span>
+					<span class="n">sql</span> <span class="o">+=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"='%s'"</span><span class="o">,</span> <span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+				<span class="o">}</span><span class="k">else</span><span class="o">{</span>
+					<span class="n">sql</span> <span class="o">+=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">" between '%s' and '%s'"</span><span class="o">,</span> <span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">result</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+				<span class="o">}</span>
+
+			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+				<span class="k">switch</span><span class="o">(</span><span class="n">num</span><span class="o">){</span>
+					<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+						<span class="n">sql</span> <span class="o">+=</span> <span class="s">"=to_char(sysdate, 'yyyymmdd')"</span><span class="o">;</span>
+						<span class="k">break</span><span class="o">;</span>
+					<span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+						<span class="n">sql</span> <span class="o">+=</span> <span class="s">" between sysdate-7 and sysdate"</span><span class="o">;</span>
+						<span class="k">break</span><span class="o">;</span>
+					<span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+						<span class="n">sql</span> <span class="o">+=</span> <span class="s">" between sysdate-30 and sysdate"</span><span class="o">;</span>
+						<span class="k">break</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			<span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+
+
+			<span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">5</span><span class="o">){</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t번호    날짜\t\t분류\t내용\t금액\n"</span><span class="o">);</span>
+				<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t[%s]  %s\t%s\t%s\t%s\n"</span><span class="o">,</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"num"</span><span class="o">),</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"day"</span><span class="o">).</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"category"</span><span class="o">),</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"memo"</span><span class="o">),</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"money"</span><span class="o">));</span>
+				<span class="o">}</span>
+			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t날짜\t\t분류\t내용\t금액\n"</span><span class="o">);</span>
+				<span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+					<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t%s\t%s\t%s\t%s\n"</span><span class="o">,</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"day"</span><span class="o">).</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span>
+							<span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"category"</span><span class="o">),</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"memo"</span><span class="o">),</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"money"</span><span class="o">));</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+
+
+		<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span><span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">scanData</span><span class="o">(){</span>
+		<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+		<span class="n">String</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">"\\s"</span><span class="o">,</span> <span class="s">""</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="s">"/"</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dataDelete</span><span class="o">(){</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"삭제할 날짜를 입력해주세요"</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">dataSearch</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"삭제할 데이터 번호를 입력해주세요"</span><span class="o">);</span>
+			<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+			<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"delete from CASHDIARY_"</span><span class="o">+</span><span class="n">id</span><span class="o">+</span><span class="s">" where num="</span><span class="o">+</span><span class="n">scan</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">()</span> <span class="o">==</span><span class="mi">1</span><span class="o">){</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"삭제 성공"</span><span class="o">);</span>
+			<span class="o">}</span><span class="k">else</span><span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"삭제 실패"</span><span class="o">);</span>
+			<span class="o">};</span>
+
+		<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>
+		<span class="o">}</span>
+
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dataUpdate</span><span class="o">(){</span>
+		<span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"수정할 날짜를 입력해주세요"</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">dataSearch</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+
+		<span class="k">try</span><span class="o">{</span>
+			<span class="n">con</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="na">getConnection</span><span class="o">();</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"수정할 데이터 번호를 입력해주세요"</span><span class="o">);</span>
+			<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+			<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"양식에 맞게 수정할 데이터를 입력하세요"</span><span class="o">);</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"분류/내용/금액"</span><span class="o">);</span>
+			<span class="n">String</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">scanData</span><span class="o">();</span>
+
+			<span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"update CASHDIARY_"</span><span class="o">+</span><span class="n">id</span><span class="o">+</span><span class="s">" set "</span><span class="o">;</span>
+
+			<span class="k">if</span><span class="o">(!</span><span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">)){</span>
+				<span class="n">sql</span> <span class="o">+=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"category='%s'"</span><span class="o">,</span> <span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+			<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(!</span><span class="n">result</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">)){</span>
+				<span class="n">sql</span> <span class="o">+=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"memo='%s'"</span><span class="o">,</span> <span class="n">result</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+			<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(!</span><span class="n">result</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">)){</span>
+				<span class="n">sql</span> <span class="o">+=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"money='%s'"</span><span class="o">,</span> <span class="n">result</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+			<span class="o">}</span>
+
+			<span class="n">sql</span> <span class="o">+=</span> <span class="s">" where num="</span><span class="o">+</span><span class="n">num</span><span class="o">;</span>
+
+			<span class="n">pstmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+			<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">()</span> <span class="o">==</span><span class="mi">1</span><span class="o">){</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"수정 성공"</span><span class="o">);</span>
+			<span class="o">}</span><span class="k">else</span><span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"수정 실패"</span><span class="o">);</span>
+			<span class="o">};</span>
+
+		<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+			<span class="k">try</span><span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>  
+				<span class="k">if</span><span class="o">(</span><span class="n">con</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="o">){</span> <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span> <span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+
+
+                        <br>
+
+                    
+                    
+                        <div class="entry-tags text-center">
+                            <i class="fa fa-tags"></i>&nbsp;
+                                Tagged with 
+                            
+                                <a href="http://localhost:4000/tags/index.html#java" data-toggle="tooltip" title="Posts tagged with java" rel="tag">java</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#oracle" data-toggle="tooltip" title="Posts tagged with oracle" rel="tag">oracle</a>
+
+                                
+                            
+                        </div>
+                    
+                    </div>
+
+                    <footer class="post-footer entry-meta">
+                    
+                        <div class="post-share text-center">
+    <p class="light small">
+        Share this post
+    </p>
+    <ul class="social-mini">
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=JDBC+%EA%B0%95%EC%A2%8C%20http://localhost:4000/blog/jdbc%20via%20&#64;"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
+                title="Share on Twitter" itemprop="Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/jdbc" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/blog/jdbc" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+                    
+
+                        <div class="post-author text-center">
+	<img src="http://localhost:4000/images/me.jpg" alt="Lee Jung Min's photo" itemprop="image" class="post-avatar img-circle img-responsive" />
+	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+		By <span itemprop="name" class="fn"><a href="http://localhost:4000/about" title="About Lee Jung Min" itemprop="url">Lee Jung Min</a></span>
+	</h4>
+	<p>The two most powerful warriors are Patience and Time.</p>
+</div> 
+                        
+                    
+                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+                    
+                    </footer>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+<footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(http://localhost:4000/images/universe.jpeg)">
+
+
+    <div class="inner">
+        <div class="container">
+            <ul class="social-icons">
+                       
+            </ul>
+            <div>
+                <a href="http://localhost:4000/about/">Lee Jung Min</a> &copy; 2016 &bull;
+                All rights reserved.
+            </div>
+            <ul class="menu-items">
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/"><i class="fa fa-home"></i></a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/categories">Programing</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/tags">Tags</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
+        </svg>
+    </div>
+    
+    
+</footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jekyll-search.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/main.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/script.js"></script>
+<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+
+<script type="text/javascript">
+
+/*      Slides       */
+
+$("a#slide").click(function(){
+    $("#sidebar,body,a#slide,#fade").addClass("slide")
+});
+
+$("#fade,#header,#posts-container").click(function(){
+    $("#sidebar,body,a#slide,#fade").removeClass("slide")
+});
+
+$("a#click-filter").click(function(){
+    $("#slide-filter").slideToggle("medium");
+    $("#slide-pages").slideOut("medium");
+});
+
+$("a#click-pages").click(function(){
+    $("#slide-pages").slideToggle("medium");
+    $("#slide-filter").slideOut("medium");
+});
+
+/*      End-Slides      */
+
+</script>
+
+
+<!-- Jekyll Simple Search option -->
+<script>
+
+   SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'http://localhost:4000/assets/json/search.json',
+        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+        noResultsText: '<p>Nothing found.</p>',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      });
+
+  (function( $, window, undefined ) {
+
+     var bs = {
+          close: $("#search-close"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'takoobi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        
+</body>
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+
+
+<meta name="keywords" content="java, jsp">
+
+
+<!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>JSP 강좌 - JSP Fundamental#2 - Takoobi’s Space</title>
+<meta property="og:title" content="JSP 강좌 - JSP Fundamental#2" />
+<meta name="description" content="기본객체와 영역, 에러처리, 쿠키, 세션" />
+<meta property="og:description" content="기본객체와 영역, 에러처리, 쿠키, 세션" />
+<link rel="canonical" href="http://localhost:4000/blog/jsp-fundamental2" />
+<meta property="og:url" content="http://localhost:4000/blog/jsp-fundamental2" />
+<meta property="og:site_name" content="Takoobi’s Space" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-06-25T00:00:00+09:00" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "JSP 강좌 - JSP Fundamental#2",
+    "datePublished": "2015-06-25T00:00:00+09:00",
+    "description": "기본객체와 영역, 에러처리, 쿠키, 세션",
+    "logo": "http://localhost:4000infinite.png",
+    "url": "http://localhost:4000/blog/jsp-fundamental2"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Takoobi's Space" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/syntax.css" />
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/favicons/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/favicons/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/favicons/apple-touch-icon-144x144-precomposed.png">
+</head>
+
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
+
+    
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" id="search-input" class="search-field" placeholder="Search...">
+        <i id="search-close" class="fa fa-times-circle"></i>
+        <h4>Search results</h4>
+        <ul id="results-container" class="search-results post-list">
+        </ul>
+        <!-- /.search-results -->
+    </div>
+    <!-- /.search-form -->
+</div>
+<!-- ./search-wrapper -->
+
+
+<div id="fade"></div>
+<a id="slide" class="animated fade"></a>
+<aside id="sidebar">
+    <nav id="navigation">
+        <h2>MENU</h2>
+        <hr>
+        <ul> 
+            <li>
+                <a href="http://localhost:4000/">Home</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/categories">Programing</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/tags">Tags</a>  </li>
+            
+            <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(http://localhost:4000/images/universe.jpeg)"
+    itemscope itemtype="http://schema.org/Organization">
+
+
+
+    <button class="menu-button animated fade dosearch">
+        <i class="fa fa-search"></i>
+    </button> 
+ 
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="http://localhost:4000/" itemprop="url">
+                <img itemprop="logo" src="http://localhost:4000/images/infinite.png" alt="Takoobi's Space Logo" />
+                <h1 class="blog-title light" itemprop="name">
+                    Takoobi's Space
+                </h1>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
+
+</header>
+
+    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+        <div class="container">
+            <div class="row">
+                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                
+                
+                
+                
+
+                    <header class="post-header entry-header">
+
+                    
+
+                    
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
+                        
+                            
+                        
+                        
+                        
+
+                        
+                            JSP 강좌 - JSP Fundamental#2
+                        </h1>
+                    
+
+                        <div class="cursive" style="color: #000; font-style:italic;">기본객체와 영역, 에러처리, 쿠키, 세션</div>
+
+                            <div class="post-info text-center small">
+                            
+                                <span class="entry-date date published updated">
+                            
+                            
+                                    <time datetime="2015-06-25T00:00:00+09:00" class="post-time" itemprop="datePublished">25 Jun 2015</time>
+                                </span>
+                            
+
+                                in <span class="post-tags">
+
+                            
+                                    <a href="http://localhost:4000/categories/index.html#Study" data-toggle="tooltip" title="Other posts from the Study category" rel="tag">Study</a>
+                                
+                            
+                                </span>
+                            
+                            &nbsp;
+                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+
+                            
+
+                            
+                                    <span class="time">6.733333333333333</span> minutes read
+                            
+                                
+                            
+
+                                </span>
+                            
+                            </div>
+
+                    </header>
+
+                    <div class="post-body bordered-bottom" itemprop="description">
+                    
+
+                        <h2 id="section">기본 객체와 영역</h2>
+
+<p><strong>기본객체(Implicit Object))</strong></p>
+
+<p><img src="/assets/img/posts/jsp_object.PNG" alt="jsp 기본 객체" /></p>
+
+<p>위의 기본 객체 중에서 Exception 기본 객체를 제외한 나머지 8개 기본 객체는 모든 JSP 페이지에서 사용할 수 있으며, Exception 기본 객체는 에러 페이지에서만 사용할 수 있다.</p>
+
+<h3 id="out">out</h3>
+
+<ul>
+  <li>JSP 페이지가 생성하는 모든 내용은 out 기본 객체를 통해서 전송.</li>
+  <li>웹 브라우저에 데이터를 전송하는 출력 스트림으로서 JSP 페이지가 생성한 데이터를 출력.</li>
+  <li>복잡한 if-else 사용시 out 기본 객체 사용하면 편리.</li>
+  <li>print(), println(), newLine()</li>
+</ul>
+
+<h3 id="pagecontext">pageContext</h3>
+
+<p>pageContext 기본 객체는 하나의 JSP 페이지와 1-1 매핑되는 객체로서 다음과 같은 기능을 제공한다.</p>
+
+<ul>
+  <li>다른 기본 객체 구하기</li>
+  <li>속성 처리학기</li>
+  <li>페이지의 흐름 제어</li>
+  <li>에러 데이터 구하기</li>
+</ul>
+
+<p><img src="/assets/img/posts/jsp_page.PNG" alt="jsp pageContext 메서드" /></p>
+
+<h3 id="application">application</h3>
+
+<p>특정 웹 어플리케이션에 포함된 모든 JSP 페이지는 하나의 application 기본 객체를 공유하게 된다.</p>
+
+<h4 id="section-1">초기화 파라미터 설정</h4>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>//파일명: web.xml
+<span class="nt">&lt;context-param&gt;</span>
+    <span class="nt">&lt;description&gt;</span>파라미터 설명(필수 아님)<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;param-name&gt;</span>파라미터이름<span class="nt">&lt;/param-name&gt;</span>
+    <span class="nt">&lt;param-value&gt;</span>파라미터값<span class="nt">&lt;/param-value&gt;</span>
+<span class="nt">&lt;/context-param&gt;</span>
+</code></pre>
+</div>
+<p>web.xml 파일에 위와 같이 초기화 파라미터를 추가하게 되면, application 기본 객체에서 제공하는 메서드를 사용하여 초기화 파라미터를 JSP 페이지에서 사용할 수 있게 된다.</p>
+
+<p><img src="/assets/img/posts/jsp_application.PNG" alt="jsp application 초기화 메서드" /></p>
+
+<p>웹 어플리케이션 초기화 파라미터는 주로 초기화 작업에 필요한 설정 정보를 지정하기 위해 사용된다. 예를 들면 데이터베이스 연결과 관련된 설정 파일의 경로, 로깅 설정 파일, 주요 속성 정보를 담고 있는 파일의 경로 등을 지정할 때 사용된다.</p>
+
+<h4 id="section-2">자원 구하기</h4>
+
+<p><img src="/assets/img/posts/jsp_application2.PNG" alt="jsp application 자원 구하기" /></p>
+
+<h3 id="section-3">기본 객체와 영역</h3>
+
+<h2 id="section-4">에러 처리</h2>
+
+<p>기본적으로 출력되는 상세한 에러 페이지 화면은 사용자로 하여금 사이트에 대한 신뢰를 떨어뜨리기 때문에, 사용자에게 친숙한 에러 화면을 보여주어야 한다.
+JSP에서는 JSP 페이지를 처리하는 도중에 Exception이 발생할 경우 에러 화면 대신 지정한 JSP 페이지를 보여줄 수 있는 기능을 제공하고 있다.</p>
+
+<h3 id="section-5">에러 페이지 지정과 작성</h3>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">//파일명: main.jsp</span>
+<span class="c1">//에러 페이지 지정</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">errorPage</span> <span class="o">=</span> <span class="s">"error.jsp"</span> <span class="o">%&gt;</span>
+</code></pre>
+</div>
+
+<p>page 디렉티브의 errorPage 속성을 사용해서 에러 페이지를 지정하면, 에러가 발생할 때 지정한 에러 페이지를 사용하게 되고, 에러 페이지에 해당하는 JSP 페이지는 page 디렉티브의 isErrorPage 속성의 값을 true로 지정해 주어야 한다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">//파일명: error.jsp</span>
+<span class="c1">//에러 페이지 작성</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">isErrorPage</span> <span class="o">=</span> <span class="s">"true"</span> <span class="o">%&gt;</span>
+<span class="err">에러</span> <span class="err">타입</span><span class="o">:</span> <span class="o">&lt;%=</span> <span class="n">exception</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">%&gt;</span>
+<span class="err">에러</span> <span class="err">메시지</span><span class="o">:</span> <span class="o">&lt;%=</span> <span class="n">exception</span><span class="o">.</span><span class="na">getMessage</span><span class="o">()</span> <span class="o">%&gt;</span>
+<span class="err">에러</span> <span class="err">추적</span> <span class="err">메시지</span><span class="o">:</span> <span class="err">﻿</span><span class="o">&lt;%=</span> <span class="n">exception</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">()</span> <span class="o">%&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="section-6">응답 상태 코드별로 에러 페이지 지정</h3>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>//파일명: web.xml
+<span class="nt">&lt;web-app</span> <span class="err">...</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;error-page&gt;</span>
+        <span class="nt">&lt;error-code&gt;</span>404<span class="nt">&lt;/error-code&gt;</span>
+        <span class="nt">&lt;location&gt;</span>/error/error404.jsp<span class="nt">&lt;/location&gt;</span>
+    <span class="nt">&lt;/error-page&gt;</span>
+    ...
+<span class="nt">&lt;/web-app&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="section-7">에러 타입별 에러 페이지 지정</h3>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;web-app</span> <span class="err">...</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;error-page&gt;</span>
+        <span class="nt">&lt;exception-type&gt;</span>java.lang.NullPointerException<span class="nt">&lt;/exception-type&gt;</span>
+        <span class="nt">&lt;location&gt;</span>/error/errorNullPointer.jsp<span class="nt">&lt;/location&gt;</span>
+    <span class="nt">&lt;/error-page&gt;</span>
+    ...
+<span class="nt">&lt;/web-app&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="section-8">에러 페이지 우선 순위</h3>
+
+<ol>
+  <li>page 디렉티브의 errorPage 속성에서 지정한 에러 페이지를 보여준다.</li>
+  <li>JSP 페이지에서 발생한 예외 타입이 web.xml 파일의 <exception-type>에서 지정한 예외 타입과 동일한 경우 지정한 에러 페이지를 보여준다.</exception-type></li>
+  <li>JSP 페이지에서 발생한 에러 코드가 web.xml 파일의 <error-code>에서 지정한 에러 코드와 동일한 경우 지정한 에러 페이지를 보여준다.</error-code></li>
+  <li>아무것도 해당되지 않을 경우 웹 컨테이너가 제공하는 기본 에러 페이지를 보여준다.</li>
+</ol>
+
+<h2 id="cookie">쿠키(Cookie)</h2>
+
+<p>웹 브라우저는 파라미터를 사용해서 웹 서버에 정보를 전달한다. 반대로 웹 서버가 웹 브라우저에 정보를 전달하는 방법이 있는데, 그것이 쿠키를 사용하는 것이다. 웹 서버와 웹 브라우저는 쿠키를 사용해서 서로 필요한 값을 공유하며 상태를 유지할 수 있다.
+쿠키는 웹 브라우저가 보관하고 있는 데이터로서, 웹 브라우저가 웹 서버에 요청을 보낼 때 쿠키를 함께 전송한다. 쿠키는 웹 서버와 웹 브라우저 양쪽에서 생성할 수 있으며, 웹 서버는 웹 브라우저가 전송한 쿠키를 사용하여 필요한 데이터를 읽어올 수 있다.</p>
+
+<p><img src="/assets/img/posts/jsp_cookie.PNG" alt="jsp 쿠키" /></p>
+
+<h3 id="section-9">쿠키의 구성</h3>
+
+<h4 id="section-10">구성 요소</h4>
+
+<ul>
+  <li>이름 - 각각의 쿠키를 구별하는 데 사용되는 이름</li>
+  <li>값 - 쿠키의 이름과 관련된 값</li>
+  <li>유효시간 - 쿠키의 유지 시간</li>
+  <li>도메인 - 쿠키를 전송할 도메인</li>
+  <li>경로 - 쿠키를 전송할 요청 경로</li>
+</ul>
+
+<h4 id="section-11">쿠키 이름의 제약</h4>
+
+<ul>
+  <li>쿠키의 이름은 아스키 코드의 알파벳과 숫자만을 포함할 수 있다.</li>
+  <li>콤마(,), 세미콜론(;), 공백(‘ ‘) 등의 문자는 포함할 수 없다.</li>
+  <li>’$’로 시작할 수 없다.</li>
+</ul>
+
+<p>쿠키의 값이 알파벳과 숫자가 아닌 바이너리 값을 포함하고 있는 경우 BASE64 인코딩으로 처리해주어야한다.
+쿠키의 값은 공백, 괄호, 등호기호, 콤마, 콜론, 세미콜론 등의 문자를 포함할 수 없기 때문에 이들 값을 포함하기 위해서는 반드시 인코딩 처리를 해주어야한다.
+쿠키는 값으로 한글과 같은 문자를 가질 수 없기 때문에 인코딩 해주어야 한다.</p>
+
+<h3 id="crud">쿠키 CRUD</h3>
+
+<h4 id="section-12">쿠키 생성</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s">"java"</span> <span class="n">contentType</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span>
+    <span class="n">pageEncoding</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="o">%&gt;</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="kn">import</span><span class="err">="</span><span class="nn">java.net.URLEncoder</span><span class="s">" %&gt;
+&lt;%
+	Cookie cookie = new Cookie("</span><span class="n">name</span><span class="s">", URLEncoder.encode("</span><span class="err">홍만이</span><span class="s">", "</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="s">"));
+	response.addCookie(cookie);
+%&gt;
+&lt;!DOCTYPE html PUBLIC "</span><span class="o">-</span><span class="c1">//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s">"Content-Type"</span> <span class="n">content</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="err">쿠키생성</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;%=</span> <span class="n">cookie</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">%&gt;</span> <span class="err">쿠키의</span> <span class="err">값</span> <span class="o">=</span> <span class="s">"&lt;%= cookie.getValue() %&gt;"</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="section-13">쿠키 읽기</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">// 쿠키 읽기</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s">"java"</span> <span class="n">contentType</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span>
+    <span class="n">pageEncoding</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="o">%&gt;</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="kn">import</span><span class="err">="</span><span class="nn">java.net.URLDecoder</span><span class="s">" %&gt;
+&lt;!DOCTYPE html PUBLIC "</span><span class="o">-</span><span class="c1">//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s">"Content-Type"</span> <span class="n">content</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="err">쿠키</span> <span class="err">읽기</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;%</span>
+	<span class="n">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">();</span>
+	<span class="k">if</span><span class="o">(</span><span class="n">cookies</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">cookies</span><span class="o">.</span><span class="na">length</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">){</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">cookies</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+<span class="o">%&gt;</span>
+<span class="o">&lt;%=</span> <span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">()</span> <span class="o">%&gt;</span> <span class="o">=</span>
+<span class="o">&lt;%=</span><span class="n">URLDecoder</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getValue</span><span class="o">(),</span> <span class="s">"UTF-8"</span><span class="o">)</span> <span class="o">%&gt;</span>
+<span class="o">&lt;%</span> 		<span class="o">}</span>
+	<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+<span class="o">%&gt;</span>
+<span class="err">쿠키가</span> <span class="err">존재하지</span> <span class="err">않습니다</span><span class="o">.</span>
+<span class="o">&lt;%</span>
+	<span class="o">}</span>
+<span class="o">%&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="section-14">쿠키 변경</h4>
+
+<p>쿠키 값을 변경하기 위해서 별도의 메서드가 제공되는 것이 아니라 같은 이름의 쿠키를 새로 생성해서 응답 데이터로 보내주면 된다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s">"java"</span> <span class="n">contentType</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span>
+    <span class="n">pageEncoding</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="o">%&gt;</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="kn">import</span><span class="err">="</span><span class="nn">java.net.URLEncoder</span><span class="s">" %&gt;
+&lt;%
+Cookie[] cookies = request.getCookies();
+if (cookies != null &amp;&amp; cookies.length &gt; 0){
+	for(int i=0; i &lt; cookies.length; i++){
+		if(cookies[i].getName().equals("</span><span class="n">name</span><span class="s">")){
+			Cookie cookie = new Cookie("</span><span class="n">name</span><span class="s">",
+					URLEncoder.encode("</span><span class="err">홍길동</span><span class="s">","</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="s">"));
+			response.addCookie(cookie);
+		}
+	}
+}
+%&gt;
+&lt;!DOCTYPE html PUBLIC "</span><span class="o">-</span><span class="c1">//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s">"Content-Type"</span> <span class="n">content</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Insert</span> <span class="n">title</span> <span class="n">here</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="section-15">쿠키 삭제</h4>
+
+<p>Cookie 클래스는 쿠키를 삭제하는 기능을 별도로 제공하고 있지는 않으며, 유효 시간을 0으로 지정해준 후 응답 헤더에 추가해주면, 웹 브라우저가 관련 쿠키를 삭제하게 된다.
+<code class="highlighter-rouge">setMaxAge(0)</code></p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s">"java"</span> <span class="n">contentType</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span>
+    <span class="n">pageEncoding</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="o">%&gt;</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="kn">import</span><span class="err">="</span><span class="nn">java.net.URLEncoder</span><span class="s">" %&gt;
+&lt;%
+Cookie[] cookies = request.getCookies();
+if (cookies != null &amp;&amp; cookies.length &gt; 0){
+	for(int i=0; i &lt; cookies.length; i++){
+		if(cookies[i].getName().equals("</span><span class="n">name</span><span class="s">")){
+			Cookie cookie = new Cookie("</span><span class="n">name</span><span class="s">","");
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		}
+	}
+}
+%&gt;
+&lt;!DOCTYPE html PUBLIC "</span><span class="o">-</span><span class="c1">//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s">"Content-Type"</span> <span class="n">content</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Insert</span> <span class="n">title</span> <span class="n">here</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="section-16">쿠키 도메인</h3>
+
+<ul>
+  <li>기본적으로 쿠키는 그 쿠키를 생성한 서버에만 전송</li>
+  <li>도메인 지정 시, 해당 도메인에 쿠키 전달</li>
+  <li><code class="highlighter-rouge">Cookie.setDomain()</code> 으로 쿠키 설정</li>
+  <li>setDomain()의 값으로 현재 서버의 도메인 및 상위 도메인만 전달할 수 있다.</li>
+  <li>도메인 형식
+    <ul>
+      <li>.somehost.com - 점으로 시작하는 경우 관련 도메인에 모두 쿠키를 전송한다.</li>
+      <li>www.somehost.com - 특정 도메인에 대해서만 쿠키를 전송한다.</li>
+    </ul>
+  </li>
+  <li>웹 브라우저는 도메인이 벗어난 쿠키는 저장하지 않음</li>
+  <li>쿠키 도메인에 따라 쿠키가 전달</li>
+</ul>
+
+<h3 id="section-17">쿠키 경로</h3>
+
+<ul>
+  <li>경로 미 설정 시, 요청 URL의 경로에 대해서만 쿠키 전달</li>
+  <li>경로 설정 시, 설정한 경로 및 그 하위 경로에 대해서만 쿠키 전달</li>
+  <li>Cookie.setPath()로 경로 설정</li>
+  <li>쿠키는 공통으로 사용되는 경우가 많기 때문에 대부분 쿠키의 경로를 “/” 로 지정</li>
+</ul>
+
+<h3 id="section-18">유효기간</h3>
+
+<ul>
+  <li>유효 시간 미 지정 시 혹음 음수 값일 경우, 웹 브라우저 닫을 때 쿠키도 함께 삭제</li>
+  <li>Cookie.setMaxAge()로 쿠키 유효 시간 설정</li>
+  <li>유효 시간이 지나지 않을 경우 웹 브라우저를 닫더라도 쿠키가 삭제되지 않고, 이후 웹 브라우저를 열었을 때 해당 쿠키 전송됨</li>
+  <li>유효 시간 : 초 단위로 설정</li>
+</ul>
+
+<h3 id="section-19">쿠키 사용 클래스 만들기</h3>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLDecoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLEncoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.Cookie</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CookieBox</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Cookie</span><span class="o">&gt;</span> <span class="n">cookieMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Cookie</span><span class="o">&gt;();</span>
+
+	<span class="kd">public</span> <span class="nf">CookieBox</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">){</span>
+		<span class="n">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">();</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">cookies</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">){</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cookies</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+				<span class="n">cookieMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">(),</span> <span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Cookie</span> <span class="nf">createCookie</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">Cookie</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Cookie</span> <span class="nf">createCookie</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">path</span><span class="o">,</span> <span class="kt">int</span> <span class="n">maxAge</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
+		<span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cookie</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+		<span class="n">cookie</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+		<span class="n">cookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="n">maxAge</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">cookie</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Cookie</span> <span class="nf">createCookie</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">String</span> <span class="n">domain</span><span class="o">,</span> <span class="n">String</span> <span class="n">path</span><span class="o">,</span> <span class="kt">int</span> <span class="n">maxAge</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
+		<span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cookie</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+		<span class="n">cookie</span><span class="o">.</span><span class="na">setDomain</span><span class="o">(</span><span class="n">domain</span><span class="o">);</span>
+		<span class="n">cookie</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+		<span class="n">cookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="n">maxAge</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">cookie</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">Cookie</span> <span class="nf">getCookie</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+		<span class="k">return</span> <span class="n">cookieMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getValue</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">{</span>
+		<span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">=</span> <span class="n">cookieMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">cookie</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">URLDecoder</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">cookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span><span class="s">"UTF-8"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">exists</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+		<span class="k">return</span> <span class="n">cookieMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="session">세션(session)</h2>
+
+<p>쿠키가 웹 브라우저에 정보를 보관할 때 사용된다면, 세션은 웹 컨테이너에 정보를 보관할 때 사용된다.
+세션은 오직 서버에서만, 그리고 클라이언트마다 생성된다.</p>
+
+<h3 id="section-20">세션 생성</h3>
+
+<ul>
+  <li>page 디렉티브의 session 속성 값을 true로 지정
+    <ul>
+      <li>세션이 존재하지 않을 경우 세션이 생성되고, 세션이 존재할 경우 이미 생성된 세션을 사용</li>
+    </ul>
+  </li>
+  <li>session 기본 객체를 이용해서 세션에 접근
+    <ul>
+      <li>session의 기본 값은 true이므로 false로 하지 않는 이상 항상 세션 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section-21">종료 &amp; 타임아웃</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">session.invalidate()</code> 을 이용해서 세션 종료</li>
+  <li>세션이 종료되면 기존에 생성된 세션이 삭제</li>
+  <li>이후 접근 시 새로운 세션 생성 됨</li>
+  <li>마지막 세션 사용 이후 유효 기간이 지나면 자동 종료</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>//파일명: web.xml
+//분 단위 지정
+<span class="nt">&lt;session-config&gt;</span>
+  <span class="nt">&lt;session-timeout&gt;</span>50<span class="nt">&lt;/session-timeout&gt;</span>
+<span class="nt">&lt;/session-config&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">//초 단위 지정</span>
+<span class="o">&lt;%</span>
+	<span class="n">session</span><span class="o">.</span><span class="na">setMaxInactiveInterval</span><span class="o">(</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">);</span>
+<span class="o">%&gt;</span>
+</code></pre>
+</div>
+
+
+                        <br>
+
+                    
+                    
+                        <div class="entry-tags text-center">
+                            <i class="fa fa-tags"></i>&nbsp;
+                                Tagged with 
+                            
+                                <a href="http://localhost:4000/tags/index.html#java" data-toggle="tooltip" title="Posts tagged with java" rel="tag">java</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#jsp" data-toggle="tooltip" title="Posts tagged with jsp" rel="tag">jsp</a>
+
+                                
+                            
+                        </div>
+                    
+                    </div>
+
+                    <footer class="post-footer entry-meta">
+                    
+                        <div class="post-share text-center">
+    <p class="light small">
+        Share this post
+    </p>
+    <ul class="social-mini">
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=JSP+%EA%B0%95%EC%A2%8C+-+JSP+Fundamental%232%20http://localhost:4000/blog/jsp-fundamental2%20via%20&#64;"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
+                title="Share on Twitter" itemprop="Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/jsp-fundamental2" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/blog/jsp-fundamental2" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+                    
+
+                        <div class="post-author text-center">
+	<img src="http://localhost:4000/images/me.jpg" alt="Lee Jung Min's photo" itemprop="image" class="post-avatar img-circle img-responsive" />
+	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+		By <span itemprop="name" class="fn"><a href="http://localhost:4000/about" title="About Lee Jung Min" itemprop="url">Lee Jung Min</a></span>
+	</h4>
+	<p>The two most powerful warriors are Patience and Time.</p>
+</div> 
+                        
+                    
+                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+                    
+                    </footer>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+<footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(http://localhost:4000/images/universe.jpeg)">
+
+
+    <div class="inner">
+        <div class="container">
+            <ul class="social-icons">
+                       
+            </ul>
+            <div>
+                <a href="http://localhost:4000/about/">Lee Jung Min</a> &copy; 2016 &bull;
+                All rights reserved.
+            </div>
+            <ul class="menu-items">
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/"><i class="fa fa-home"></i></a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/categories">Programing</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/tags">Tags</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
+        </svg>
+    </div>
+    
+    
+</footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jekyll-search.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/main.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/script.js"></script>
+<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+
+<script type="text/javascript">
+
+/*      Slides       */
+
+$("a#slide").click(function(){
+    $("#sidebar,body,a#slide,#fade").addClass("slide")
+});
+
+$("#fade,#header,#posts-container").click(function(){
+    $("#sidebar,body,a#slide,#fade").removeClass("slide")
+});
+
+$("a#click-filter").click(function(){
+    $("#slide-filter").slideToggle("medium");
+    $("#slide-pages").slideOut("medium");
+});
+
+$("a#click-pages").click(function(){
+    $("#slide-pages").slideToggle("medium");
+    $("#slide-filter").slideOut("medium");
+});
+
+/*      End-Slides      */
+
+</script>
+
+
+<!-- Jekyll Simple Search option -->
+<script>
+
+   SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'http://localhost:4000/assets/json/search.json',
+        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+        noResultsText: '<p>Nothing found.</p>',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      });
+
+  (function( $, window, undefined ) {
+
+     var bs = {
+          close: $("#search-close"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'takoobi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        
+</body>
+</html>

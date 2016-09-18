@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+
+
+<meta name="keywords" content="oracle, database">
+
+
+<!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>오라클 강좌 - Oracle Fundamental#2 - Takoobi’s Space</title>
+<meta property="og:title" content="오라클 강좌 - Oracle Fundamental#2" />
+<meta name="description" content="오라클 DBMS 기본 및 SQL문" />
+<meta property="og:description" content="오라클 DBMS 기본 및 SQL문" />
+<link rel="canonical" href="http://localhost:4000/blog/oracle-fundamental2" />
+<meta property="og:url" content="http://localhost:4000/blog/oracle-fundamental2" />
+<meta property="og:site_name" content="Takoobi’s Space" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-05-28T00:00:00+09:00" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "오라클 강좌 - Oracle Fundamental#2",
+    "datePublished": "2015-05-28T00:00:00+09:00",
+    "description": "오라클 DBMS 기본 및 SQL문",
+    "logo": "http://localhost:4000infinite.png",
+    "url": "http://localhost:4000/blog/oracle-fundamental2"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Takoobi's Space" />
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/font-awesome.min.css" />
+
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/syntax.css" />
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/images/favicons/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/favicons/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/favicons/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/favicons/apple-touch-icon-144x144-precomposed.png">
+</head>
+
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
+
+    
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" id="search-input" class="search-field" placeholder="Search...">
+        <i id="search-close" class="fa fa-times-circle"></i>
+        <h4>Search results</h4>
+        <ul id="results-container" class="search-results post-list">
+        </ul>
+        <!-- /.search-results -->
+    </div>
+    <!-- /.search-form -->
+</div>
+<!-- ./search-wrapper -->
+
+
+<div id="fade"></div>
+<a id="slide" class="animated fade"></a>
+<aside id="sidebar">
+    <nav id="navigation">
+        <h2>MENU</h2>
+        <hr>
+        <ul> 
+            <li>
+                <a href="http://localhost:4000/">Home</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/categories">Programing</a>  </li>
+            
+            <li>
+                <a href="http://localhost:4000/tags">Tags</a>  </li>
+            
+            <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom" style="background-image: url(http://localhost:4000/images/universe.jpeg)"
+    itemscope itemtype="http://schema.org/Organization">
+
+
+
+    <button class="menu-button animated fade dosearch">
+        <i class="fa fa-search"></i>
+    </button> 
+ 
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="http://localhost:4000/" itemprop="url">
+                <img itemprop="logo" src="http://localhost:4000/images/infinite.png" alt="Takoobi's Space Logo" />
+                <h1 class="blog-title light" itemprop="name">
+                    Takoobi's Space
+                </h1>
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+        </svg>
+    </div>
+
+</header>
+
+    <div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+        <div class="container">
+            <div class="row">
+                <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+                
+                
+                
+                
+
+                    <header class="post-header entry-header">
+
+                    
+
+                    
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">
+                        
+                            
+                        
+                        
+                        
+
+                        
+                            오라클 강좌 - Oracle Fundamental#2
+                        </h1>
+                    
+
+                        <div class="cursive" style="color: #000; font-style:italic;">오라클 DBMS 기본 및 SQL문 </div>
+
+                            <div class="post-info text-center small">
+                            
+                                <span class="entry-date date published updated">
+                            
+                            
+                                    <time datetime="2015-05-28T00:00:00+09:00" class="post-time" itemprop="datePublished">28 May 2015</time>
+                                </span>
+                            
+
+                                in <span class="post-tags">
+
+                            
+                                    <a href="http://localhost:4000/categories/index.html#Study" data-toggle="tooltip" title="Other posts from the Study category" rel="tag">Study</a>
+                                
+                            
+                                </span>
+                            
+                            &nbsp;
+                                <span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+
+                            
+
+                            
+                                    <span class="time">18.194444444444443</span> minutes read
+                            
+                                
+                            
+
+                                </span>
+                            
+                            </div>
+
+                    </header>
+
+                    <div class="post-body bordered-bottom" itemprop="description">
+                    
+
+                        <p>##테이블 무결성 제약조건</p>
+
+<p><strong>데이터 무결성 제약 조건(Data Integrity Constraint Rule)</strong>
+테이블에 부적절한 자료(데이터)가 입력되는 것을 방지하기 위해서 테이블을 생성할 때
+각 컬럼에 대해서 정의하는 여러 가지 규칙을 의미.</p>
+
+<ul>
+  <li>Not null/null : null을 허용할 지 아니면 반드시 입력받게 할 건지의 조건.</li>
+  <li>Unique : 지정된 컬럼에 중복되지 않고 유일한 값만 저장되는 조건.</li>
+  <li>Primary key(기본키) : unique + not null</li>
+  <li>Check : 특정한 값만 저장되는 필드 조건.</li>
+  <li>Default : 기본값으로 특정 값이 저장되도록 설정하는 조건.</li>
+  <li>Foreign key(외래키) : 다른 테이블의 컬럼에 들어있는 값만 저장을 허용하는 조건.</li>
+</ul>
+
+<p><strong>USER_CONSTRAINTS 데이터 딕셔너리 뷰 : 제약 조건에 관한 정보를 알려 줌</strong></p>
+
+<ul>
+  <li>owner : 제약 조건을 소유한 사용자명을 저장하는 컬럼.</li>
+  <li>constraint_name : 제약 조건명을 저장하는 컬럼.</li>
+  <li>constraint_type : 제약 조건 유형을 저장하는 컬럼.
+    <ul>
+      <li>P : Primary key</li>
+      <li>R : Foreign key</li>
+      <li>U : Unique</li>
+      <li>C : Check, Not null</li>
+    </ul>
+  </li>
+  <li>table_name : 각 제약 조건들이 속한 테이블의 이름.</li>
+  <li>search_condition : 어떤 내용이 조건으로 사용되었는지 설명.</li>
+  <li>r_constraint_name : 제약 조건이 foreign key인 경우 어떤 primary key를 참조했는지에 대한 정보를 갖음.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;desc user_constraints;   
+SQL&gt;column constraint_type format a15
+SQL&gt;select constraint_name, constraint_type, table_name from user_constraints;
+</code></pre>
+</div>
+<p><strong>user_cons_columns 데이터 딕셔너리 뷰 : 어떤 컬럼에 어떤 제약 조건이 지정되었는지 알려주는 데이터 딕셔너리</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;column owner format a10
+SQL&gt;column constraint_name format a15
+SQL&gt;column table_name format a15
+SQL&gt;column column_name format a15
+SQL&gt;select * from user_cons_columns;
+</code></pre>
+</div>
+
+<p>###컬럼 레벨 제약 조건 지정 방법</p>
+
+<p>####NOT NULL 제약 조건을 설정하지 않고 테이블 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table emp01;
+SQL&gt;create table emp01
+        (
+            empno number(4),
+            ename varchar2(10),
+            job varchar2(10),
+            deptno number(2)
+        );
+
+SQL&gt;insert into emp01
+        values (null, null, 'SALEMAN', 40);
+</code></pre>
+</div>
+
+<p>####not null 제약 조건을 걸고 테이블 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table emp02;
+SQL&gt;create table emp02
+        (
+            empno number(4) not null,
+            ename varchar2(10) not null,
+            job varchar2(10),
+            deptno number(2)
+        );
+SQL&gt;insert into emp02
+        values (null, null, 'SALEMAN', 40);--[error]
+SQL&gt;insert into emp02
+        values (null, 'SCOTT', 'SALEMAN', 40);--[error]
+SQL&gt;insert into emp02
+        values (7499, 'ALLEN', 'SALEMAN', 30);
+</code></pre>
+</div>
+
+<p>####Unique 제약 조건을 설정하여 테이블 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table emp03;
+SQL&gt;create table emp03
+        (
+            empno number(4) unique,
+            ename varchar2(10) not null,
+            job varchar2(10),
+            deptno number(2)
+        );
+SQL&gt;insert into emp03
+        values (7499, 'ALLEN', 'SALEMAN', 30);
+SQL&gt;insert into emp03
+        values (7566, 'JONES', 'MANAGER', 20);
+SQL&gt;insert into emp03
+        values (null, 'SMITH', 'CLERK', 20);
+SQL&gt;insert into emp03
+        values (null, 'JAMES', 'CLERK', 20);
+SQL&gt;insert into emp03
+        values (null, 'JAMES', 'CLERK', 20);
+</code></pre>
+</div>
+
+<p>####not null &amp; unique 제약 조건 : 컬럼 레벨로 제약 조건명 명시하기.</p>
+
+<ul>
+  <li>사용자가 제약 조건명을 지정하지 않고 제약 조건만을 명시할 경우 오라클 서버가 자동으로 제약 조건명을 부여한다.</li>
+  <li>오라클이 부여하는 제약 조건명은 SYS_ 다음에 숫자를 나열한다.</li>
+  <li>어떤 제약 조건을 위배했는지 알 수 없기 때문에 사용자가 의미있게 제약 조건명을 명시할 수 있도록 오라클은 제공.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table emp04;
+SQL&gt;create table emp04
+        (
+            empno number(4) constraint emp04_empno_uk unique,
+            ename varchar2(10) constraint emp04_ename_nn not null,
+            job varchar2(10),
+            deptno number(2)
+        );
+SQL&gt;insert into emp04
+        values (7499, 'ALLEN', 'SALEMAN', 30);
+SQL&gt;insert into emp04
+        values (7499, 'JONES', 'MANAGER', 20);
+
+SQL&gt;select table_name, constraint_name
+        from user_constraints
+        where table_name in ('EMP04');
+</code></pre>
+</div>
+
+<h4 id="primary-key---">Primary key 제약 조건 설정하기</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table emp05;
+SQL&gt;create table emp05
+        (
+            empno number(4) constraint emp05_empno_pk primary key,
+            ename varchar2(10) constraint emp05_ename_nn not null,
+            job varchar2(10),
+            deptno number(2)
+        );
+SQL&gt;insert into emp05
+        values (7499, 'ALLEN', 'SALEMAN', 30);
+SQL&gt;insert into emp05
+        values (7499, 'JONES', 'MANAGER', 20);--[error]
+SQL&gt;insert into emp05
+        values (null, 'JONES', 'MANAGER', 20);--[error]
+</code></pre>
+</div>
+
+<h4 id="foreign-key--">참조 무결성을 위한 Foreign key(외래키) 제약 조건</h4>
+
+<p>부모 키가 되기 위한 컬럼은 반드시 부모 테이블의 기본키(primary key)이거나 유일키(unique)로 설정되어 있어야 한다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table dept01;
+SQL&gt;create table dept01
+        (
+             deptno number(2) constraint dept01_deptno_pk primary key,
+             dname varchar2(14),
+             loc varchar2(13)
+        );
+SQL&gt;insert into dept01
+        values (10, 'ACCOUNTING', 'NEW YORK');
+SQL&gt;insert into dept01
+        values (20, 'RESEARCH', 'DALLAS');
+SQL&gt;insert into dept01
+        values (30, 'SALES', 'CHICAGO');
+
+SQL&gt;drop table emp06;
+SQL&gt;create table emp06
+        (
+            empno number(4) constraint emp06_empno_pk primary key,
+            ename varchar2(10) constraint emp06_ename_nn not null,
+            job varchar2(10),
+            deptno number(2) constraint emp06_deptno_fk references dept01(deptno)
+        );
+SQL&gt;insert into emp06
+        values (7499, 'ALLEN', 'SALEMAN', 30);
+SQL&gt;insert into emp06
+        values (7566, 'JONES', 'MANAGER', 40);--[error]
+</code></pre>
+</div>
+
+<p>####Check 제약 조건 설정하기</p>
+
+<ul>
+  <li>급여 컬럼을 생성하되 값은 500~5000  사이의 값만 저장 가능.</li>
+  <li>성별 저장 컬럼으로 gender를 정의하고 ‘M’, ‘F’ 둘 중 하나만 저장 가능.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table emp07;
+SQL&gt;create table emp07
+        (
+               empno number(4) constraint emp07_empno_pk primary key,
+               ename varchar2(20) constraint emp07_ename_nn not null,
+               sal number(7, 2) constraint emp07_sal_ck check(sal between 500 and 5000),
+               gender varchar2(1) constraint emp07_gender_ck check(gender in ('M', 'F'))
+        );
+SQL&gt;insert into emp07
+        values (7499, 'ALLEN', 200, 'M');--[error]
+SQL&gt;insert into emp07
+        values (7499, 'ALLEN', 700, 'M');
+SQL&gt;insert into emp07
+        values (7499, 'JONES', 900, 'A');--[error]
+</code></pre>
+</div>
+
+<h4 id="default---">Default 제약 조건 설정하기</h4>
+
+<p>지역(loc) 컬럼에 아무 값도 입력하지 않을 때 디폴트 값인 ‘SEOUL’  입력되도록 디폴트 제약 조건 지정.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop table dept02;
+SQL&gt;create table dept02
+        (
+               deptno number(2) primary key,
+               dname varchar2(14),
+               loc varchar2(12) default 'SEOUL'
+        );
+SQL&gt;insert into dept02(deptno, dname)
+        values (10, 'ACCOUNTING');
+SQL&gt;insert into dept02
+        values (20, 'RESEARCH', 'NEW YORK');
+</code></pre>
+</div>
+
+<h4 id="section">컬럼 레벨로 제약 조건명을 명시해서 제약 조건 설정하기</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create table emp10
+        (
+            empno number(4) constraint emp06_empno_pk primary key,
+            ename varchar2(10) constraint emp06_ename_nn not null,
+            job varchar2(10),
+            deptno number(2) constraint emp06_deptno_fk references dept01(deptno)
+        );
+</code></pre>
+</div>
+
+<h4 id="section-1">테이블 레벨 방식으로 제약 조건 설정하기</h4>
+
+<p><strong>not null 제약 조건은 테이블 레벨 방식으로 제약 조건을 지정할 수 없다.</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create table emp11
+        (
+            empno number(4),
+            ename varchar2(10) constraint emp06_ename_nn not null,
+            job varchar2(10),
+            deptno number(2),
+            primary key(empno),
+            unique(job),
+            foreign key(deptno) references dept01(deptno)
+        );
+
+SQL&gt;create table emp11
+        (
+            empno number(4),
+            ename varchar2(10) constraint emp06_ename_nn not null,
+            job varchar2(10),
+            deptno number(2),
+            constraint emp11_empno_pk primary key(empno),
+            constraint emp11_job_uk unique(job),
+            constraint emp11_deptno_fk foreign key(deptno) references dept01(deptno)
+        );
+</code></pre>
+</div>
+
+<p>####제약 조건 추가하기</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;alter table emp01
+        add constraint emp01_empno_pk primary key(empno);
+
+SQL&gt;alter table emp01
+        add constraint emp01_deptno_fk foreign key(deptno) references dept(deptno);
+
+SQL&gt;insert into emp01
+        values (null, null, 'SALEMAN', 40);
+</code></pre>
+</div>
+
+<p>####not null 제약 조건 추가 하기</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;alter table emp01
+        modify ename constraint emp01_ename_nn not null;
+</code></pre>
+</div>
+
+<p>####제약 조건 제거하기</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;alter table emp01
+        drop primary key;
+SQL&gt;alter table emp01
+        drop constraint emp01_ename_nn;
+</code></pre>
+</div>
+
+<p>####제약 조건(외래키) 삭제</p>
+
+<ol>
+  <li>제약 조건의 비활성화
+    <ul>
+      <li>자식 테이블인 사원테이블(emp06)은 부모테이블(dept01)에 기본키인 부서번호를 참조하고 있다.</li>
+      <li>부서 테이블의 30번 부서는 사원 테이블에 근무하는 30번 사원이 존재하기 때문에 삭제할 수 없다.</li>
+      <li>부모테이블의 부서번호 30번이 삭제되면 자식테이블에서 자신이 참조하는 부모를 잃어버리게 되므로 삭제할 수 없는 것이다.</li>
+      <li>어떻게 삭제?
+        <ol>
+          <li>부서 테이블의 30번 부서에서 근무하는 사원을 삭제한 후 부서 테이블에서 30번 부서를 삭제.</li>
+          <li>참조 무결성 때문에서 삭제가 불가능하므로 emp06 테이블의 외래키 제약 조건을 제거한 후 30번 부서를 삭제.</li>
+        </ol>
+      </li>
+      <li>제약조건의 비활성화
+        <ol>
+          <li>테이블에서 제약 조건을 삭제하지 않고 일시적으로 적용시키지 않도록하는 방법으로 제약 조건을 비활성화 하는 방법.</li>
+          <li>DISABLE_CONSTRAINT : 제약  조건의 일시 비활성화</li>
+          <li>ENABLE_CONSTRAINT : 비활성화된 제약 조건을 해제하여 다시 활성화.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>cascade 옵션
+    <ul>
+      <li>부모테이블(dept01)과 자식 테이블(emp06) 간의 참조 설정(외래키)이되어 있을 때 부모테이블의 제약 조건을 비활성화하면
+이를 참조하고 있는 자식테이블의 제약 조건까지 비활성화 시켜주는 옵션.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;delete from dept01
+        where deptno=30;
+
+//제약 조건의 비활성화
+SQL&gt;alter table emp06
+        disable constraint emp06_deptno_fk;
+SQL&gt;delete from dept01
+        where deptno=30;
+SQL&gt;alter table emp06
+        enable constraint emp06_deptno_fk;
+SQL&gt;insert into dept01
+        values (30, 'SALES', 'CHICAGO');
+
+//cascade 옵션
+SQL&gt;alter table dept01
+         disable primary key cascade;
+SQL&gt;alter table dept01
+         drop primary key;
+SQL&gt;alter table dept01
+         drop primary key cascade;
+</code></pre>
+</div>
+
+<p>##시퀀스(Sequence)</p>
+
+<ul>
+  <li>유일(UNIQUE)한 값을 생성해주는 오라클 객체이다.</li>
+  <li>시퀀스를 생성하면 기본키와 같이 순차적으로 증가하는 컬럼을 자동적으로 생성 할 수 있다.</li>
+  <li>보통 PRIMARY KEY 값을 생성하기 위해 사용 한다.</li>
+  <li>메모리에 Cache되었을 때 시퀀스값의 액세스 효율이 증가 한다.</li>
+  <li>시퀀스는 테이블과는 독립적으로 저장되고 생성된다.</li>
+</ul>
+
+<p>테이블 생성 후 시퀀스(일련번호)를 따로 만들어야 한다.</p>
+
+<p>####샘플테이블 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create table memos
+        (
+            num number(4) primary key,
+            name varchar2(20) not null,
+            postDate Date default (sysdate)
+        );
+</code></pre>
+</div>
+
+<p>###해당 테이블의 시퀀스 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create sequence memos_seq
+    start with 1 increment by 1 ;
+</code></pre>
+</div>
+
+<p>####데이터 입력 : 일련번호 포함</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;insert into memos(num, name)
+    values (memos_seq.nextval, '홍길동');
+SQL&gt;insert into memos(num, name)
+    values (memos_seq.nextval, '홍길서');
+SQL&gt;insert into memos(num, name)
+    values (memos_seq.nextval, '홍길남');
+SQL&gt;insert into memos(num, name)
+    values (memos_seq.nextval, '홍길북');
+</code></pre>
+</div>
+
+<h4 id="section-2">현재 시퀀스가 어디까지 증가되어져 있는지 확인</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;select memos_seq.currval from dual;
+</code></pre>
+</div>
+
+<p>###시퀀스 수정 : 최대 증가값을 6까지로 제한</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;alter sequence memos_seq maxvalue 6;
+SQL&gt;insert into memos(num, name)
+    values (memos_seq.nextval, '이길동');
+SQL&gt;insert into memos(num, name)
+    values (memos_seq.nextval, '박길동');
+</code></pre>
+</div>
+
+<p>###시퀀스 삭제</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop sequence memos_seq;
+
+cf) 권한 부여
+   - system으로 접속 후
+      SQL&gt;grant create sequence to 사용자명;
+</code></pre>
+</div>
+
+<p>##트랜잭션(transaction)</p>
+
+<p><a href="http://www.gurubee.net/lecture/1403">개념</a></p>
+
+<ul>
+  <li>commit : 명령어 완전 실행.</li>
+  <li>rollback : 명령어 되돌리기(실행 해제)</li>
+</ul>
+
+<p>####테이블 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create table trans
+        (
+              num number(2) primary key,
+              name varchar2(20) not null,
+              email varchar2(50),
+              title varchar2(150),
+              postDate Date default sysdate,
+              postIP varchar2(20)
+        );
+</code></pre>
+</div>
+
+<p>####시퀀스(일련번호) 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create sequence trans_seq
+    start with 1 increment by 1;
+
+SQL&gt;insert into trans
+    values (trans_seq.nextval, '홍길동', 'a@a.com', '안녕하세요, 홍길동입니다.',
+    sysdate, '127.0.0.1');
+SQL&gt;insert into trans
+    values (trans_seq.nextval, '홍길서', 'b@b.com', '안녕하세요, 홍길서입니다.',
+    sysdate, '127.0.0.1');
+</code></pre>
+</div>
+
+<p>##뷰(View)</p>
+
+<ul>
+  <li>물리적인 테이블에 근거한 논리적인 가상 테이블.</li>
+  <li>가상이란 단어는 실질적으로 데이터를 저장하고 있지 않기 때문에 붙인 것이고, 테이블이란 단어는 실질적으로 데이터를 저장하고 있지는 않지만 사용자는 마치 테이블을 사용하는 것과 동일하게 뷰를 사용할 수 있기 때문에 붙인 것.</li>
+  <li>뷰는 기본 테이블에서 파생된 객체로서 기본 테이블에 대한 하나의 쿼리문임.</li>
+  <li>실제 테이블에 저장된 데이터를 뷰를 통해서 볼 수 있도록 함.</li>
+  <li>사용자에게 주어진 뷰를 통해서 기본 테이블을 제한적으로 사용하게 됨.</li>
+  <li>뷰는 이미 존재하고 있는 테이블에 제한적으로 접근하도록 한다.</li>
+  <li>뷰를 생성하기 위해서는 실질적으로 데이터를 저장하고 있는 물리적인 테이블이 존재해야 하는데 이 테이블을 기본 테이블이다.</li>
+</ul>
+
+<h4 id="section-3">뷰의 기본 테이블 생성</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//dept 테이블의 복사본을 dept_copy 으로 생성함.
+SQL&gt;create table dept_copy
+    as
+    select * from dept;
+
+//emp 테이블의 복사본을 emp_copy으로 생성함.
+SQL&gt;create table emp_copy
+    as
+    select * from emp;
+</code></pre>
+</div>
+
+<h3 id="section-4">뷰 정의하기</h3>
+
+<ul>
+  <li>뷰를 생성하기 위해서는 create view로 시작함. as 다음은 마치 서브쿼리문과 유사함.</li>
+  <li>서브쿼리에는 우리가 지금까지 사용했던 select 문을 기술하면 됨.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 만일 30번 부서에 소속된 사원들의 사번과 이름과 부서번호를 자주 검색한다고 한다면
+SQL&gt;select empno, ename, deptno
+    from emp_copy
+    where deptno = 30;
+
+SQL&gt;create view emp_view30
+    as
+    select empno, ename, deptno
+    from emp_copy
+    where deptno = 30;
+
+SQL&gt;select * from emp_view30;
+</code></pre>
+</div>
+
+<h4 id="userviews--">뷰의 내부구조와 user_views 데이터 딕셔너리</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;desc user_views;
+SQL&gt;select view_name, text from user_views;
+</code></pre>
+</div>
+
+<h3 id="section-5">뷰의 동작 원리</h3>
+
+<ol>
+  <li>사용자가 뷰에 대해서 질의를 하면 user_views에서 뷰에 대한 정의를 조회한다.</li>
+  <li>기본 테이블에 대한 뷰의 접근 권한을 살핀다.</li>
+  <li>뷰에 대한 질의를 기본 테이블에 대한 질의로 변환한다.</li>
+  <li>기본 테이블에 대한 질의를 통해 데이터 검색한다.</li>
+  <li>검색된 결과를 출력한다.</li>
+</ol>
+
+<h4 id="section-6">뷰와 기본 테이블 관계 파악</h4>
+
+<ol>
+  <li>뷰를 통한 데이터 저장이 가능?</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;insert into emp_view30 values (8000, 'ANGEL', 30);
+SQL&gt;select * from emp_view30;
+SQL&gt;select * from emp_copy;
+</code></pre>
+</div>
+
+<ol>
+  <li>
+    <p>insert 문에 뷰(emp_view30)를 사용하였지만, 뷰는 쿼리문에 대한 이름일 뿐 새로운 레코드는 기본 테이블(emp_copy)에 실질적으로 추가되는 것이다.</p>
+  </li>
+  <li>
+    <p>뷰는 실질적인 데이터를 저장한 기본 테이블을 볼 수 있도록 한 투명한 창이다. 즉, 기본 테이블의 모양이 바뀐 것이고 그 바뀐 내용을 뷰라는 창을 통해서 볼 뿐이다.
+뷰에 insert 뿐만 아니라, update, delete 모두 사용할 수 있는데, 이 명령문 역시 뷰의 텍스트에 저장되어 있는 기본 테이블을 변경하는 것이다.</p>
+  </li>
+</ol>
+
+<p>####뷰를 사용하는 이유</p>
+
+<ol>
+  <li>복잡하고 긴 쿼리문을 뷰로 정의하면 접근을 단순화 시킬 수 있다.</li>
+  <li>보안에 유리하다. - 사용자마다 특정 객체만 조회할 수 있도록 권한을 부여할 수 있기 때문</li>
+</ol>
+
+<p>###뷰의 종류</p>
+
+<p>뷰는 뷰를 정의하기 위해서 사용되는 기본 테이블의 수에 따라 두 가지로 나뉜다.</p>
+
+<ol>
+  <li>단순뷰(simple view)
+    <ul>
+      <li>하나의 테이블로 생성</li>
+      <li>그룹 함수의 사용이 불가능</li>
+      <li>distinct 사용이 불가능</li>
+      <li>insert/update/delete(DML) 등의 사용 가능</li>
+    </ul>
+  </li>
+  <li>복합뷰(complex view)
+    <ul>
+      <li>여러 개의 테이블로 생성</li>
+      <li>그룹 함수의 사용이 가능</li>
+      <li>distinct 사용이 가능</li>
+      <li>DML 사용 불가능</li>
+    </ul>
+  </li>
+</ol>
+
+<p>####단순뷰</p>
+
+<p><em>단순 뷰에 대한 데이터 조작</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;insert into emp_view30 values(8010, 'HONG', 30);
+</code></pre>
+</div>
+
+<p><em>단순 뷰의 컬럼에 별칭 부여하기</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create view emp_view_copy(사원번호, 사원명, 급여, 부서번호)
+	as
+	select empno,ename,sal,deptno
+	from emp_copy;
+
+SQL&gt;select * from emp_view_copy;
+
+SQL&gt;select * from emp_view_copy where 부서번호=30;
+</code></pre>
+</div>
+
+<p><em>그룹 함수를 사용한 단순 뷰</em>
+뷰를 작성할 때 select절 다음에 sum이라는 그룹함수를 사용하면 결과를 뷰의 특정 컬럼처럼 사용하게 된다. 따라서 물리적인 컬럼이 존재하지 않는 가상 컬럼이기에 컬럼명도 상속 받을 수 없다.
+뷰를 생성할 때 가상 컬럼을 사용하려면 사용자가 반드시 별칭을 따로 설정해야한다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create view view_sal
+	as
+	select deptno, sum(sal) sum, avg(sal) avg
+	from emp_copy
+	group by deptno;
+</code></pre>
+</div>
+
+<p><strong>단순 뷰의 경우 DML 명령어의 조작이 불가능한 경우</strong></p>
+
+<ol>
+  <li>뷰 정의에 포함되지 않은 컬럼 중에 기본 테이블의 컬럼이 not null 제약 조건이 지정되어 있는 경우 insert문 사용이 불가능하다.
+왜냐하면 뷰에 대한 insert문은 기본 테이블에 null 값을 입력하는 형태가 되기 때문이다.</li>
+  <li>sal * 12  와 같이 산술 표현식으로 정의된 가상 컬럼이 뷰에 정의되면 insert/update가 불가능하다.</li>
+  <li>distinct을 포함한 경우에도 DML(data manipulation language) 명령을 사용할 수 없다.</li>
+  <li>그룹 함수나 group by절을 포함한 경우에도 DML 명령을 사용할 수 없다.</li>
+</ol>
+
+<p>####복합뷰</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;select empno,ename,sal,e.deptno,dname,loc
+	from emp e, dept d
+	where  e.deptno = d.deptno
+	order by empno desc;
+
+SQL&gt;create view emp_view_dept
+	as
+	select empno,ename,sal,e.deptno,dname,loc
+	from emp e, dept d
+	where  e.deptno = d.deptno
+	order by empno desc;
+</code></pre>
+</div>
+
+<p>###뷰 삭제</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;drop view emp_view;
+</code></pre>
+</div>
+
+<p>###뷰 생성에 사용되는 다양한 옵션</p>
+
+<ol>
+  <li>
+    <p><strong>or replace</strong>
+존재하지 않는 뷰이면 새로운 뷰를 생성하고 기존에 존재하는 뷰이면 그 내용을 변경한다.</p>
+  </li>
+  <li>
+    <p>force/noforce
+force - 기본 테이블이 존재하지 않을 때도 뷰를 생성해야 되는 경우 사용하는 옵션.
+noforce - 기본 테이블이 존재하는 경우만 뷰가 생성(default)</p>
+  </li>
+  <li>
+    <p>with check option
+뷰를 생성할 때 조건 제시에 사용된 컬럼 값을 변경하지 못하도록 하는 기능을 제공
+뷰를 설정할 때 조건으로 설정한 컬럼 이외의 다른 컬럼의 내용은 변경할 수 있음</p>
+  </li>
+  <li>
+    <p><strong>with read only</strong>
+기본 테이블의 어떤 컬럼에 대해서도 뷰를 통한 내용 수정을 불가능하게 만드는 옵션</p>
+  </li>
+</ol>
+
+<p>##Top Query</p>
+
+<p>상위 몇 개의 데이터만을 출력하고 싶을 때 사용하는 쿼리
+Top-N을 구하기 위해 rownum &amp; 인라인뷰가 사용</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;select rownum, empno, ename, hiredate from emp;
+SQL&gt;select rownum, empno, ename, hiredate
+	from emp
+	order by hiredate
+
+SQL&gt;create or replace view view_hire
+    as
+    select empno, ename, hiredate
+    from emp
+    order by hiredate;
+SQL&gt;select rownum, empno, ename, hiredate
+    from view_hire;
+SQL&gt;select rownum, empno, ename, hiredate
+	from view_hire
+	where rownum &lt;= 5
+
+//인라인 뷰를 사용 - 중요!!!
+SQL&gt;select rownum, empno, ename, hiredate
+	from (select empno, ename, hiredate
+    	  from emp
+    	  order by hiredate)
+	where rownum &lt;= 5;
+
+</code></pre>
+</div>
+
+<p>##사용자(User) 권한(Rule)</p>
+
+<p>###권한의 역할과 종류</p>
+
+<ul>
+  <li>권한 : 사용자가 특정 테이블을 접근할 수 있도록 하거나 해당 테이블에 sql(select/insert/update/delete)문을 사용 할 수 있도록 제한을 두는 것.</li>
+  <li>데이터베이스 보안을 위한 권한은 시스템 권한과 객체 권한으로 나눌 수 있다.</li>
+  <li>시스템 권한: 사용자의 생성과 제거, DB 접근 및 각종 객체를 생성할 수 있는 권한 등 DBA에 부여됨.</li>
+  <li>객체 권한 : 객체를 조작할 수 있는 권한.</li>
+</ul>
+
+<p>###실습</p>
+
+<h4 id="user01--">user01 계정 생성</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;conn system/manager
+SQL&gt;create user user01 identified by tiger;
+</code></pre>
+</div>
+
+<h4 id="section-7">데이터베이스 접속 권한</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;grant create session to user01;
+SQL&gt;create table emp01
+        (
+             empno number(4),
+             ename varchar2(10),
+             job varchar2(10),
+             deptno number(2)
+        );--[error]
+</code></pre>
+</div>
+
+<h4 id="section-8">테이블 생성 권한</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;grant create table to user01;
+SQL&gt;create table emp01
+        (
+             empno number(4),
+             ename varchar2(10),
+             job varchar2(10),
+             deptno number(2)
+        );
+SQL&gt;insert into emp01 values(7326,'SMITH','CLERK',20);
+</code></pre>
+</div>
+
+<h4 id="section-9">테이블 스페이스 확인</h4>
+<p>테이블 스페이스는 디스크 공간을 소비하는 테이블과 뷰 그리고 그 밖의 다른 데이터베이스 객체들이 저장되는 장소</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;alter user user01 quita 2m on users;
+SQL&gt;insert into emp01 values(7326,'SMITH','CLERK',20);
+</code></pre>
+</div>
+
+<h4 id="with-admin-option">with admin option</h4>
+<p>사용자에게 시스템 권한을 with admin option과 함께 부여하면 그 사용자는 데이터베이스
+관리자가 아닌데도 불구하고 부여받은 시스템 권한을 다른 사용자에게 부여할 수 있는 권한을 함께 부여받게 된다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create user user02 identified by tiger;
+SQL&gt;grant create session to user02 with admin option;
+SQL&gt;create user user03 identified by tiger;
+SQL&gt;conn user02/tiger
+SQL&gt;grant create session to user03;
+</code></pre>
+</div>
+
+<h4 id="select--">테이블 객체에 대한 select 권한 부여</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//scott/emp -&gt; user01
+SQL&gt;conn scott/tiger 계정 접속
+SQL&gt;grant select on emp to user01;
+SQL&gt;conn user01/tiger;
+SQL&gt;select * from emp;
+</code></pre>
+</div>
+
+<h4 id="schema">스키마(SCHEMA)</h4>
+
+<p>객체를 소유한 사용자 명을 의미한다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;select * from scott.emp;
+</code></pre>
+</div>
+
+<h4 id="section-10">사용자에게 부여된 권한 조회</h4>
+
+<ul>
+  <li>user_tab_privs_made : 현재 사용자가 다른 사용자에게 부여한 권한 정보를 알려줌</li>
+  <li>user_tab_privs_recd : 자신에게 부여된 사용자 권한을 알고 싶을 떄</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;select * from user_tab_privs_made;
+SQL&gt;select * from user_tab_privs_recd;
+
+//한번에 권한 부여
+SQL&gt;grant create session, create table, create view to user01;
+</code></pre>
+</div>
+
+<h4 id="section-11">객체 권한 제거하기</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;conn scott/tiger
+SQL&gt;select * from user_tab_privs_made;
+SQL&gt;revoke select on emp from user01;
+</code></pre>
+</div>
+
+<h4 id="with-grant-option">with grant option</h4>
+
+<p>사용자에게 객체 권한을 with grant option과 함께 부여하면 사용자는 객체를 접근할 권한을 부여 받으면서 그 권한을 다른 사용자에게 부여할 수 있는 권한도 함께 부여받게 된다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;conn scott/tiger
+SQL&gt;grant select on scott.emp to user02 with grant option;
+SQL&gt;conn user02/tiger
+SQL&gt;grant select on scott.emp to user01 with grant option;
+</code></pre>
+</div>
+
+<h4 id="section-12">사용자 계정 제거</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;conn system/manager
+SQL&gt;drop user user03;
+</code></pre>
+</div>
+
+<h4 id="role">롤(Role)</h4>
+
+<ul>
+  <li>사용자에게 보다 효율적으로 권한을 부여할 수 있도록 여러 개의 권한을 묶어 놓은 것.</li>
+  <li>사용자를 생성했으면 그 사용자에게 각종 권한을 부여해야만 생성된 사용자가 데이터베이스를 사용할 수 있음.</li>
+</ul>
+
+<ol>
+  <li>connect role
+    <ul>
+      <li>사용자가 데이터베이스에 접속 가능하도록 하기 위해서 다음과 같이 가장 기본적인 시스템 권한 8가지 묶어 놓은 권한.</li>
+      <li>alter session, create cluster, create database link, create sequence, create session, create synonym, create table, create view</li>
+    </ul>
+  </li>
+  <li>resource role
+    <ul>
+      <li>사용자가 객체 (테이블, 뷰, 시퀀스)를 생성할 수 있도록 시스템 권한을 묶어 놓은 것.</li>
+      <li>create cluster, create procedure, create sequence, create table, create trigger</li>
+    </ul>
+  </li>
+  <li>DBA role
+    <ul>
+      <li>사용자들이 소유한 데이터베이스 객체를 관리하고 사용자들이 작성하고 변경하고 제거 할 수 있도록 하는 모든 권한을 가짐.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;conn system/manager
+SQL&gt;create user user03 identified by tiger;
+SQL&gt;grant connect, resource to user03;
+SQL&gt;conn user03/tiger
+SQL&gt;select * from dict
+    where table_name like '%ROLE%';
+</code></pre>
+</div>
+
+<p>##연습문제</p>
+
+<p>[문제1] 기본테이블은 EMP_COPY로 합니다. 20번 부서에 소속된 사원들의 사번과 이름, 부서번호와 상관의 사번을 출력하기 위한 select문을 emp_view20이라는 이름의 뷰로 정의해 보세요.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create or replace view emp_view20
+	as
+	select empno, ename, deptno, mgr
+	from emp_copy
+	where deptno=20;
+</code></pre>
+</div>
+
+<p>[문제2] 각 부서별 최대 급여와 최소 급여를 출력하는 뷰를 sal_view 라는 이름으로 작성하세요.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create or replace view sal_view
+	as
+	select deptno, max(sal) "최대급여", min(sal) "최소급여"
+	from emp_copy
+	group by deptno
+	order by deptno;
+</code></pre>
+</div>
+
+<p>[문제3] 인라인뷰를 이용하여 급여를 많이 받는 순서대로 3명만 출력하는 뷰(sal_top3_view)를 작성하세요.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;select rownum, empno, ename, sal
+	from (select empno, ename, sal
+	  	  from emp_copy
+		  where sal is not null
+	  	  order by sal desc)
+	where rownum &lt;= 3;
+</code></pre>
+</div>
+
+<p>[문제4] acorn/tiger 계정을 생성해서 순번/사원번호/이름/직업/근무부서(컬럼)의 항목을 갖는 테이블을 만들어서 데이터를 저장하되 순번 데이터 입력은 sequence를 이용하여 저장하고, view_acorn 뷰를 생성해서 순번/사원번호/이름만 출력할 수 있도록 만들어보세요.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;conn system/manager
+
+SQL&gt;create user acorn identified by tiger;
+
+SQL&gt;grant create session, create table, create sequence, create view to acorn;
+
+SQL&gt;conn acorn/tiger
+
+SQL&gt;create table emp_acorn(
+	num number(4) primary key,
+	empno number(4),
+	ename varchar2(10),
+	job varchar2(10),
+	dname varchar(10));
+
+SQL&gt;create sequence emp_seq start with 1 increment by 1 ;
+
+SQL&gt;insert into emp_acorn values(emp_seq.nextval, 10, 'IRONMAN', 'HERO', 'SHIELD');
+SQL&gt;insert into emp_acorn values(emp_seq.nextval, 10, 'HULK', 'HERO', 'SHIELD');
+
+SQL&gt;create view view_acorn
+	as
+	select num, empno, ename
+	from emp_acorn;
+</code></pre>
+</div>
+
+<h2 id="index">인덱스(Index)</h2>
+
+<ul>
+  <li>조회를 빠르게(빠른 검색) 하도록 도와준다.</li>
+  <li>sql 명령문의 처리 속도를 향상시키기 위해서 컬럼에 생성하는 오라클 객체</li>
+  <li>장점
+    <ul>
+      <li>검색 속도가 빨라진다.</li>
+      <li>시스템에 걸리는 부하를 줄여서 시스템 전체 성능을 향상시킨다.</li>
+    </ul>
+  </li>
+  <li>단점
+    <ul>
+      <li>인덱스를 위한 추가적인 공간이 필요하다.</li>
+      <li>인덱스를 생성하는데 시간이 걸린다.</li>
+      <li>데이터의 변경작업(DML)이 자주 일어날 경우에는 오히려 성능이 떨어진다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section-13">인덱스 정보 조회</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;select index_name, table_name, column_name
+    from user_ind_columns
+    where table_name in ('EMP', 'DEPT');
+</code></pre>
+</div>
+
+<h4 id="section-14">조회 속도 비교하기</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create table emp01
+	as
+	select * from emp;
+
+SQL&gt;select index_name, table_name, column_name
+    from user_ind_columns
+    where table_name in ('EMP', 'EMP01');
+//emp 테이블에는 empno 컬럼에 인덱스가 존재하지만 emp를 서브 쿼리로 복사한 emp01 테이블에는 인덱스가 존재하지 않는다.
+서브쿼리문으로 복사한 테이블은 구조와 내용만 복사할 뿐 제약조건은 복사되지 않기 때문이다.
+
+SQL&gt;insert into emp01
+	select * from emp01;
+//자신의 데이터를 그대로 덧붙여서 추가한다. 수행할때마다 2배씩 늘어나는 셈이다.
+많은 양의 데이터를 추가한 후 실습을 해본다.
+
+SQL&gt;insert into emp(empno, ename)
+	values(8000, 'ANGEL');
+SQL&gt;set timing on	//시간 측정
+SQL&gt;select empno, ename
+	from emp01
+	where ename='ANGEL';
+
+</code></pre>
+</div>
+
+<h3 id="section-15">인덱스 생성 &amp; 제거</h3>
+
+<p>기본키(primary key)나 유일키(unique)가 아닌 컬럼에 대해서 인덱스를 지정하려면 <code class="highlighter-rouge">create index</code> 를 사용한다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//인덱스 생성 후 다시 조회하면 시간이 단축된걸 알 수 있다.
+SQL&gt;create index idx_emp01_ename
+	on emp01(ename);
+SQL&gt;select empno, ename
+	from emp01
+	where ename='ANGEL';
+
+//인덱스 제거
+SQL&gt;drop index idx_emp01_ename;
+
+//인덱스의 물리적인 구조과 인덱스의 재생성(최적화)
+SQL&gt;alter index idex_emp01_ename rebuild;
+</code></pre>
+</div>
+
+<p>####인덱스 사용 기준</p>
+
+<ul>
+  <li>인덱스를 사용해야 하는 경우
+    <ul>
+      <li>테이블에 행(레코드)의 수가 많을 때</li>
+      <li>where문에 해당 컬럼이 많이 사용될 때</li>
+      <li>검색 결과가 전체 데이터의 2~4% 정도 일 때</li>
+      <li>join에 자주 사용되는 컬럼이나 null을 포함하는 컬럼이 많은 경우</li>
+    </ul>
+  </li>
+  <li>인덱스를 사용하지 말아야 하는 경우
+    <ul>
+      <li>테이블에 행(레코드)의 수가 적을 때</li>
+      <li>where문에 해당 컬럼이 자주 사용되지 않을 때</li>
+      <li>검색 결과가 전체 데이터의 10~15% 이상 일 때</li>
+      <li>테이블에 DML 작업이 많은 경우</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section-16">인덱스 종류</h3>
+
+<ol>
+  <li>고유 인덱스(Unique Index)
+    <ul>
+      <li>기본키나 유일키처럼 유일한 값을 갖는 컬럼에 대해서 생성하는 인덱스</li>
+      <li><code class="highlighter-rouge">create unique index</code></li>
+    </ul>
+  </li>
+  <li>비고유 인덱스(Nonunique Index)
+    <ul>
+      <li>중복된 데이터를 갖는 컬럼에 대해서 인덱스를 생성(default)</li>
+    </ul>
+  </li>
+  <li>단일 인덱스(Single Index)
+    <ul>
+      <li>한 개의 컬럼으로 구성한 인덱스</li>
+    </ul>
+  </li>
+  <li>결합 인덱스(Composite Index)
+    <ul>
+      <li>두 개 이상의 컬럼으로 인덱스를 구</li>
+    </ul>
+  </li>
+  <li>함수 기반 인덱스(Function Based Index)</li>
+</ol>
+
+<p>##저장 프로시저(stored procedure)</p>
+
+<ul>
+  <li>복잡한 쿼리문들을 필요할 때 마다 다시 입력할 필요없이 간단하게 호출만 해서 복자한 쿼리문의 생행결과를 얻어올 수 있다.</li>
+  <li>성능도 향상되고, 호환성 문제도 해결된다.</li>
+  <li>여러 번 반복 호출해서 사용할 수 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;create table emp01
+        as
+        select * from emp;
+SQL&gt;ed proc01;
+
+SQL&gt;@proc01
+SQL&gt;execute del_all
+SQL&gt;ed proc01
+SQL&gt;show error
+</code></pre>
+</div>
+
+<p><em>proc01</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>create or replace procedure DEL_ALL
+is
+begin
+delete from emp01;
+end;
+/
+</code></pre>
+</div>
+
+<h3 id="section-17">저장프로시저 조회하기</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;desc user_source
+SQL&gt;select name, text
+        from user_source;
+</code></pre>
+</div>
+
+<h3 id="section-18">저장 프로시저의 매개변수</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;ed proc02;
+SQL&gt;@proc02
+SQL&gt;execute del_ename('SMITH');
+</code></pre>
+</div>
+
+<p><em>proc02</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>create or replace procedure del_ename(vename emp01.ename%type)
+is
+begin
+delete from emp01 where ename = vename;
+end;
+/
+</code></pre>
+</div>
+
+<h3 id="in-out-inout-">IN, OUT, INOUT 매개변수</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SQL&gt;ed proc03;
+SQL&gt;@proc03;
+
+SQL&gt;variable var_ename varchar2(15);
+SQL&gt;variable var_sal number;
+SQL&gt;variable var_job varchar2(9);
+
+SQL&gt;execute sel_empno(7788, :var_ename, :var_sal, :var_job);
+
+SQL&gt;print var_ename;
+SQL&gt;print var_sal;
+SQL&gt;print var_job;
+</code></pre>
+</div>
+
+<p><em>proc03</em></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>create or replace procedure sel_empno
+( vempno in emp.empno%type,
+  vename out emp.ename%type,
+  vsal out emp.sal%type,
+  vjob out emp.job%type
+)
+is
+begin
+select ename, sal, job into vename, vsal, vjob
+from emp where empno = vempno;
+end;
+/
+</code></pre>
+</div>
+
+
+                        <br>
+
+                    
+                    
+                        <div class="entry-tags text-center">
+                            <i class="fa fa-tags"></i>&nbsp;
+                                Tagged with 
+                            
+                                <a href="http://localhost:4000/tags/index.html#oracle" data-toggle="tooltip" title="Posts tagged with oracle" rel="tag">oracle</a>
+
+                                
+                                &nbsp;&bull;&nbsp;
+                                
+                            
+                                <a href="http://localhost:4000/tags/index.html#database" data-toggle="tooltip" title="Posts tagged with database" rel="tag">database</a>
+
+                                
+                            
+                        </div>
+                    
+                    </div>
+
+                    <footer class="post-footer entry-meta">
+                    
+                        <div class="post-share text-center">
+    <p class="light small">
+        Share this post
+    </p>
+    <ul class="social-mini">
+        <li>
+            <a href="https://twitter.com/intent/tweet?text=%EC%98%A4%EB%9D%BC%ED%81%B4+%EA%B0%95%EC%A2%8C+-+Oracle+Fundamental%232%20http://localhost:4000/blog/oracle-fundamental2%20via%20&#64;"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip"
+                title="Share on Twitter" itemprop="Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/oracle-fundamental2" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+                data-toggle="tooltip" title="Share on Facebook" itemprop="Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/blog/oracle-fundamental2" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+                data-toggle="tooltip" title="Share on Google plus" itemprop="GooglePlus">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+                    
+
+                        <div class="post-author text-center">
+	<img src="http://localhost:4000/images/me.jpg" alt="Lee Jung Min's photo" itemprop="image" class="post-avatar img-circle img-responsive" />
+	<h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+		By <span itemprop="name" class="fn"><a href="http://localhost:4000/about" title="About Lee Jung Min" itemprop="url">Lee Jung Min</a></span>
+	</h4>
+	<p>The two most powerful warriors are Patience and Time.</p>
+</div> 
+                        
+                    
+                        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+                    
+                    </footer>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+    
+<footer id="footer" class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(http://localhost:4000/images/universe.jpeg)">
+
+
+    <div class="inner">
+        <div class="container">
+            <ul class="social-icons">
+                       
+            </ul>
+            <div>
+                <a href="http://localhost:4000/about/">Lee Jung Min</a> &copy; 2016 &bull;
+                All rights reserved.
+            </div>
+            <ul class="menu-items">
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/"><i class="fa fa-home"></i></a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/categories">Programing</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li>
+                    
+                    <a href="http://localhost:4000/tags">Tags</a>&nbsp;&bull;
+                    
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <div class="decor-wrapper">
+        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
+            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
+            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
+            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>    
+        </svg>
+    </div>
+    
+    
+</footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jekyll-search.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/main.js"></script>
+<script type="text/javascript" src="http://localhost:4000/assets/js/script.js"></script>
+<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+
+<script type="text/javascript">
+
+/*      Slides       */
+
+$("a#slide").click(function(){
+    $("#sidebar,body,a#slide,#fade").addClass("slide")
+});
+
+$("#fade,#header,#posts-container").click(function(){
+    $("#sidebar,body,a#slide,#fade").removeClass("slide")
+});
+
+$("a#click-filter").click(function(){
+    $("#slide-filter").slideToggle("medium");
+    $("#slide-pages").slideOut("medium");
+});
+
+$("a#click-pages").click(function(){
+    $("#slide-pages").slideToggle("medium");
+    $("#slide-filter").slideOut("medium");
+});
+
+/*      End-Slides      */
+
+</script>
+
+
+<!-- Jekyll Simple Search option -->
+<script>
+
+   SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'http://localhost:4000/assets/json/search.json',
+        searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+        noResultsText: '<p>Nothing found.</p>',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      });
+
+  (function( $, window, undefined ) {
+
+     var bs = {
+          close: $("#search-close"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'takoobi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        
+</body>
+</html>
