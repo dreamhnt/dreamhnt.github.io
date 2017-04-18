@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="https://dreamhnt.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dreamhnt.github.io/" rel="alternate" type="text/html" /><updated>2016-09-19T00:56:36+09:00</updated><id>https://dreamhnt.github.io/</id><title type="html">Takoobi’s Space</title><subtitle>sensitive developer</subtitle><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><entry><title type="html">감성천국</title><link href="https://dreamhnt.github.io/blog/project-spring-love" rel="alternate" type="text/html" title="감성천국" /><published>2015-08-23T00:00:00+09:00</published><updated>2015-08-23T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/project-spring-love</id><content type="html" xml:base="https://dreamhnt.github.io/blog/project-spring-love">&lt;h2 id=&quot;section&quot;&gt;개요&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.2.1">Jekyll</generator><link href="http://127.0.0.1:4000//feed.xml" rel="self" type="application/atom+xml" /><link href="http://127.0.0.1:4000//" rel="alternate" type="text/html" /><updated>2017-04-16T00:08:28+09:00</updated><id>http://127.0.0.1:4000//</id><title type="html">Takoobi’s Space</title><subtitle>sensitive developer</subtitle><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><entry><title type="html">ERP 반응형웹</title><link href="http://127.0.0.1:4000//blog/project-mobileWeb" rel="alternate" type="text/html" title="ERP 반응형웹" /><published>2017-02-23T00:00:00+09:00</published><updated>2017-02-23T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/project-mobileWeb</id><content type="html" xml:base="http://127.0.0.1:4000//blog/project-mobileWeb">&lt;h2 id=&quot;section&quot;&gt;개요&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기간 : 2016년 3월 ~ 5월&lt;/li&gt;
+  &lt;li&gt;인원 : 1명&lt;/li&gt;
+  &lt;li&gt;사용 기술 : spring framework, mssql, bootstrap, 전자정부프레임워크&lt;/li&gt;
+  &lt;li&gt;사용 도구 : eclipse, svn&lt;/li&gt;
+  &lt;li&gt;주요 기능 : ERP 시스템 업무&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;SAP 컨설팅 회사에서 웹개발자로 근무하면서 신규로 모바일 웹 개발 프로젝트를 혼자 진행하게되었다.&lt;/p&gt;
+
+&lt;p&gt;서버 기술로는 전자정부프레임워크를 사용해서 개발을 해야 했는데 처음 사용해 봐서 개발환경 세팅하기도 쉽지 않았다.
+또한 회사에서 사용하던 스프링의 구조를 최대한 비슷하게 맞춰야 했는데 DB 연동도 안되고 수 많은 에러를 맞이하며 좌절을 겪어야 했다.
+구글 선생님의 도움으로 우여곡절 끝에 세팅을 끝내고, 프론트엔드 개발에 대한 고민을 해야만 했다.
+처음엔 리액트나 앵귤러 같은 기술을 사용하여 만들고 싶었지만 배우는데 또 시간이 소요되고, 유지보수를 할 때 다른 개발자들은 모르는 기술은
+사용할 수 없고, 무엇보다 모바일 웹이 사용되는 규모가 작았다.&lt;/p&gt;
+
+&lt;p&gt;그 후 ERP 업무에 사용될 만한 UI가 괜찮은 오픈소스 템플릿을 찾으러 다녔고, 처음에는 버튼의 모서리 부분이 둥근 형식의 템플릿으로 개발을 했다.
+팀장님한테 보여줬을 때 괜찮다고 했지만 내가 뭔가 마음에 들지 않아 새로운 템플릿을 또 찾기 시작했다.
+최종적으로는 AdminLTE 라는 템플릿을 사용하게 되었는데 필요한 부분만 가져다 사용했고 심플하면서도 각진 모양이
+ERP 업무에도 잘 어울렸다. 개발을 하면서 UI 나 디자인이 마음에 안드는 것들은 다른 라이브러리를 사용했고, 이것 저것 오픈소스들을 모아서
+개발을 하는데 레고처럼 뗐다 붙였다 마음에 들때까지 하다보니 일관성 있는 사이트가 완성되었다.&lt;/p&gt;
+
+&lt;p&gt;사이트의 틀이 잡히고 실제로 개발에 들어가니 또 다른 문제가 생겼다.
+ERP에서 사용되는 업무를 모바일 웹으로 사용하자니 수많은 항목들을 모바일 화면에 어떻게 보여줘야 할 지 고민을 해야했다. 일단 모바일에서 사용될 정보의 양을 줄였고, 탭바를 활용하고
+테이블에 칼럼이 5이상이 넘어가면 행 클릭 시 상세정보가 나오게 변경했다. 그 밖에 정보의 표현에 있어 부딪히는 문제점들이 발생할 때마다 생각을 해야만 했고 그 과정들이 또 다른 즐거움으로 다가왔다.&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Project" /><category term="project" /><category term="spring" /><category term="mssql" /><summary type="html">개요</summary></entry><entry><title type="html">감성천국</title><link href="http://127.0.0.1:4000//blog/project-spring-love" rel="alternate" type="text/html" title="감성천국" /><published>2015-08-23T00:00:00+09:00</published><updated>2015-08-23T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/project-spring-love</id><content type="html" xml:base="http://127.0.0.1:4000//blog/project-spring-love">&lt;h2 id=&quot;section&quot;&gt;개요&lt;/h2&gt;
 
 &lt;hr /&gt;
 
@@ -146,7 +176,7 @@
 &lt;p&gt;장소에 따른 공간을 제공해 주는것이 핵심인데 디자인이 상당히 중요하지만 디자인 실력이 없어 전반적으로 미려한 사이트가 탄생할 수 없었다. 또한 사이트 운영에 대한 시스템 구축에 있어서 완성도가 떨어져서 아쉬움이 남는다.
 팀 프로젝트를 하면서 팀원들과 맞추어 개발을 해 나아간다는게 쉽지 않은 일임을 경험했고, 효율적인 일의 분담이 중요하다는 걸 느꼈다.
 git 으로 merge 하는 과정에서 충돌이 많이 발생하고 사용 경험이 많지 않아 고생을 했었고, trello를 이용해보니 협업 관리 도구의 편리성을 몸소 체험할 수 있었다.
-처음으로 여러 명과 같이 개발을 했는데 좌절도 하고 돌파구도 찾으며 팀원들과 친밀해질 수 있었던 &lt;strong&gt;즐거운 프로젝트였다 !!&lt;/strong&gt;&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Project" /><category term="project" /><category term="spring" /><category term="oracle" /><summary type="html">개요</summary></entry><entry><title type="html">JSP 강좌 - JSP Fundamental#2</title><link href="https://dreamhnt.github.io/blog/jsp-fundamental2" rel="alternate" type="text/html" title="JSP 강좌 - JSP Fundamental#2" /><published>2015-06-25T00:00:00+09:00</published><updated>2015-06-25T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/jsp-fundamental2</id><content type="html" xml:base="https://dreamhnt.github.io/blog/jsp-fundamental2">&lt;h2 id=&quot;section&quot;&gt;기본 객체와 영역&lt;/h2&gt;
+처음으로 여러 명과 같이 개발을 했는데 좌절도 하고 돌파구도 찾으며 팀원들과 친밀해질 수 있었던 &lt;strong&gt;즐거운 프로젝트였다 !!&lt;/strong&gt;&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Project" /><category term="project" /><category term="spring" /><category term="oracle" /><summary type="html">개요</summary></entry><entry><title type="html">JSP 강좌 - JSP Fundamental#2</title><link href="http://127.0.0.1:4000//blog/jsp-fundamental2" rel="alternate" type="text/html" title="JSP 강좌 - JSP Fundamental#2" /><published>2015-06-25T00:00:00+09:00</published><updated>2015-06-25T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/jsp-fundamental2</id><content type="html" xml:base="http://127.0.0.1:4000//blog/jsp-fundamental2">&lt;h2 id=&quot;section&quot;&gt;기본 객체와 영역&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;기본객체(Implicit Object))&lt;/strong&gt;&lt;/p&gt;
 
@@ -550,7 +580,7 @@ if (cookies != null &amp;amp;&amp;amp; cookies.length &amp;gt; 0){
 	&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setMaxInactiveInterval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;%&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="jsp" /><summary type="html">기본 객체와 영역</summary></entry><entry><title type="html">JSP 강좌 - JSP Fundamental#1</title><link href="https://dreamhnt.github.io/blog/jsp-fundamental" rel="alternate" type="text/html" title="JSP 강좌 - JSP Fundamental#1" /><published>2015-06-23T00:00:00+09:00</published><updated>2015-06-23T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/jsp-fundamental</id><content type="html" xml:base="https://dreamhnt.github.io/blog/jsp-fundamental">&lt;h2 id=&quot;section&quot;&gt;웹 프로그래밍이란&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="jsp" /><summary type="html">기본 객체와 영역</summary></entry><entry><title type="html">JSP 강좌 - JSP Fundamental#1</title><link href="http://127.0.0.1:4000//blog/jsp-fundamental" rel="alternate" type="text/html" title="JSP 강좌 - JSP Fundamental#1" /><published>2015-06-23T00:00:00+09:00</published><updated>2015-06-23T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/jsp-fundamental</id><content type="html" xml:base="http://127.0.0.1:4000//blog/jsp-fundamental">&lt;h2 id=&quot;section&quot;&gt;웹 프로그래밍이란&lt;/h2&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;개요&lt;/h3&gt;
 
@@ -855,7 +885,7 @@ if (cookies != null &amp;amp;&amp;amp; cookies.length &amp;gt; 0){
   &lt;li&gt;true - 버퍼가 다 찼을 경우 버퍼를 플러시하고 계속해서 작업을 진행한다.&lt;/li&gt;
   &lt;li&gt;false - 버퍼가 다 찼을 경우 예외를 발생시키고 작업을 중지한다&lt;/li&gt;
   &lt;li&gt;작성 안하면 default 로 true 이다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="jsp" /><summary type="html">웹 프로그래밍이란</summary></entry><entry><title type="html">Jekyll을 이용한 github page 블로그 만들기</title><link href="https://dreamhnt.github.io/blog/git" rel="alternate" type="text/html" title="Jekyll을 이용한 github page 블로그 만들기" /><published>2015-06-13T00:00:00+09:00</published><updated>2015-06-13T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/git</id><content type="html" xml:base="https://dreamhnt.github.io/blog/git">&lt;h2 id=&quot;git-&quot;&gt;git 설치&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="jsp" /><summary type="html">웹 프로그래밍이란</summary></entry><entry><title type="html">Jekyll을 이용한 github page 블로그 만들기</title><link href="http://127.0.0.1:4000//blog/git" rel="alternate" type="text/html" title="Jekyll을 이용한 github page 블로그 만들기" /><published>2015-06-13T00:00:00+09:00</published><updated>2015-06-13T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/git</id><content type="html" xml:base="http://127.0.0.1:4000//blog/git">&lt;h2 id=&quot;git-&quot;&gt;git 설치&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://git-scm.com/&quot;&gt;git 다운로드&lt;/a&gt;&lt;/p&gt;
 
@@ -925,7 +955,7 @@ dev/*     //dev폴더 제외
 &lt;p&gt;&lt;a href=&quot;http://jekyllrb-ko.github.io/&quot;&gt;지킬 한글 공식 사이트 &lt;/a&gt;
 &lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;지킬 테마&lt;/a&gt;
 &lt;a href=&quot;http://jekyllis.com/&quot;&gt;지킬 참고 사이트&lt;/a&gt;
-&lt;a href=&quot;http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram&quot;&gt;마크다운 사용법&lt;/a&gt;&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Skill" /><category term="git" /><category term="tool" /><summary type="html">git 설치</summary></entry><entry><title type="html">Django 강좌 - 기본</title><link href="https://dreamhnt.github.io/blog/django" rel="alternate" type="text/html" title="Django 강좌 - 기본" /><published>2015-05-31T00:00:00+09:00</published><updated>2015-05-31T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/django</id><content type="html" xml:base="https://dreamhnt.github.io/blog/django">&lt;h2 id=&quot;section&quot;&gt;장고에서의 애플리케이션 개발 방식&lt;/h2&gt;
+&lt;a href=&quot;http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram&quot;&gt;마크다운 사용법&lt;/a&gt;&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Skill" /><category term="git" /><category term="tool" /><summary type="html">git 설치</summary></entry><entry><title type="html">Django 강좌 - 기본</title><link href="http://127.0.0.1:4000//blog/django" rel="alternate" type="text/html" title="Django 강좌 - 기본" /><published>2015-05-31T00:00:00+09:00</published><updated>2015-05-31T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/django</id><content type="html" xml:base="http://127.0.0.1:4000//blog/django">&lt;h2 id=&quot;section&quot;&gt;장고에서의 애플리케이션 개발 방식&lt;/h2&gt;
 
 &lt;p&gt;웹 사이트를 설계할 때 가장 먼저 해야 할 일은 프로그램이 해야 할 일을 적당한 크기로 나누어서 모듈화하는 것이다. 이 경우 웹 사이트의 전체 프로그램 또는 모듈화된 단위 프로그램을 애플리케이션이라고 한다. 그러나 장고에서는 애플리케이션의 개념을 웹 서버 개발 측면에서 좀 더 구체화하고 있다. 웹 사이트에 대한 전체 프로그램을 프로젝트라 하고, 모듈화된 단위 프로그램을 애플리케이션이라고 부르며 장고는 기본적으로 MTV 모델에 따라 애플리케이션 개발을 유도해준다.&lt;/p&gt;
 
@@ -983,7 +1013,7 @@ dev/*     //dev폴더 제외
 &lt;h3 id=&quot;view----&quot;&gt;View - 로직 설계&lt;/h3&gt;
 
 &lt;p&gt;일반적으로 뷰는 웹 요청을 받아서 데이터베이스 접속 등 해당 애플리케이션의 로직에 맞는 처리를 하고, 그 결과 데이터를 HTML로 변환하기 위하여 템플릿 처리를 한 후에, 최종 HTML로 된 응답 데이터를 웹 클라이언트로 반환하는 역할을 한다.
-장고에서의 뷰는 함수 또는 클래스의 메소드로 작성되며, 웹 요청을 받고 응답을 반환해준다. 이러한 뷰는 보통 &lt;strong&gt;views.py&lt;/strong&gt; 파일에 작성하지만 다른 파일에 작성해도 무방하다.&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="django" /><category term="python" /><category term="framework" /><summary type="html">장고에서의 애플리케이션 개발 방식</summary></entry><entry><title type="html">JDBC 강좌</title><link href="https://dreamhnt.github.io/blog/jdbc" rel="alternate" type="text/html" title="JDBC 강좌" /><published>2015-05-29T00:00:00+09:00</published><updated>2015-05-29T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/jdbc</id><content type="html" xml:base="https://dreamhnt.github.io/blog/jdbc">&lt;p&gt;##DAO DTO 패턴과 Connection Pool을 이용&lt;/p&gt;
+장고에서의 뷰는 함수 또는 클래스의 메소드로 작성되며, 웹 요청을 받고 응답을 반환해준다. 이러한 뷰는 보통 &lt;strong&gt;views.py&lt;/strong&gt; 파일에 작성하지만 다른 파일에 작성해도 무방하다.&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="django" /><category term="python" /><category term="framework" /><summary type="html">장고에서의 애플리케이션 개발 방식</summary></entry><entry><title type="html">JDBC 강좌</title><link href="http://127.0.0.1:4000//blog/jdbc" rel="alternate" type="text/html" title="JDBC 강좌" /><published>2015-05-29T00:00:00+09:00</published><updated>2015-05-29T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/jdbc</id><content type="html" xml:base="http://127.0.0.1:4000//blog/jdbc">&lt;p&gt;##DAO DTO 패턴과 Connection Pool을 이용&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;DTO(Database Transfer Object) - Model&lt;/strong&gt;&lt;/p&gt;
 
@@ -1699,7 +1729,7 @@ dev/*     //dev폴더 제외
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="oracle" /><summary type="html">##DAO DTO 패턴과 Connection Pool을 이용</summary></entry><entry><title type="html">오라클 강좌 - Oracle Fundamental#2</title><link href="https://dreamhnt.github.io/blog/oracle-fundamental2" rel="alternate" type="text/html" title="오라클 강좌 - Oracle Fundamental#2" /><published>2015-05-28T00:00:00+09:00</published><updated>2015-05-28T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/oracle-fundamental2</id><content type="html" xml:base="https://dreamhnt.github.io/blog/oracle-fundamental2">&lt;p&gt;##테이블 무결성 제약조건&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="oracle" /><summary type="html">##DAO DTO 패턴과 Connection Pool을 이용</summary></entry><entry><title type="html">오라클 강좌 - Oracle Fundamental#2</title><link href="http://127.0.0.1:4000//blog/oracle-fundamental2" rel="alternate" type="text/html" title="오라클 강좌 - Oracle Fundamental#2" /><published>2015-05-28T00:00:00+09:00</published><updated>2015-05-28T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/oracle-fundamental2</id><content type="html" xml:base="http://127.0.0.1:4000//blog/oracle-fundamental2">&lt;p&gt;##테이블 무결성 제약조건&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;데이터 무결성 제약 조건(Data Integrity Constraint Rule)&lt;/strong&gt;
 테이블에 부적절한 자료(데이터)가 입력되는 것을 방지하기 위해서 테이블을 생성할 때
@@ -2830,7 +2860,7 @@ from emp where empno = vempno;
 end;
 /
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="oracle" /><category term="database" /><summary type="html">##테이블 무결성 제약조건</summary></entry><entry><title type="html">오라클 강좌 - Oracle Fundamental</title><link href="https://dreamhnt.github.io/blog/oracle-fundamental" rel="alternate" type="text/html" title="오라클 강좌 - Oracle Fundamental" /><published>2015-05-20T00:00:00+09:00</published><updated>2015-05-20T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/oracle-fundamental</id><content type="html" xml:base="https://dreamhnt.github.io/blog/oracle-fundamental">&lt;p&gt;##개요&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="oracle" /><category term="database" /><summary type="html">##테이블 무결성 제약조건</summary></entry><entry><title type="html">오라클 강좌 - Oracle Fundamental</title><link href="http://127.0.0.1:4000//blog/oracle-fundamental" rel="alternate" type="text/html" title="오라클 강좌 - Oracle Fundamental" /><published>2015-05-20T00:00:00+09:00</published><updated>2015-05-20T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/oracle-fundamental</id><content type="html" xml:base="http://127.0.0.1:4000//blog/oracle-fundamental">&lt;p&gt;##개요&lt;/p&gt;
 
 &lt;p&gt;데이터베이스는 모든 프로그램의 핵심이며 데이터를 효율적으로 관리하는 방법으로 &lt;strong&gt;DBMS(DataBase Management System)&lt;/strong&gt; 라는 소프트웨어를 사용하게 된다.&lt;/p&gt;
 
@@ -3447,7 +3477,7 @@ where employee.mgr = manager.empno(+)
       &lt;li&gt;select ename, sal from emp natural join dept where loc=’NEW YORK’;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="oracle" /><category term="database" /><summary type="html">##개요</summary></entry><entry><title type="html">자바 강좌 - JAVA Fundamental #2</title><link href="https://dreamhnt.github.io/blog/java-fundamental2" rel="alternate" type="text/html" title="자바 강좌 - JAVA Fundamental #2" /><published>2015-05-07T00:00:00+09:00</published><updated>2015-05-07T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/java-fundamental2</id><content type="html" xml:base="https://dreamhnt.github.io/blog/java-fundamental2">&lt;p&gt;##예외 처리&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="oracle" /><category term="database" /><summary type="html">##개요</summary></entry><entry><title type="html">자바 강좌 - JAVA Fundamental #2</title><link href="http://127.0.0.1:4000//blog/java-fundamental2" rel="alternate" type="text/html" title="자바 강좌 - JAVA Fundamental #2" /><published>2015-05-07T00:00:00+09:00</published><updated>2015-05-07T00:00:00+09:00</updated><id>http://127.0.0.1:4000//blog/java-fundamental2</id><content type="html" xml:base="http://127.0.0.1:4000//blog/java-fundamental2">&lt;p&gt;##예외 처리&lt;/p&gt;
 
 &lt;p&gt;###예외의 개념&lt;/p&gt;
 
@@ -4322,28 +4352,4 @@ I/O 모델의 정의로 인해서 입출력 대상의 차이에 따른 �
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transient&lt;/code&gt; 로 선언된 멤버는 직렬화의 대상에서 제외된다.&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="language" /><summary type="html">##예외 처리</summary></entry><entry><title type="html">드롭박스(Dropbox)에서 링크 공유 방법</title><link href="https://dreamhnt.github.io/blog/dropbox-link" rel="alternate" type="text/html" title="드롭박스(Dropbox)에서 링크 공유 방법" /><published>2015-04-27T00:00:00+09:00</published><updated>2015-04-27T00:00:00+09:00</updated><id>https://dreamhnt.github.io/blog/dropbox-link</id><content type="html" xml:base="https://dreamhnt.github.io/blog/dropbox-link">&lt;p&gt;드롭박스를 사용하여 링크를 공유 떄 해당 파일 옆에 공유를 누르면 링크 주소가 뜬다.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://www.dropbox.com/s/5ha0aqrksqy64qe/one.png?dl=0&lt;/code&gt;
-이런 식으로 주소를 가르쳐 주는데 이 주소를 그대로 사용하면 이미지가 뜨지 않는다.
-방법은 간단하다&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://~&lt;/code&gt;에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;http://~&lt;/code&gt; 로 바꾸어준다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;www&lt;/code&gt; 를 지우고 &lt;code class=&quot;highlighter-rouge&quot;&gt;dl&lt;/code&gt;로 바꾸어준다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;주소 마지막 매개변수 처리를 지워준다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;변경 전:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://www.dropbox.com/s/5ha0aqrksqy64qe/one.png?dl=0&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;변경 후:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;http://dl.dropbox.com/s/5ha0aqrksqy64qe/one.png&lt;/code&gt;&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Skill" /><summary type="html">드롭박스를 사용하여 링크를 공유 떄 해당 파일 옆에 공유를 누르면 링크 주소가 뜬다.
-https://www.dropbox.com/s/5ha0aqrksqy64qe/one.png?dl=0
-이런 식으로 주소를 가르쳐 주는데 이 주소를 그대로 사용하면 이미지가 뜨지 않는다.
-방법은 간단하다</summary></entry></feed>
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transient&lt;/code&gt; 로 선언된 멤버는 직렬화의 대상에서 제외된다.&lt;/p&gt;</content><author><name>Lee Jung Min</name><email>fngnl11@gmail.com</email></author><category term="Study" /><category term="java" /><category term="language" /><summary type="html">##예외 처리</summary></entry></feed>
