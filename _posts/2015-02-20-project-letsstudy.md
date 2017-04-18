@@ -5,7 +5,7 @@ date:   2015-02-20
 description: "스터디 모집 사이트"
 category: Project
 tags: [project, django]
-comments: true
+comments: false
 ---
 
 ## 개요

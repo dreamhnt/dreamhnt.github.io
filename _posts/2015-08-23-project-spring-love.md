@@ -4,7 +4,7 @@ title:  "감성천국"
 description: "spring framework를 활용한 팀 프로젝트"
 category: Project
 tags: [project, spring, oracle]
-comments: true
+comments: false
 ---
 
 ## 개요

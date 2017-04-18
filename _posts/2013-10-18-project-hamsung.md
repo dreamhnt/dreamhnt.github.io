@@ -5,7 +5,7 @@ date:   2013-10-18
 description: "동아리 홈페이지"
 category: Project
 tags: [project, django, mysql]
-comments: true
+comments: false
 ---
 
 
